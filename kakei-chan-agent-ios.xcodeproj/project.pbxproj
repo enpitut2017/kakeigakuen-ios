@@ -1,0 +1,652 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1C4F5670200B4E080050F6FD /* アセット 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C4F566F200B4E080050F6FD /* アセット 1.png */; };
+		C552E5BB737A5C43B94A4610 /* Pods_kakei_chan_agent_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B327532D76B0D104E71855EF /* Pods_kakei_chan_agent_ios.framework */; };
+		CFA016991FD8F1BD00A2C8F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA016981FD8F1BD00A2C8F2 /* AppDelegate.swift */; };
+		CFA0169B1FD8F1BD00A2C8F2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0169A1FD8F1BD00A2C8F2 /* ViewController.swift */; };
+		CFA0169E1FD8F1BD00A2C8F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFA0169C1FD8F1BD00A2C8F2 /* Main.storyboard */; };
+		CFA016A01FD8F1BD00A2C8F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFA0169F1FD8F1BD00A2C8F2 /* Assets.xcassets */; };
+		CFA016A31FD8F1BD00A2C8F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFA016A11FD8F1BD00A2C8F2 /* LaunchScreen.storyboard */; };
+		CFA016AE1FD8F1BD00A2C8F2 /* kakei_chan_agent_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA016AD1FD8F1BD00A2C8F2 /* kakei_chan_agent_iosTests.swift */; };
+		CFA016B91FD8F1BD00A2C8F2 /* kakei_chan_agent_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA016B81FD8F1BD00A2C8F2 /* kakei_chan_agent_iosUITests.swift */; };
+		CFA016C71FD8F64200A2C8F2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA016C61FD8F64200A2C8F2 /* LoginViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CFA016AA1FD8F1BD00A2C8F2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CFA0168D1FD8F1BD00A2C8F2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CFA016941FD8F1BD00A2C8F2;
+			remoteInfo = "kakei-chan-agent-ios";
+		};
+		CFA016B51FD8F1BD00A2C8F2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CFA0168D1FD8F1BD00A2C8F2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CFA016941FD8F1BD00A2C8F2;
+			remoteInfo = "kakei-chan-agent-ios";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1C4F566F200B4E080050F6FD /* アセット 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "アセット 1.png"; path = "../../Desktop/アセット 1.png"; sourceTree = "<group>"; };
+		B327532D76B0D104E71855EF /* Pods_kakei_chan_agent_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_kakei_chan_agent_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CFA016951FD8F1BD00A2C8F2 /* kakei-chan-agent-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "kakei-chan-agent-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CFA016981FD8F1BD00A2C8F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CFA0169A1FD8F1BD00A2C8F2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CFA0169D1FD8F1BD00A2C8F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CFA0169F1FD8F1BD00A2C8F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CFA016A21FD8F1BD00A2C8F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CFA016A41FD8F1BD00A2C8F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CFA016A91FD8F1BD00A2C8F2 /* kakei-chan-agent-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "kakei-chan-agent-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CFA016AD1FD8F1BD00A2C8F2 /* kakei_chan_agent_iosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kakei_chan_agent_iosTests.swift; sourceTree = "<group>"; };
+		CFA016AF1FD8F1BD00A2C8F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CFA016B41FD8F1BD00A2C8F2 /* kakei-chan-agent-iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "kakei-chan-agent-iosUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CFA016B81FD8F1BD00A2C8F2 /* kakei_chan_agent_iosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kakei_chan_agent_iosUITests.swift; sourceTree = "<group>"; };
+		CFA016BA1FD8F1BD00A2C8F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CFA016C61FD8F64200A2C8F2 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		D0F1ECF5F4B57BEB0BF79ADA /* Pods-kakei-chan-agent-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kakei-chan-agent-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-kakei-chan-agent-ios/Pods-kakei-chan-agent-ios.debug.xcconfig"; sourceTree = "<group>"; };
+		EAE849F3E5616B84E18D1C88 /* Pods-kakei-chan-agent-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kakei-chan-agent-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-kakei-chan-agent-ios/Pods-kakei-chan-agent-ios.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CFA016921FD8F1BD00A2C8F2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C552E5BB737A5C43B94A4610 /* Pods_kakei_chan_agent_ios.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CFA016A61FD8F1BD00A2C8F2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CFA016B11FD8F1BD00A2C8F2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1D4175383E230C9F521DF571 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D0F1ECF5F4B57BEB0BF79ADA /* Pods-kakei-chan-agent-ios.debug.xcconfig */,
+				EAE849F3E5616B84E18D1C88 /* Pods-kakei-chan-agent-ios.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		41516C26588C4697C23304BF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B327532D76B0D104E71855EF /* Pods_kakei_chan_agent_ios.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CFA0168C1FD8F1BD00A2C8F2 = {
+			isa = PBXGroup;
+			children = (
+				CFA016971FD8F1BD00A2C8F2 /* kakei-chan-agent-ios */,
+				CFA016AC1FD8F1BD00A2C8F2 /* kakei-chan-agent-iosTests */,
+				CFA016B71FD8F1BD00A2C8F2 /* kakei-chan-agent-iosUITests */,
+				CFA016961FD8F1BD00A2C8F2 /* Products */,
+				1D4175383E230C9F521DF571 /* Pods */,
+				41516C26588C4697C23304BF /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		CFA016961FD8F1BD00A2C8F2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CFA016951FD8F1BD00A2C8F2 /* kakei-chan-agent-ios.app */,
+				CFA016A91FD8F1BD00A2C8F2 /* kakei-chan-agent-iosTests.xctest */,
+				CFA016B41FD8F1BD00A2C8F2 /* kakei-chan-agent-iosUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CFA016971FD8F1BD00A2C8F2 /* kakei-chan-agent-ios */ = {
+			isa = PBXGroup;
+			children = (
+				CFA016981FD8F1BD00A2C8F2 /* AppDelegate.swift */,
+				CFA0169A1FD8F1BD00A2C8F2 /* ViewController.swift */,
+				1C4F566F200B4E080050F6FD /* アセット 1.png */,
+				CFA016C61FD8F64200A2C8F2 /* LoginViewController.swift */,
+				CFA0169C1FD8F1BD00A2C8F2 /* Main.storyboard */,
+				CFA0169F1FD8F1BD00A2C8F2 /* Assets.xcassets */,
+				CFA016A11FD8F1BD00A2C8F2 /* LaunchScreen.storyboard */,
+				CFA016A41FD8F1BD00A2C8F2 /* Info.plist */,
+			);
+			path = "kakei-chan-agent-ios";
+			sourceTree = "<group>";
+		};
+		CFA016AC1FD8F1BD00A2C8F2 /* kakei-chan-agent-iosTests */ = {
+			isa = PBXGroup;
+			children = (
+				CFA016AD1FD8F1BD00A2C8F2 /* kakei_chan_agent_iosTests.swift */,
+				CFA016AF1FD8F1BD00A2C8F2 /* Info.plist */,
+			);
+			path = "kakei-chan-agent-iosTests";
+			sourceTree = "<group>";
+		};
+		CFA016B71FD8F1BD00A2C8F2 /* kakei-chan-agent-iosUITests */ = {
+			isa = PBXGroup;
+			children = (
+				CFA016B81FD8F1BD00A2C8F2 /* kakei_chan_agent_iosUITests.swift */,
+				CFA016BA1FD8F1BD00A2C8F2 /* Info.plist */,
+			);
+			path = "kakei-chan-agent-iosUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CFA016941FD8F1BD00A2C8F2 /* kakei-chan-agent-ios */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CFA016BD1FD8F1BD00A2C8F2 /* Build configuration list for PBXNativeTarget "kakei-chan-agent-ios" */;
+			buildPhases = (
+				A7627C0DF545F51FCA1AD9B0 /* [CP] Check Pods Manifest.lock */,
+				CFA016911FD8F1BD00A2C8F2 /* Sources */,
+				CFA016921FD8F1BD00A2C8F2 /* Frameworks */,
+				CFA016931FD8F1BD00A2C8F2 /* Resources */,
+				4EFD5B60C3931B705082614F /* [CP] Embed Pods Frameworks */,
+				358605F01AB11CD4381E8019 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "kakei-chan-agent-ios";
+			productName = "kakei-chan-agent-ios";
+			productReference = CFA016951FD8F1BD00A2C8F2 /* kakei-chan-agent-ios.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CFA016A81FD8F1BD00A2C8F2 /* kakei-chan-agent-iosTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CFA016C01FD8F1BD00A2C8F2 /* Build configuration list for PBXNativeTarget "kakei-chan-agent-iosTests" */;
+			buildPhases = (
+				CFA016A51FD8F1BD00A2C8F2 /* Sources */,
+				CFA016A61FD8F1BD00A2C8F2 /* Frameworks */,
+				CFA016A71FD8F1BD00A2C8F2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CFA016AB1FD8F1BD00A2C8F2 /* PBXTargetDependency */,
+			);
+			name = "kakei-chan-agent-iosTests";
+			productName = "kakei-chan-agent-iosTests";
+			productReference = CFA016A91FD8F1BD00A2C8F2 /* kakei-chan-agent-iosTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		CFA016B31FD8F1BD00A2C8F2 /* kakei-chan-agent-iosUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CFA016C31FD8F1BD00A2C8F2 /* Build configuration list for PBXNativeTarget "kakei-chan-agent-iosUITests" */;
+			buildPhases = (
+				CFA016B01FD8F1BD00A2C8F2 /* Sources */,
+				CFA016B11FD8F1BD00A2C8F2 /* Frameworks */,
+				CFA016B21FD8F1BD00A2C8F2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CFA016B61FD8F1BD00A2C8F2 /* PBXTargetDependency */,
+			);
+			name = "kakei-chan-agent-iosUITests";
+			productName = "kakei-chan-agent-iosUITests";
+			productReference = CFA016B41FD8F1BD00A2C8F2 /* kakei-chan-agent-iosUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CFA0168D1FD8F1BD00A2C8F2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0910;
+				LastUpgradeCheck = 0910;
+				ORGANIZATIONNAME = "masamune kobayashi";
+				TargetAttributes = {
+					CFA016941FD8F1BD00A2C8F2 = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+					};
+					CFA016A81FD8F1BD00A2C8F2 = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = CFA016941FD8F1BD00A2C8F2;
+					};
+					CFA016B31FD8F1BD00A2C8F2 = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = CFA016941FD8F1BD00A2C8F2;
+					};
+				};
+			};
+			buildConfigurationList = CFA016901FD8F1BD00A2C8F2 /* Build configuration list for PBXProject "kakei-chan-agent-ios" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CFA0168C1FD8F1BD00A2C8F2;
+			productRefGroup = CFA016961FD8F1BD00A2C8F2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CFA016941FD8F1BD00A2C8F2 /* kakei-chan-agent-ios */,
+				CFA016A81FD8F1BD00A2C8F2 /* kakei-chan-agent-iosTests */,
+				CFA016B31FD8F1BD00A2C8F2 /* kakei-chan-agent-iosUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CFA016931FD8F1BD00A2C8F2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CFA016A31FD8F1BD00A2C8F2 /* LaunchScreen.storyboard in Resources */,
+				CFA016A01FD8F1BD00A2C8F2 /* Assets.xcassets in Resources */,
+				1C4F5670200B4E080050F6FD /* アセット 1.png in Resources */,
+				CFA0169E1FD8F1BD00A2C8F2 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CFA016A71FD8F1BD00A2C8F2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CFA016B21FD8F1BD00A2C8F2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		358605F01AB11CD4381E8019 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-kakei-chan-agent-ios/Pods-kakei-chan-agent-ios-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4EFD5B60C3931B705082614F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-kakei-chan-agent-ios/Pods-kakei-chan-agent-ios-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/UICircularProgressRing/UICircularProgressRing.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UICircularProgressRing.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-kakei-chan-agent-ios/Pods-kakei-chan-agent-ios-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A7627C0DF545F51FCA1AD9B0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-kakei-chan-agent-ios-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CFA016911FD8F1BD00A2C8F2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CFA016C71FD8F64200A2C8F2 /* LoginViewController.swift in Sources */,
+				CFA0169B1FD8F1BD00A2C8F2 /* ViewController.swift in Sources */,
+				CFA016991FD8F1BD00A2C8F2 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CFA016A51FD8F1BD00A2C8F2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CFA016AE1FD8F1BD00A2C8F2 /* kakei_chan_agent_iosTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CFA016B01FD8F1BD00A2C8F2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CFA016B91FD8F1BD00A2C8F2 /* kakei_chan_agent_iosUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CFA016AB1FD8F1BD00A2C8F2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CFA016941FD8F1BD00A2C8F2 /* kakei-chan-agent-ios */;
+			targetProxy = CFA016AA1FD8F1BD00A2C8F2 /* PBXContainerItemProxy */;
+		};
+		CFA016B61FD8F1BD00A2C8F2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CFA016941FD8F1BD00A2C8F2 /* kakei-chan-agent-ios */;
+			targetProxy = CFA016B51FD8F1BD00A2C8F2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		CFA0169C1FD8F1BD00A2C8F2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CFA0169D1FD8F1BD00A2C8F2 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		CFA016A11FD8F1BD00A2C8F2 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CFA016A21FD8F1BD00A2C8F2 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CFA016BB1FD8F1BD00A2C8F2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		CFA016BC1FD8F1BD00A2C8F2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CFA016BE1FD8F1BD00A2C8F2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D0F1ECF5F4B57BEB0BF79ADA /* Pods-kakei-chan-agent-ios.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L4GKXFJ86Y;
+				INFOPLIST_FILE = "kakei-chan-agent-ios/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "yatteiki.kakei-chan-agent-ios";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CFA016BF1FD8F1BD00A2C8F2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EAE849F3E5616B84E18D1C88 /* Pods-kakei-chan-agent-ios.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L4GKXFJ86Y;
+				INFOPLIST_FILE = "kakei-chan-agent-ios/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "yatteiki.kakei-chan-agent-ios";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		CFA016C11FD8F1BD00A2C8F2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "kakei-chan-agent-iosTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "yatteiki.kakei-chan-agent-iosTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/kakei-chan-agent-ios.app/kakei-chan-agent-ios";
+			};
+			name = Debug;
+		};
+		CFA016C21FD8F1BD00A2C8F2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "kakei-chan-agent-iosTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "yatteiki.kakei-chan-agent-iosTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/kakei-chan-agent-ios.app/kakei-chan-agent-ios";
+			};
+			name = Release;
+		};
+		CFA016C41FD8F1BD00A2C8F2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "kakei-chan-agent-iosUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "yatteiki.kakei-chan-agent-iosUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "kakei-chan-agent-ios";
+			};
+			name = Debug;
+		};
+		CFA016C51FD8F1BD00A2C8F2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "kakei-chan-agent-iosUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "yatteiki.kakei-chan-agent-iosUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "kakei-chan-agent-ios";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CFA016901FD8F1BD00A2C8F2 /* Build configuration list for PBXProject "kakei-chan-agent-ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CFA016BB1FD8F1BD00A2C8F2 /* Debug */,
+				CFA016BC1FD8F1BD00A2C8F2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CFA016BD1FD8F1BD00A2C8F2 /* Build configuration list for PBXNativeTarget "kakei-chan-agent-ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CFA016BE1FD8F1BD00A2C8F2 /* Debug */,
+				CFA016BF1FD8F1BD00A2C8F2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CFA016C01FD8F1BD00A2C8F2 /* Build configuration list for PBXNativeTarget "kakei-chan-agent-iosTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CFA016C11FD8F1BD00A2C8F2 /* Debug */,
+				CFA016C21FD8F1BD00A2C8F2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CFA016C31FD8F1BD00A2C8F2 /* Build configuration list for PBXNativeTarget "kakei-chan-agent-iosUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CFA016C41FD8F1BD00A2C8F2 /* Debug */,
+				CFA016C51FD8F1BD00A2C8F2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CFA0168D1FD8F1BD00A2C8F2 /* Project object */;
+}
