@@ -88,17 +88,24 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     var now: Date? = nil
     
+    //音声入力ボタン
     @IBOutlet weak var recordButton : UIButton!
     
+    //予算出力文字
     @IBOutlet weak var budget: UILabel!
     
+    //日程入力フィールド
     @IBOutlet weak var dateSelecter: UITextField!
     var toolBar:UIToolbar!
     
+    //商品入力フィールド
     @IBOutlet weak var itemField: UITextField!
     
+    //予算入力フィールド
     @IBOutlet weak var moneyField: UITextField!
     
+    
+    //ログアウト関数
     @IBAction func Logout(_ sender: Any) {
         Keychain.kakeiToken.del()
         Keychain.kakeiBudget.del()
@@ -107,7 +114,9 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
         let nextView = storyboard.instantiateViewController(withIdentifier: "LoginView") as! LoginViewController
         self.present(nextView, animated: true, completion: nil)
     }
+    
 
+    //トークン設定
     public enum Keychain: String {
         // キー名
         case kakeiToken = "accessToken"
@@ -160,21 +169,30 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     }
     
     
-    /*
-        決定ボタン
-     */
-
+/*
+手入力時の決定ボタン
+*/
     @IBAction func enterButtonTapped(){
-        self.score = Int(moneyField.text!)!
-        send_json()
+        
+        let s: String! = regulation(s: moneyField.text)
+//        var i: Int! = 0
+        if let i = Int(s) {
+            if itemField.text != "" {
+                self.score = i
+                showStrPost(str: String(self.score))
+                send_Items_json()
+            } else {
+                showStrAlert(str: "正しく入力してね")
+            }
+        } else {
+            showStrAlert(str: "正しく入力してね")
+        }
     }
     
     
-    /*
-        音声入力部分
-     */
-    
-    
+/*
+音声入力部分
+*/
     //ボタンがタップされた時
     @IBAction func recordButtonTapped() {
         //もし認識機能が動いていなかったら
@@ -185,8 +203,8 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
                 newtextlist[i] = ""
             }
             //タイマー設定
-//            recordButton.setTitle("認識中", for: [])
-//            titletimer = Timer.scheduledTimer(timeInterval: 0.6, target: self, selector: #selector(ViewController.buttonTitle), userInfo: nil, repeats: true)
+            //recordButton.setTitle("認識中", for: [])
+            //titletimer = Timer.scheduledTimer(timeInterval: 0.6, target: self, selector: #selector(ViewController.buttonTitle), userInfo: nil, repeats: true)
             recogtimer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(ViewController.recognitionlimit), userInfo: nil, repeats: true)
 
             //もし動いていたら強制的にfinish
@@ -194,6 +212,75 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
             finishRecording()
         }
     }
+    
+    
+    private func startRecording() throws {
+        
+        // Cancel the previous task if it's running.
+        if let recognitionTask = recognitionTask {
+            recognitionTask.cancel()
+            self.recognitionTask = nil
+        }
+        
+        let audioSession = AVAudioSession.sharedInstance()
+        try audioSession.setCategory(AVAudioSessionCategoryRecord)
+        try audioSession.setMode(AVAudioSessionModeMeasurement)
+        try audioSession.setActive(true, with: .notifyOthersOnDeactivation)
+        
+        recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
+        
+        let inputNode = audioEngine.inputNode;// else { fatalError("Audio engine has no input node") }
+        guard let recognitionRequest = recognitionRequest else { fatalError("Unable to created a SFSpeechAudioBufferRecognitionRequest object") }
+        
+        // Configure request so that results are returned before audio recording is finished
+        recognitionRequest.shouldReportPartialResults = true
+        
+        // A recognition task represents a speech recognition session.
+        // We keep a reference to the task so that it can be cancelled.
+        recognitionTask = speechRecognizer.recognitionTask(with: recognitionRequest) { result, error in
+            var isFinal = false
+            
+            if let result = result {
+                self.textView.text = result.bestTranscription.formattedString
+                self.latestText = self.textView.text
+                print(self.latestText)
+                isFinal = result.isFinal
+            }
+            
+            if error != nil || isFinal {
+                self.audioEngine.stop()
+                inputNode.removeTap(onBus: 0)
+                
+                self.recognitionRequest = nil
+                self.recognitionTask = nil
+                
+                self.recordButton.isEnabled = true
+                self.recordButton.setTitle("入力開始", for: [])
+            }
+        }
+        
+        let recordingFormat = inputNode.outputFormat(forBus: 0)
+        inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer: AVAudioPCMBuffer, when: AVAudioTime) in
+            self.recognitionRequest?.append(buffer)
+        }
+        audioEngine.prepare()
+        try audioEngine.start()
+        textView.text = "音声を入力してください..."
+    }
+    
+    public func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
+        if available {
+            recordButton.isEnabled = true
+            recordButton.setTitle("スタート", for: [])
+        } else {
+            recordButton.isEnabled = false
+            recordButton.setTitle("マイクを許可してください", for: .disabled)
+        }
+    }
+    
+    
+    
+    
     
     //レコーディングをこちら側で強制的に終わらせた時
     func finishRecording(){
@@ -214,11 +301,9 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
         //正規表現を使って文字列を半角数字列に置換
         //(円 -> "")
         //("マイナス" -> -)
-        self.latestText = self.latestText.pregReplace(pattern: "円", with: "")
-        self.latestText = self.latestText.pregReplace(pattern: "マイナス", with: "-")
-        self.latestText = self.latestText.pregReplace(pattern: "ー", with: "-")
-        self.latestText = self.latestText.pregReplace(pattern: "−", with: "-")
-        self.latestText = self.latestText.pregReplace(pattern: " ", with: "")
+        
+        self.latestText = regulation(s: self.latestText)
+        
         //うまく喋れてたら送信確認ポップアップ
         if (self.latestText != nil && Int(latestText) != nil){
             do{
@@ -235,14 +320,14 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     }
     
     //ボタンのタイトルのアニメーション制御
-//    @objc func buttonTitle(){
-//        var title:String = "認識中"
-//        animCalledCounter = animCalledCounter + 1
-//        for num in 0...animCalledCounter % 3 {
-//            title = title + "."
-//        }
-//        recordButton.setTitle(title, for: [])
-//    }
+    //    @objc func buttonTitle(){
+    //        var title:String = "認識中"
+    //        animCalledCounter = animCalledCounter + 1
+    //        for num in 0...animCalledCounter % 3 {
+    //            title = title + "."
+    //        }
+    //        recordButton.setTitle(title, for: [])
+    //    }
     
     //ユーザが喋り終わったのを認識して強制的に終わらせる
     @objc func recognitionlimit(){
@@ -255,9 +340,22 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
         }
     }
     
-    /*
-     日付の入力フォーム
-     */
+    
+    //音声入力の正規表現
+    func regulation(s: String!) -> String {
+        var regulatedS: String! = s
+        regulatedS = s.pregReplace(pattern: "円", with: "")
+        regulatedS = s.pregReplace(pattern: "マイナス", with: "-")
+        regulatedS = s.pregReplace(pattern: "ー", with: "-")
+        regulatedS = s.pregReplace(pattern: "−", with: "-")
+        regulatedS = s.pregReplace(pattern: " ", with: "")
+        regulatedS = s.pregReplace(pattern: ",", with: "")
+        return regulatedS
+    }
+    
+/*
+日付の入力フォーム
+*/
     
     //今日の日付を代入
     let nowDate = NSDate()
@@ -332,19 +430,19 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     
 
-//    func loadImage(){
-//        if (Keychain.kakeiToken.value() != nil){
-//            let requestURL = URL(string: "https://kakeigakuen.xyz/api/image/" + Keychain.kakeiToken.value()! )!
-//            //let requestURL = URL(string: "http://localhost:3000/api/image/" + Keychain.kakeiToken.value()!)!
-//            let req = URLRequest(url: requestURL)
-//            print(req)
-//            image.loadRequest(req)
-//        } else {
-//            let storyboard: UIStoryboard = self.storyboard!
-//            let nextView = storyboard.instantiateViewController(withIdentifier: "LoginView") as! LoginViewController
-//            self.present(nextView, animated: true, completion: nil)
-//        }
-//    }
+    //    func loadImage(){
+    //        if (Keychain.kakeiToken.value() != nil){
+    //            let requestURL = URL(string: "https://kakeigakuen.xyz/api/image/" + Keychain.kakeiToken.value()! )!
+    //            //let requestURL = URL(string: "http://localhost:3000/api/image/" + Keychain.kakeiToken.value()!)!
+    //            let req = URLRequest(url: requestURL)
+    //            print(req)
+    //            image.loadRequest(req)
+    //        } else {
+    //            let storyboard: UIStoryboard = self.storyboard!
+    //            let nextView = storyboard.instantiateViewController(withIdentifier: "LoginView") as! LoginViewController
+    //            self.present(nextView, animated: true, completion: nil)
+    //        }
+    //    }
     
     
     override func viewDidAppear(_ animated: Bool) {
@@ -383,71 +481,6 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     }
     
     
-    private func startRecording() throws {
-        
-        // Cancel the previous task if it's running.
-        if let recognitionTask = recognitionTask {
-            recognitionTask.cancel()
-            self.recognitionTask = nil
-        }
-        
-        let audioSession = AVAudioSession.sharedInstance()
-        try audioSession.setCategory(AVAudioSessionCategoryRecord)
-        try audioSession.setMode(AVAudioSessionModeMeasurement)
-        try audioSession.setActive(true, with: .notifyOthersOnDeactivation)
-        
-        recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
-        
-        let inputNode = audioEngine.inputNode;// else { fatalError("Audio engine has no input node") }
-        guard let recognitionRequest = recognitionRequest else { fatalError("Unable to created a SFSpeechAudioBufferRecognitionRequest object") }
-        
-        // Configure request so that results are returned before audio recording is finished
-        recognitionRequest.shouldReportPartialResults = true
-        
-        // A recognition task represents a speech recognition session.
-        // We keep a reference to the task so that it can be cancelled.
-        recognitionTask = speechRecognizer.recognitionTask(with: recognitionRequest) { result, error in
-            var isFinal = false
-            
-            if let result = result {
-                self.textView.text = result.bestTranscription.formattedString
-                self.latestText = self.textView.text
-                print(self.latestText)
-                isFinal = result.isFinal
-            }
-            
-            if error != nil || isFinal {
-                self.audioEngine.stop()
-                inputNode.removeTap(onBus: 0)
-                
-                self.recognitionRequest = nil
-                self.recognitionTask = nil
-                
-                self.recordButton.isEnabled = true
-                self.recordButton.setTitle("入力開始", for: [])
-            }
-        }
-        
-        let recordingFormat = inputNode.outputFormat(forBus: 0)
-        inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer: AVAudioPCMBuffer, when: AVAudioTime) in
-            self.recognitionRequest?.append(buffer)
-        }
-        audioEngine.prepare()
-        try audioEngine.start()
-        textView.text = "音声を入力してください..."
-    }
-    
-    public func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
-        if available {
-            recordButton.isEnabled = true
-            recordButton.setTitle("スタート", for: [])
-        } else {
-            recordButton.isEnabled = false
-            recordButton.setTitle("マイクを許可してください", for: .disabled)
-        }
-    }
-    
-    
     //渡された文字列をサーバにpost送信する
     func showStrPost(str: String){
         // UIAlertControllerを作成する.
@@ -455,7 +488,7 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
         
         // OKのアクションを作成する.
         let myOkAction = UIAlertAction(title: "送信", style: .default) { action in
-            self.send_json()
+            self.send_Items_json()
             print("Successfully send json to web server")
             
             //残高更新
@@ -475,7 +508,6 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
         // OKのアクションを作成する.
         let myOkAction = UIAlertAction(title: "戻る", style: .default) { action in
             //self.go_to_rails()
-            print("missing format")
         }
         
         // OKのActionを追加する.
@@ -485,12 +517,11 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     }
     
     
-    /*
-     代金送信json投げる
-     */
-    
-    
-    func send_json() {
+/*
+代金送信json投げる
+*/
+
+    func send_Items_json() {
         //let url = "http://localhost:3000/api/books"
         let url = "https://kakeigakuen.xyz/api/books"
         let request = NSMutableURLRequest(url: NSURL(string: url)! as URL)
