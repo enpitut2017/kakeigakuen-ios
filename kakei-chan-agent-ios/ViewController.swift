@@ -10,6 +10,7 @@ import Foundation
 import Security
 import UIKit
 import Speech
+import UICircularProgressRing
 
 
 
@@ -84,6 +85,10 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     var score: Int = 0
     
+    var budget: Int = 10000
+    
+    var remainMoney: Int! = 10000
+    
     var getJson: NSDictionary!
     
     var now: Date? = nil
@@ -91,8 +96,10 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     //音声入力ボタン
     @IBOutlet weak var recordButton : UIButton!
     
-    //予算出力文字
-    @IBOutlet weak var budget: UILabel!
+    //今月の予算出力文字
+    @IBOutlet weak var budgetLabel: UILabel!
+    
+    @IBOutlet weak var RemainingMoenyLabel: UILabel!
     
     //日程入力フィールド
     @IBOutlet weak var dateSelecter: UITextField!
@@ -103,6 +110,8 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     //予算入力フィールド
     @IBOutlet weak var moneyField: UITextField!
+    
+    @IBOutlet weak var progressRing: UICircularProgressRingView!
     
     
     //ログアウト関数
@@ -175,12 +184,10 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     @IBAction func enterButtonTapped(){
         
         let s: String! = regulation(s: moneyField.text)
-//        var i: Int! = 0
         if let i = Int(s) {
             if itemField.text != "" {
                 self.score = i
                 showStrPost(str: String(self.score))
-                send_Items_json()
             } else {
                 showStrAlert(str: "正しく入力してね")
             }
@@ -293,10 +300,10 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
             recogtimer.invalidate()
         }
         
-//        if titletimer.isValid == true {
-//            //titletimerを破棄してタイトルのアニメーション終了
-//            titletimer.invalidate()
-//        }
+        //        if titletimer.isValid == true {
+        //            //titletimerを破棄してタイトルのアニメーション終了
+        //            titletimer.invalidate()
+        //        }
         
         //正規表現を使って文字列を半角数字列に置換
         //(円 -> "")
@@ -355,6 +362,7 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     
 /*
 日付の入力フォーム
+ViewDidLoad : あらゆるコンポーネントの配置決定
 */
     
     //今日の日付を代入
@@ -404,7 +412,24 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
         itemField.placeholder = "商品"
         moneyField.placeholder = "お金"
         
+       // progressRing.delegate = self as? UICircularProgressRingDelegate
+        //progressRing = UICircularProgressRingView(frame: CGRect(x: 87, y: 102, width: 200, height: 200))
+        self.progressRing.maxValue = CGFloat(budget)
+        self.progressRing.minValue = 0
+        self.progressRing.setProgress(value: CGFloat(remainMoney), animationDuration: 1.0)
+//        progressRing.ringStyle = UICircularProgressRingStyle.ontop
+//        progressRing.startAngle = CGFloat(140)
+//        progressRing.endAngle = CGFloat(40)
+//        progressRing.outerRingWidth = 8
+//        progressRing.outerRingColor = #colorLiteral(red: 0.709620595, green: 0.7137866616, blue: 0.7136848569, alpha: 1)
+//        progressRing.outerCapStyle = CGLineCap.round
+//        progressRing.innerRingWidth = 9
+//        progressRing.innerRingColor = #colorLiteral(red: 0, green: 0.6134710312, blue: 0.5824463964, alpha: 1)
+//        progressRing.innerCapStyle = CGLineCap.round
         //loadImage()
+        progressRing.setProgress(value: CGFloat(remainMoney) , animationDuration: 2.0) {
+            print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        }
     }
     
     
@@ -448,7 +473,9 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     override func viewDidAppear(_ animated: Bool) {
         if (Keychain.kakeiToken.value() != nil) {
             let userBudget = "\(Keychain.kakeiBudget.value() ?? "")"
-            self.budget.text = "残高: \(userBudget)"
+            self.RemainingMoenyLabel.numberOfLines = 2
+            self.RemainingMoenyLabel.text = "残り予算\n\(userBudget)"
+            self.budgetLabel.text = String(budget)
         } else {
             let storyboard: UIStoryboard = self.storyboard!
             let nextView = storyboard.instantiateViewController(withIdentifier: "LoginView") as! LoginViewController
@@ -492,7 +519,7 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
             print("Successfully send json to web server")
             
             //残高更新
-        
+            self.progressRing.setProgress(value: CGFloat(self.remainMoney) , animationDuration: 1.0)
         }
         // OKのActionを追加する.
         myAlert.addAction(myOkAction)
@@ -557,7 +584,9 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
                         DispatchQueue.main.async {
                             //Keychain.kakeiBudget.set("\(self.getJson["budget"])")
                             let userBudget = "\(self.getJson["budget"] ?? "")"
-                            self.budget.text = "残高: \(userBudget)"
+                            self.remainMoney = Int(userBudget)!
+                            self.RemainingMoenyLabel.numberOfLines = 2
+                            self.RemainingMoenyLabel.text = "残り予算\n\(userBudget)"
                         }
                     } else {
                         self.showStrAlert(str: "ごめんなさい...もう一度ログインし直してみてっ！")
