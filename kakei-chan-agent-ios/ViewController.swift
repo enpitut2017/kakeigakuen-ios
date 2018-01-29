@@ -427,9 +427,7 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
 //        progressRing.innerRingColor = #colorLiteral(red: 0, green: 0.6134710312, blue: 0.5824463964, alpha: 1)
 //        progressRing.innerCapStyle = CGLineCap.round
         //loadImage()
-        progressRing.setProgress(value: CGFloat(remainMoney) , animationDuration: 2.0) {
-            print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-        }
+        progressRing.setProgress(value: CGFloat(remainMoney) , animationDuration: 2.0)
     }
     
     
@@ -582,7 +580,7 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
                     self.getJson = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
                     if (self.getJson["token"] as! String != "error"){
                         DispatchQueue.main.async {
-                            //Keychain.kakeiBudget.set("\(self.getJson["budget"])")
+                            Keychain.kakeiBudget.set("\(self.getJson["budget"] ?? "")")
                             let userBudget = "\(self.getJson["budget"] ?? "")"
                             self.remainMoney = Int(userBudget)!
                             self.RemainingMoenyLabel.numberOfLines = 2
