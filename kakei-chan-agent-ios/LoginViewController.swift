@@ -27,8 +27,8 @@ class LoginViewController: UIViewController {
         var kakei_budget = 0
         
         // API接続先
-        //let urlStr = "https://kakeigakuen.xyz/api/login/"
-        let urlStr = "http://localhost:3000/api/login"
+        let urlStr = "https://kakeigakuen.xyz/api/login/"
+        //let urlStr = "http://localhost:3000/api/login"
         if let url = URL(string: urlStr) {
             let req = NSMutableURLRequest(url: url)
             // select http method
@@ -44,8 +44,8 @@ class LoginViewController: UIViewController {
             req.httpBody = try? JSONSerialization.data(withJSONObject: params, options: [])
             
             let task = URLSession.shared.dataTask(with: req as URLRequest, completionHandler: { (data, resp, err) in
-                print(resp!.url!)
-                print(NSString(data: data!, encoding: String.Encoding.utf8.rawValue) as Any)
+                //print(resp!.url!)
+                //print(NSString(data: data!, encoding: String.Encoding.utf8.rawValue) as Any)
                 
                 // JSONパース
                 do {
