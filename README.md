@@ -1,7 +1,7 @@
 # kakei-chan-agent-ios
 カケイちゃんagent-iOS - 家計学園のネイティブアプリ(iOS版)です
+![1](https://user-images.githubusercontent.com/25478176/35639711-6cbe51bc-06fe-11e8-9689-acc2bba25001.png)
 
-https://user-images.githubusercontent.com/25478176/35639597-0cc86a2c-06fe-11e8-8421-368b40202852.png
 
 ## 1/24
 音声入力で家計簿をつけることができるようになりました。
