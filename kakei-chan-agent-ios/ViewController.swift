@@ -250,7 +250,7 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
             if let result = result {
                 self.textView.text = result.bestTranscription.formattedString
                 self.latestText = self.textView.text
-                print(self.latestText)
+                //print(self.latestText)
                 isFinal = result.isFinal
             }
             
@@ -313,15 +313,12 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
         
         //うまく喋れてたら送信確認ポップアップ
         if (self.latestText != nil && Int(latestText) != nil){
-            do{
-                self.score = Int(latestText)!
-            } catch {
-                print("change type error")
-            }
+            self.score = Int(latestText)!
             //確認のポップアップ表示
             showStrPost(str: self.latestText)
         //喋れてなかったらErrorポップアップ
         } else {
+            print(self.latestText)
             showStrAlert(str: "値段を喋ってね")
         }
     }
@@ -351,12 +348,13 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     //音声入力の正規表現
     func regulation(s: String!) -> String {
         var regulatedS: String! = s
-        regulatedS = s.pregReplace(pattern: "円", with: "")
-        regulatedS = s.pregReplace(pattern: "マイナス", with: "-")
-        regulatedS = s.pregReplace(pattern: "ー", with: "-")
-        regulatedS = s.pregReplace(pattern: "−", with: "-")
-        regulatedS = s.pregReplace(pattern: " ", with: "")
-        regulatedS = s.pregReplace(pattern: ",", with: "")
+        regulatedS = regulatedS.pregReplace(pattern: "円", with: "")
+        regulatedS = regulatedS.pregReplace(pattern: "マイナス", with: "-")
+        regulatedS = regulatedS.pregReplace(pattern: "ー", with: "-")
+        regulatedS = regulatedS.pregReplace(pattern: "−", with: "-")
+        regulatedS = regulatedS.pregReplace(pattern: " ", with: "")
+        regulatedS = regulatedS.pregReplace(pattern: ",", with: "")
+        print(regulatedS)
         return regulatedS
     }
     
@@ -427,6 +425,9 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
 //        progressRing.innerRingColor = #colorLiteral(red: 0, green: 0.6134710312, blue: 0.5824463964, alpha: 1)
 //        progressRing.innerCapStyle = CGLineCap.round
         //loadImage()
+
+        let userBudget = "\(Keychain.kakeiBudget.value() ?? "")"
+        self.remainMoney = Int(userBudget)!
         progressRing.setProgress(value: CGFloat(remainMoney) , animationDuration: 2.0)
     }
     
@@ -556,8 +557,6 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
         let token = Keychain.kakeiToken.value() as! String
-        print(token)
-        print(String(describing: type(of: self.score)))
         if (token != nil) {
             let params: [String: Any] = [
                 "costs" : String(self.score),
@@ -576,7 +575,7 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
                 
                 // JSONパースしてキーチェーンに新しいbudgetをセット
                 do {
-                    print(try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary)
+                   // print(try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary)
                     self.getJson = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
                     if (self.getJson["token"] as! String != "error"){
                         DispatchQueue.main.async {
