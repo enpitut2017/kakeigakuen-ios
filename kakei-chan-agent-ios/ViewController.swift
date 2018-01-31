@@ -85,6 +85,8 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     var score: Int = 0
     
+    var item: String = ""
+    
     var budget: Int = 10000
     
     var remainMoney: Int! = 10000
@@ -183,11 +185,12 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
 */
     @IBAction func enterButtonTapped(){
         
-        let s: String! = regulation(s: moneyField.text)
+        let s: String! = moneyField.text!.pregReplace(pattern: "円", with: "")
         if let i = Int(s) {
             if itemField.text != "" {
+                self.item = itemField.text!
                 self.score = i
-                showStrPost(str: String(self.score))
+                showStrPost(str: self.item + " " + String(self.score))
             } else {
                 showStrAlert(str: "正しく入力してね")
             }
@@ -299,26 +302,17 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
             //recogtimerを破棄して入力終了
             recogtimer.invalidate()
         }
-        
-        //        if titletimer.isValid == true {
-        //            //titletimerを破棄してタイトルのアニメーション終了
-        //            titletimer.invalidate()
-        //        }
-        
-        //正規表現を使って文字列を半角数字列に置換
-        //(円 -> "")
-        //("マイナス" -> -)
-        
-        self.latestText = regulation(s: self.latestText)
+    
+        (self.item, self.latestText!) = regulation(s: self.latestText)
+        //self.latestText = regulation(s: self.latestText).cost
         
         //うまく喋れてたら送信確認ポップアップ
         if (self.latestText != nil && Int(latestText) != nil){
             self.score = Int(latestText)!
             //確認のポップアップ表示
-            showStrPost(str: self.latestText)
+            showStrPost(str: self.item + " " + self.latestText)
         //喋れてなかったらErrorポップアップ
         } else {
-            print(self.latestText)
             showStrAlert(str: "値段を喋ってね")
         }
     }
@@ -346,16 +340,30 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     
     //音声入力の正規表現
-    func regulation(s: String!) -> String {
+    func regulation(s: String!) -> (item: String, cost: String) {
         var regulatedS: String! = s
+    
         regulatedS = regulatedS.pregReplace(pattern: "円", with: "")
         regulatedS = regulatedS.pregReplace(pattern: "マイナス", with: "-")
         regulatedS = regulatedS.pregReplace(pattern: "ー", with: "-")
         regulatedS = regulatedS.pregReplace(pattern: "−", with: "-")
         regulatedS = regulatedS.pregReplace(pattern: " ", with: "")
         regulatedS = regulatedS.pregReplace(pattern: ",", with: "")
-        print(regulatedS)
-        return regulatedS
+        
+        let itemArray: [String]! = regulatedS.components(separatedBy: CharacterSet.decimalDigits)
+        let costArray: [String]! = regulatedS.components(separatedBy: CharacterSet.decimalDigits.inverted)
+
+        var items :String = ""
+        var costs :String = ""
+        for i in itemArray{
+            items += i
+        }
+        for i in costArray {
+            costs += i
+        }
+        print (items)
+        print (costs)
+        return (items, costs)
     }
     
 /*
