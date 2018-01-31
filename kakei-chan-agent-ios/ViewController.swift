@@ -87,6 +87,8 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     var item: String = ""
     
+    var cost: String = ""
+    
     var budget: Int = 10000
     
     var remainMoney: Int! = 10000
@@ -189,8 +191,9 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
         if let i = Int(s) {
             if itemField.text != "" {
                 self.item = itemField.text!
+                self.cost = moneyField.text!
                 self.score = i
-                showStrPost(str: self.item + " " + String(self.score))
+                showStrPost(str: self.item + " " + self.cost)
             } else {
                 showStrAlert(str: "正しく入力してね")
             }
@@ -302,15 +305,14 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
             //recogtimerを破棄して入力終了
             recogtimer.invalidate()
         }
-    
-        (self.item, self.latestText!) = regulation(s: self.latestText)
-        //self.latestText = regulation(s: self.latestText).cost
+        
+        regulation(s: self.latestText)
         
         //うまく喋れてたら送信確認ポップアップ
-        if (self.latestText != nil && Int(latestText) != nil){
-            self.score = Int(latestText)!
+        if (self.item != nil && self.cost != nil && Int(self.cost) != nil){
+            self.score = Int(self.cost)!
             //確認のポップアップ表示
-            showStrPost(str: self.item + " " + self.latestText)
+            showStrPost(str: self.item + " " + self.cost)
         //喋れてなかったらErrorポップアップ
         } else {
             showStrAlert(str: "値段を喋ってね")
@@ -340,7 +342,8 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     
     //音声入力の正規表現
-    func regulation(s: String!) -> (item: String, cost: String) {
+    //入力文字列を投げるとself.itemとself.costに代入される
+    func regulation(s: String!) {
         var regulatedS: String! = s
     
         regulatedS = regulatedS.pregReplace(pattern: "円", with: "")
@@ -361,9 +364,8 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
         for i in costArray {
             costs += i
         }
-        print (items)
-        print (costs)
-        return (items, costs)
+        self.item = items
+        self.cost = costs
     }
     
 /*
