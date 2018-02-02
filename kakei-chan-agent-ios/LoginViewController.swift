@@ -25,6 +25,7 @@ class LoginViewController: UIViewController {
         var getJson: NSDictionary!
         var kakei_token = ""
         var kakei_budget = 0
+        var kakei_rest = 0
         
         // API接続先
         let urlStr = "https://kakeigakuen.xyz/api/login/"
@@ -53,11 +54,15 @@ class LoginViewController: UIViewController {
                     
                     kakei_token = (getJson["token"] as? String)!
                     kakei_budget = (getJson["budget"] as? Int)!
+                    kakei_rest = (getJson["rest"] as? Int)!
                     DispatchQueue.main.async{
                         self.label.numberOfLines = 2
                         if (kakei_token == "error") {
                             self.label.text = "ログインに失敗"
                         } else {
+                            print("this is Login view controller: token = " + kakei_token)
+                            print("this is Login view controller: budget = " + (String(kakei_budget)))
+                            print("this is Login view controller: rest = " + (String(kakei_rest)))
                             segueToHome()
                         }
                     }
@@ -65,10 +70,14 @@ class LoginViewController: UIViewController {
                     // token, budgetを保存する
                     Keychain.kakeiToken.set(kakei_token)
                     Keychain.kakeiBudget.set("\(kakei_budget)")
+                    Keychain.kakeiRest.set("\(kakei_rest)")
                     
                     // ホーム画面に遷移(仮)
                     func segueToHome() {
                         self.performSegue(withIdentifier: "toHomeSegue", sender: nil)
+//                        let storyboard: UIStoryboard = UIStoryboard(name: "MainView", bundle: nil)
+//                        let nextView = storyboard.instantiateInitialViewController()
+//                        self.present(nextView!, animated: true, completion: nil)
                     }
 
                 } catch {
@@ -86,6 +95,7 @@ class LoginViewController: UIViewController {
         // キー名
         case kakeiToken = "accessToken"
         case kakeiBudget = "userBudget"
+        case kakeiRest = "userRest"
         
         // データの保存
         public func set(_ value: String) {

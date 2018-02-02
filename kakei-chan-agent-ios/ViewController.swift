@@ -97,6 +97,8 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     var now: Date? = nil
     
+    var loggedin: Bool = false
+    
     //音声入力ボタン
     @IBOutlet weak var recordButton : UIButton!
     
@@ -120,12 +122,20 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     //ログアウト関数
     @IBAction func Logout(_ sender: Any) {
+        print("logout func is called")
+
         Keychain.kakeiToken.del()
         Keychain.kakeiBudget.del()
-
+        Keychain.kakeiRest.del()
+        goLogin()
+    }
+    
+    func goLogin(){
         let storyboard: UIStoryboard = self.storyboard!
-        let nextView = storyboard.instantiateViewController(withIdentifier: "LoginView") as! LoginViewController
+        let nextView = storyboard.instantiateViewController(withIdentifier: "LoginView")
         self.present(nextView, animated: true, completion: nil)
+        print("lllllllllllllllllllllllllllllllllll")
+
     }
     
 
@@ -134,6 +144,7 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
         // キー名
         case kakeiToken = "accessToken"
         case kakeiBudget = "userBudget"
+        case kakeiRest = "userRest"
 
         // データの削除
         public func del() {
@@ -380,65 +391,73 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
     var sendDate = Date()
     
     override func viewDidLoad() {
-        recordButton.isEnabled = false
-        recordButton.layer.cornerRadius = 50.0
-        recordButton.layer.masksToBounds = true
-        recordButton.frame = CGRect(x:((self.view.bounds.width-100)/2),y:(self.view.bounds.height-100-20),width:100,height:100)
-        
-        //日付フィールドの設定
-        dateFormat.dateFormat = "yyyy/MM/dd"
-        dateSelecter.text = dateFormat.string(from: nowDate as Date)
-        self.dateSelecter.delegate = self as? UITextFieldDelegate
-        
-        
-        // DatePickerの設定(日付用)
-        inputDatePicker.datePickerMode = UIDatePickerMode.date
-        dateSelecter.inputView = inputDatePicker
-        
-        // キーボードに表示するツールバーの表示
-        let pickerToolBar = UIToolbar(frame: CGRect(x:0, y:self.view.frame.size.height/6, width:self.view.frame.size.width, height:40.0))
-        pickerToolBar.layer.position = CGPoint(x: self.view.frame.size.width/2, y: self.view.frame.size.height-20.0)
-        pickerToolBar.barStyle = .blackTranslucent
-        pickerToolBar.tintColor = UIColor.white
-        pickerToolBar.backgroundColor = UIColor.black
-        
-        //ボタンの設定
-        //右寄せのためのスペース設定
-        let spaceBarBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace,target: self,action: Selector(""))
-        
-        //完了ボタンを設定
-        let toolBarBtn = UIBarButtonItem(title: "完了", style: .done, target: self, action: #selector(ViewController.toolBarBtnPush(sender:)))
-        
-        //ツールバーにボタンを表示
-        pickerToolBar.items = [spaceBarBtn,toolBarBtn]
-        dateSelecter.inputAccessoryView = pickerToolBar
-        
-        self.itemField.delegate = self as? UITextFieldDelegate
-        
-        self.moneyField.delegate = self as? UITextFieldDelegate
-        
-        itemField.placeholder = "商品"
-        moneyField.placeholder = "お金"
-        
-       // progressRing.delegate = self as? UICircularProgressRingDelegate
-        //progressRing = UICircularProgressRingView(frame: CGRect(x: 87, y: 102, width: 200, height: 200))
-        self.progressRing.maxValue = CGFloat(budget)
-        self.progressRing.minValue = 0
-        self.progressRing.setProgress(value: CGFloat(remainMoney), animationDuration: 1.0)
-//        progressRing.ringStyle = UICircularProgressRingStyle.ontop
-//        progressRing.startAngle = CGFloat(140)
-//        progressRing.endAngle = CGFloat(40)
-//        progressRing.outerRingWidth = 8
-//        progressRing.outerRingColor = #colorLiteral(red: 0.709620595, green: 0.7137866616, blue: 0.7136848569, alpha: 1)
-//        progressRing.outerCapStyle = CGLineCap.round
-//        progressRing.innerRingWidth = 9
-//        progressRing.innerRingColor = #colorLiteral(red: 0, green: 0.6134710312, blue: 0.5824463964, alpha: 1)
-//        progressRing.innerCapStyle = CGLineCap.round
-        //loadImage()
-
-        let userBudget = "\(Keychain.kakeiBudget.value() ?? "")"
-        self.remainMoney = Int(userBudget)!
-        progressRing.setProgress(value: CGFloat(remainMoney) , animationDuration: 2.0)
+        print("load is called")
+        if (Keychain.kakeiToken.value() == nil || Keychain.kakeiToken.value()! == "error") {
+            loggedin = false
+        } else {
+            loggedin = true
+            //statusCheck()
+            //Keychain.kakeiRest.set("1000")
+//            print ("userToken = " + Keychain.kakeiToken.value()!)
+//            print ("userRest = " + Keychain.kakeiRest.value()!)
+//            print ("userBudget = " + Keychain.kakeiBudget.value()!)
+//
+            recordButton.isEnabled = false
+            recordButton.layer.cornerRadius = 50.0
+            recordButton.layer.masksToBounds = true
+            recordButton.frame = CGRect(x:((self.view.bounds.width-100)/2),y:(self.view.bounds.height-100-20),width:100,height:100)
+            
+            //日付フィールドの設定
+            dateFormat.dateFormat = "yyyy/MM/dd"
+            dateSelecter.text = dateFormat.string(from: nowDate as Date)
+            self.dateSelecter.delegate = self as? UITextFieldDelegate
+            
+            
+            // DatePickerの設定(日付用)
+            inputDatePicker.datePickerMode = UIDatePickerMode.date
+            dateSelecter.inputView = inputDatePicker
+            
+            // キーボードに表示するツールバーの表示
+            let pickerToolBar = UIToolbar(frame: CGRect(x:0, y:self.view.frame.size.height/6, width:self.view.frame.size.width, height:40.0))
+            pickerToolBar.layer.position = CGPoint(x: self.view.frame.size.width/2, y: self.view.frame.size.height-20.0)
+            pickerToolBar.barStyle = .blackTranslucent
+            pickerToolBar.tintColor = UIColor.white
+            pickerToolBar.backgroundColor = UIColor.black
+            
+            //ボタンの設定
+            //右寄せのためのスペース設定
+            let spaceBarBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace,target: self,action: Selector(""))
+            
+            //完了ボタンを設定
+            let toolBarBtn = UIBarButtonItem(title: "完了", style: .done, target: self, action: #selector(ViewController.toolBarBtnPush(sender:)))
+            
+            //ツールバーにボタンを表示
+            pickerToolBar.items = [spaceBarBtn,toolBarBtn]
+            dateSelecter.inputAccessoryView = pickerToolBar
+            
+            self.itemField.delegate = self as? UITextFieldDelegate
+            
+            self.moneyField.delegate = self as? UITextFieldDelegate
+            
+            itemField.placeholder = "商品"
+            moneyField.placeholder = "お金"
+            
+           // progressRing.delegate = self as? UICircularProgressRingDelegate
+            //progressRing = UICircularProgressRingView(frame: CGRect(x: 87, y: 102, width: 200, height: 200))
+            self.progressRing.maxValue = CGFloat(Int(Keychain.kakeiBudget.value()!)!)
+            self.progressRing.minValue = 0
+            self.progressRing.setProgress(value: CGFloat(Int(Keychain.kakeiRest.value()!)!), animationDuration: 1.0)
+    //        progressRing.ringStyle = UICircularProgressRingStyle.ontop
+    //        progressRing.startAngle = CGFloat(140)
+    //        progressRing.endAngle = CGFloat(40)
+    //        progressRing.outerRingWidth = 8
+    //        progressRing.outerRingColor = #colorLiteral(red: 0.709620595, green: 0.7137866616, blue: 0.7136848569, alpha: 1)
+    //        progressRing.outerCapStyle = CGLineCap.round
+    //        progressRing.innerRingWidth = 9
+    //        progressRing.innerRingColor = #colorLiteral(red: 0, green: 0.6134710312, blue: 0.5824463964, alpha: 1)
+    //        progressRing.innerCapStyle = CGLineCap.round
+            //loadImage()
+        }
     }
     
     
@@ -460,59 +479,68 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
         self.view.endEditing(true)
     }
     
+//
+//    override func viewWillAppear(_ animated: Bool) {
+//        statusCheck()
+//        if(Keychain.kakeiToken.value() == nil) {
+//
+//        }
+//    }
     
-    
-    
-
-    //    func loadImage(){
-    //        if (Keychain.kakeiToken.value() != nil){
-    //            let requestURL = URL(string: "https://kakeigakuen.xyz/api/image/" + Keychain.kakeiToken.value()! )!
-    //            //let requestURL = URL(string: "http://localhost:3000/api/image/" + Keychain.kakeiToken.value()!)!
-    //            let req = URLRequest(url: requestURL)
-    //            print(req)
-    //            image.loadRequest(req)
-    //        } else {
-    //            let storyboard: UIStoryboard = self.storyboard!
-    //            let nextView = storyboard.instantiateViewController(withIdentifier: "LoginView") as! LoginViewController
-    //            self.present(nextView, animated: true, completion: nil)
-    //        }
-    //    }
-    
-    
+    //ViewDidLoadで最初だけapi/statusにアクセスしてuserStatusをチェック
+    //それ以降はViewDidAppearで差分を計算してnativeで独立して計算させる
+    //apiにはbooksで購入情報だけ投げる
     override func viewDidAppear(_ animated: Bool) {
-        if (Keychain.kakeiToken.value() != nil) {
-            let userBudget = "\(Keychain.kakeiBudget.value() ?? "")"
-            self.RemainingMoenyLabel.numberOfLines = 2
-            self.RemainingMoenyLabel.text = "残り予算\n\(userBudget)"
-            self.budgetLabel.text = String(budget)
+        print("appear is called")
+        if (Keychain.kakeiToken.value() != nil && Keychain.kakeiToken.value()! != "error") {
+            loggedin = true
         } else {
-            let storyboard: UIStoryboard = self.storyboard!
-            let nextView = storyboard.instantiateViewController(withIdentifier: "LoginView") as! LoginViewController
-            self.present(nextView, animated: true, completion: nil)
+            loggedin = false
         }
         
-        speechRecognizer.delegate = self
+        if(loggedin) {
+            print("appear")
+            statusCheck()
+            let userRest = "\(Keychain.kakeiRest.value() ?? "")"
+            print(userRest)
+            self.RemainingMoenyLabel.numberOfLines = 2
+            self.RemainingMoenyLabel.text = "残り予算\n\(userRest)"
+            self.budgetLabel.text = String(budget)
         
-        SFSpeechRecognizer.requestAuthorization { authStatus in
-            //マイクのアクセス許可を求める
-            OperationQueue.main.addOperation {
-                switch authStatus {
-                case .authorized:
-                    self.recordButton.isEnabled = true
-                    
-                case .denied:
-                    self.recordButton.isEnabled = false
-                    self.recordButton.setTitle("User denied access to speech recognition", for: .disabled)
-                    
-                case .restricted:
-                    self.recordButton.isEnabled = false
-                    self.recordButton.setTitle("Speech recognition restricted on this device", for: .disabled)
-                    
-                case .notDetermined:
-                    self.recordButton.isEnabled = false
-                    self.recordButton.setTitle("Speech recognition not yet authorized", for: .disabled)
+            //let userRest = "\(Keychain.kakeiRest.value() ?? "")"
+            let userBudget = "\(Keychain.kakeiBudget.value() ?? "")"
+            let userToken = "\(Keychain.kakeiToken.value() ?? "")"
+            print ("userRest = " + userRest)
+            print ("userBudget = " + userBudget)
+            print ("userToken = " + userToken)
+            self.remainMoney = Int(userRest)!
+            progressRing.setProgress(value: CGFloat(remainMoney) , animationDuration: 2.0)
+            
+            speechRecognizer.delegate = self
+            
+            SFSpeechRecognizer.requestAuthorization { authStatus in
+                //マイクのアクセス許可を求める
+                OperationQueue.main.addOperation {
+                    switch authStatus {
+                    case .authorized:
+                        self.recordButton.isEnabled = true
+                        
+                    case .denied:
+                        self.recordButton.isEnabled = false
+                        self.recordButton.setTitle("User denied access to speech recognition", for: .disabled)
+                        
+                    case .restricted:
+                        self.recordButton.isEnabled = false
+                        self.recordButton.setTitle("Speech recognition restricted on this device", for: .disabled)
+                        
+                    case .notDetermined:
+                        self.recordButton.isEnabled = false
+                        self.recordButton.setTitle("Speech recognition not yet authorized", for: .disabled)
+                    }
                 }
             }
+        } else {
+            goLogin()
         }
     }
     
@@ -558,19 +586,20 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
 */
 
     func send_Items_json() {
-        //let url = "http://localhost:3000/api/books"
         let url = "https://kakeigakuen.xyz/api/books"
-        let request = NSMutableURLRequest(url: NSURL(string: url)! as URL)
+        var request = URLRequest(url: URL(string: url)! as URL)
         
         request.httpMethod = "POST"
         
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        let token = Keychain.kakeiToken.value() as! String
-        if (token != nil) {
+        if (loggedin) {
+           //送信するparams
+            //商品, 値段, トークン
             let params: [String: Any] = [
+                "item" : String(self.item),
                 "costs" : String(self.score),
-                "token" : Keychain.kakeiToken.value() as! String
+                "token" : Keychain.kakeiToken.value()!
             ]
             
             do{
@@ -579,24 +608,27 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
             }catch{
                 print(error.localizedDescription)
             }
-            
-            let task = URLSession.shared.dataTask(with: request as URLRequest, completionHandler: { (data, resp, err) in
-               // print(NSString(data: data!, encoding: String.Encoding.utf8.rawValue) as Any)
-                
+
+            let task = URLSession.shared.dataTask(with: request) {
+                data, response, error in
                 // JSONパースしてキーチェーンに新しいbudgetをセット
                 do {
-                   // print(try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary)
+                    if error != nil {
+                        print(error!.localizedDescription)
+                        DispatchQueue.main.sync(execute: {
+                            print("error occered")
+                        })
+                        return
+                    }
                     self.getJson = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
-                    if (self.getJson["token"] as! String != "error"){
-                        DispatchQueue.main.async {
-                            Keychain.kakeiBudget.set("\(self.getJson["budget"] ?? "")")
-                            let userBudget = "\(self.getJson["budget"] ?? "")"
-                            self.remainMoney = Int(userBudget)!
-                            self.RemainingMoenyLabel.numberOfLines = 2
-                            self.RemainingMoenyLabel.text = "残り予算\n\(userBudget)"
-                        }
-                    } else {
-                        self.showStrAlert(str: "ごめんなさい...もう一度ログインし直してみてっ！")
+                    DispatchQueue.main.async {
+                        let userRest = "\(self.getJson["rest"] ?? "")"
+                        Keychain.kakeiRest.set(userRest)
+                        self.remainMoney = Int(userRest)!
+                        self.RemainingMoenyLabel.numberOfLines = 2
+                        self.RemainingMoenyLabel.text = "残り予算\n\(userRest)"
+                        print("this is send_json_items")
+                        print(userRest)
                     }
                 } catch {
                     DispatchQueue.main.async(execute: {
@@ -604,12 +636,79 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
                     })
                     return
                 }
-            })
+            }
             task.resume()
         } else {
             print("cant get user token")
         }
     }
-
-
+    
+    func statusCheck() {
+        let url = "https://kakeigakuen.xyz/api/status"
+        var request = URLRequest(url: URL(string: url)! as URL)
+        
+        request.httpMethod = "POST"
+        
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let token = Keychain.kakeiToken.value()
+//        if (Keychain.kakeiToken.value() != nil || Keychain.kakeiToken.value()! != "error") {
+            let params: [String: Any] = [
+                "token" : token
+            ]
+            do{
+                //json送信
+                request.httpBody = try JSONSerialization.data(withJSONObject: params, options: .prettyPrinted)
+            }catch{
+                print(error.localizedDescription)
+            }
+    
+            let task = URLSession.shared.dataTask(with: request) {
+                data, response, error in
+                if error != nil {
+                    print(error!.localizedDescription)
+                    DispatchQueue.main.sync(execute: {
+                        print("error occered")
+                    })
+                    return
+                }
+                
+                // JSONパースしてキーチェーンに新しいbudgetをセット
+                do {
+                    self.getJson = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
+                    DispatchQueue.main.async {
+                        let userRest = "\(self.getJson["rest"] ?? "")"
+                        let userbudget = "\(self.getJson["budget"] ?? "")"
+                        let userToken = "\(self.getJson["token"] ?? "")"
+                
+                        self.remainMoney = Int(userRest)
+                        //トークンセット
+                        Keychain.kakeiRest.set(userRest)
+                        Keychain.kakeiBudget.set(userbudget)
+                        Keychain.kakeiToken.set(userToken)
+                        
+                        self.RemainingMoenyLabel.numberOfLines = 2
+                        self.RemainingMoenyLabel.text = "残り予算\n\(userRest)"
+                        self.budgetLabel.text = userbudget
+                    }
+                } catch {
+                    DispatchQueue.main.async(execute: {
+                        print("failed to parse json")
+                    })
+                    return
+                }
+            }
+            task.resume()
+//        } else {
+//            print("cant get user token")
+//            resetToken()
+//            goLogin()
+//        }
+    }
+    
+    func resetToken() {
+        Keychain.kakeiToken.set("initToken")
+        Keychain.kakeiBudget.set("initBudget")
+        Keychain.kakeiRest.set("initRest")
+    }
 }
