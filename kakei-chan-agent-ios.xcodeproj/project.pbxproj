@@ -12,6 +12,7 @@
 		1C34269B2025544200694609 /* Speech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C34269A2025544200694609 /* Speech.framework */; };
 		1C4F5670200B4E080050F6FD /* record.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C4F566F200B4E080050F6FD /* record.png */; };
 		1CFF0B04202582B3004F33CC /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CFF0B03202582B3004F33CC /* icon.png */; };
+		1CFF0B082025B45F004F33CC /* TouchesBeganExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFF0B072025B45F004F33CC /* TouchesBeganExtension.swift */; };
 		C552E5BB737A5C43B94A4610 /* Pods_kakei_chan_agent_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B327532D76B0D104E71855EF /* Pods_kakei_chan_agent_ios.framework */; };
 		CFA016991FD8F1BD00A2C8F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA016981FD8F1BD00A2C8F2 /* AppDelegate.swift */; };
 		CFA0169B1FD8F1BD00A2C8F2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0169A1FD8F1BD00A2C8F2 /* ViewController.swift */; };
@@ -46,6 +47,7 @@
 		1C34269A2025544200694609 /* Speech.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Speech.framework; path = System/Library/Frameworks/Speech.framework; sourceTree = SDKROOT; };
 		1C4F566F200B4E080050F6FD /* record.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = record.png; path = ../../Desktop/record.png; sourceTree = "<group>"; };
 		1CFF0B03202582B3004F33CC /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../../Downloads/icon.png; sourceTree = "<group>"; };
+		1CFF0B072025B45F004F33CC /* TouchesBeganExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchesBeganExtension.swift; sourceTree = "<group>"; };
 		B327532D76B0D104E71855EF /* Pods_kakei_chan_agent_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_kakei_chan_agent_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFA016951FD8F1BD00A2C8F2 /* kakei-chan-agent-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "kakei-chan-agent-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFA016981FD8F1BD00A2C8F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				1C4F566F200B4E080050F6FD /* record.png */,
 				1CFF0B03202582B3004F33CC /* icon.png */,
 				CFA016C61FD8F64200A2C8F2 /* LoginViewController.swift */,
+				1CFF0B072025B45F004F33CC /* TouchesBeganExtension.swift */,
 				CFA0169C1FD8F1BD00A2C8F2 /* Main.storyboard */,
 				CFA0169F1FD8F1BD00A2C8F2 /* Assets.xcassets */,
 				CFA016A11FD8F1BD00A2C8F2 /* LaunchScreen.storyboard */,
@@ -366,6 +369,7 @@
 				CFA016C71FD8F64200A2C8F2 /* LoginViewController.swift in Sources */,
 				CFA0169B1FD8F1BD00A2C8F2 /* ViewController.swift in Sources */,
 				CFA016991FD8F1BD00A2C8F2 /* AppDelegate.swift in Sources */,
+				1CFF0B082025B45F004F33CC /* TouchesBeganExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

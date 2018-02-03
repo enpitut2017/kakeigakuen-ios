@@ -197,6 +197,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1X6-El-AaG">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </scrollView>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ktc-GQ-GKR">
                                 <rect key="frame" x="16" y="400" width="343" height="30"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -243,6 +247,7 @@
                         <outlet property="email" destination="ktc-GQ-GKR" id="JPb-8M-pgS"/>
                         <outlet property="label" destination="oIY-Mg-c2d" id="upK-l1-RGp"/>
                         <outlet property="password" destination="4mY-Jg-1Hp" id="cqQ-IG-vCK"/>
+                        <outlet property="sc" destination="1X6-El-AaG" id="OEv-NP-5DG"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="toHomeSegue" id="egG-C1-D7b"/>
                     </connections>
                 </viewController>

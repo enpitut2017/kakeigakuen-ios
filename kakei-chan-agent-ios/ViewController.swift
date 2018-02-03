@@ -225,7 +225,7 @@ class ViewController: UIViewController,UITextFieldDelegate ,SFSpeechRecognizerDe
             //タイマー設定
             //recordButton.setTitle("認識中", for: [])
             //titletimer = Timer.scheduledTimer(timeInterval: 0.6, target: self, selector: #selector(ViewController.buttonTitle), userInfo: nil, repeats: true)
-            recogtimer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(ViewController.recognitionlimit), userInfo: nil, repeats: true)
+            recogtimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(ViewController.recognitionlimit), userInfo: nil, repeats: true)
 
             //もし動いていたら強制的にfinish
         } else {

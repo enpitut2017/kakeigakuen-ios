@@ -10,11 +10,17 @@ import Foundation
 import Security
 import UIKit
 
-class LoginViewController: UIViewController, UITextFieldDelegate {
+class LoginViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate {
     
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
+    
+    //UITextFieldの情報を格納するための変数
+    var txtActiveField = UITextField()
+    @IBOutlet weak var sc: UIScrollView!
+    var scrollFormer:CGFloat! = nil
+    let scrollViewsample = UIScrollView()
     
     @IBAction func kakei_login() {
         // textfieldの値を取得
@@ -113,22 +119,87 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    @objc func handleKeyboardWillShowNotification(_ notification: Notification) {
+        let userInfo = notification.userInfo!
+        let keyboardScreenEndFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        let myBoundSize: CGSize = UIScreen.main.bounds.size
+        
+        var txtLimit = txtActiveField.frame.origin.y + txtActiveField.frame.height + 50.0
+        let kbdLimit = myBoundSize.height - keyboardScreenEndFrame.size.height
+        
+        
+        print("テキストフィールドの下辺：(\(txtLimit))")
+        print("キーボードの上辺：(\(kbdLimit))")
+        
+        
+        if txtLimit >= kbdLimit {
+            sc.contentOffset.y = txtLimit - kbdLimit
+        }
+    }
+    
+    @objc func handleKeyboardWillHideNotification(_ notification: Notification) {
+        //スクロールしてある位置に戻す
+        sc.contentOffset.y = 0
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        
+        let nc = NotificationCenter.default
+        nc.addObserver(
+            self, selector:
+            #selector(LoginViewController.handleKeyboardWillShowNotification(_:)),
+            name: Notification.Name.UIKeyboardWillShow,
+            object: nil
+        )
+        nc.addObserver(
+            self,
+            selector: #selector(LoginViewController.handleKeyboardWillHideNotification(_:)),
+            name: Notification.Name.UIKeyboardWillHide,
+            object: nil
+        )
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.email.delegate = self
         self.password.delegate = self
+        
+        //sc.frame = self.view.frame;
+        sc.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 0)
+        sc.delegate = self;
+        
+        //sc.contentSize = CGSize(width: 250,height: 1000)
+        self.view.addSubview(sc);
+        
+        // Viewに追加する
+        sc.addSubview(email)
+        sc.addSubview(password)
+        //sc.addSubview(self.view)
+        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
+    //UITextFieldが編集された直後に呼ばれる.
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        
+        txtActiveField = textField
+        return true
+    }
+    
+    //returnが押されたら呼ばれる
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // キーボードを閉じる
         textField.resignFirstResponder()
         return true
     }
     
+    //画面をタッチしたら呼ばれる
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
