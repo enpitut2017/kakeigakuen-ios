@@ -57,7 +57,7 @@ extension String {
 
 
 
-class ViewController: UIViewController, SFSpeechRecognizerDelegate, UIGestureRecognizerDelegate {
+class ViewController: UIViewController,UITextFieldDelegate ,SFSpeechRecognizerDelegate, UIGestureRecognizerDelegate {
     //ロケールを指定してSFSpeechRecognizerを初期化(ユーザが指定していなかったらja_JPになる) -> 言語の指定
     let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "ja_JP"))!
     
@@ -433,9 +433,9 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
             pickerToolBar.items = [spaceBarBtn,toolBarBtn]
             dateSelecter.inputAccessoryView = pickerToolBar
             
-            self.itemField.delegate = self as? UITextFieldDelegate
+            self.itemField.delegate = self
             
-            self.moneyField.delegate = self as? UITextFieldDelegate
+            self.moneyField.delegate = self
             
             itemField.placeholder = "商品"
             moneyField.placeholder = "お金"
@@ -444,12 +444,12 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
             self.progressRing.minValue = 0
             
             //タップした時のインスタンス生成
-            let aSelector = Selector(("tapGesture:"))
-            let tapGesture:UITapGestureRecognizer = UITapGestureRecognizer(
-                target: self,
-                action: aSelector)
-            tapGesture.delegate = self
-            self.view.addGestureRecognizer(tapGesture)
+//            let aSelector = Selector(("tapGesture:"))
+//            let tapGesture:UITapGestureRecognizer = UITapGestureRecognizer(
+//                target: self,
+//                action: aSelector)
+//            tapGesture.delegate = self
+//            self.view.addGestureRecognizer(tapGesture)
         }
     }
     
@@ -464,10 +464,15 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
         inputField.resignFirstResponder()
         return true
     }
-    func textFieldShouldReturn (textField: UITextField) -> Bool {
-    textField.resignFirstResponder()
     
-    return true
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // キーボードを閉じる
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
 
     //完了を押すとピッカーの値を、テキストフィールドに挿入して、ピッカーを閉じる

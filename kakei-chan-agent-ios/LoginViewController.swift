@@ -10,7 +10,7 @@ import Foundation
 import Security
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var email: UITextField!
@@ -31,63 +31,61 @@ class LoginViewController: UIViewController {
         let urlStr = "https://kakeigakuen.xyz/api/login/"
         //let urlStr = "http://localhost:3000/api/login"
         if let url = URL(string: urlStr) {
-            let req = NSMutableURLRequest(url: url)
-            // select http method
-            req.httpMethod = "POST"
-            // set the header(s)
-            req.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            
-            // set the request-body(JSON)
-            let params = [
-                "email"     : user_email,
-                "password"  : user_password,
-                ]
-            req.httpBody = try? JSONSerialization.data(withJSONObject: params, options: [])
-            
-            let task = URLSession.shared.dataTask(with: req as URLRequest, completionHandler: { (data, resp, err) in
-                //print(resp!.url!)
-                //print(NSString(data: data!, encoding: String.Encoding.utf8.rawValue) as Any)
+            if(user_email == "" || user_password == "") {
+                self.label.text = "正しく入力してください"
+            } else {
+                let req = NSMutableURLRequest(url: url)
+                // select http method
+                req.httpMethod = "POST"
+                // set the header(s)
+                req.addValue("application/json", forHTTPHeaderField: "Content-Type")
                 
-                // JSONパース
-                do {
-                    getJson = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
+                // set the request-body(JSON)
+                let params = [
+                    "email"     : user_email,
+                    "password"  : user_password,
+                    ]
+                req.httpBody = try? JSONSerialization.data(withJSONObject: params, options: [])
+                
+                let task = URLSession.shared.dataTask(with: req as URLRequest, completionHandler: { (data, resp, err) in
+                    //print(resp!.url!)
+                    //print(NSString(data: data!, encoding: String.Encoding.utf8.rawValue) as Any)
                     
-                    kakei_token = (getJson["token"] as? String)!
-                    kakei_budget = (getJson["budget"] as? Int)!
-                    kakei_rest = (getJson["rest"] as? Int)!
-                    DispatchQueue.main.async{
-                        self.label.numberOfLines = 2
-                        if (kakei_token == "error") {
-                            self.label.text = "ログインに失敗"
-                        } else {
-                            print("this is Login view controller: token = " + kakei_token)
-                            print("this is Login view controller: budget = " + (String(kakei_budget)))
-                            print("this is Login view controller: rest = " + (String(kakei_rest)))
-                            segueToHome()
+                    // JSONパース
+                    do {
+                        getJson = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
+                        
+                        kakei_token = (getJson["token"] as? String)!
+                        kakei_budget = (getJson["budget"] as? Int)!
+                        kakei_rest = (getJson["rest"] as? Int)!
+                        DispatchQueue.main.async{
+                            self.label.numberOfLines = 1
+                            if (kakei_token == "error") {
+                                self.label.text = "ログインに失敗"
+                            } else {
+                                segueToHome()
+                            }
                         }
-                    }
-                    
-                    // token, budgetを保存する
-                    Keychain.kakeiToken.set(kakei_token)
-                    Keychain.kakeiBudget.set("\(kakei_budget)")
-                    Keychain.kakeiRest.set("\(kakei_rest)")
-                    
-                    // ホーム画面に遷移(仮)
-                    func segueToHome() {
-                        self.performSegue(withIdentifier: "toHomeSegue", sender: nil)
-//                        let storyboard: UIStoryboard = UIStoryboard(name: "MainView", bundle: nil)
-//                        let nextView = storyboard.instantiateInitialViewController()
-//                        self.present(nextView!, animated: true, completion: nil)
-                    }
+                        
+                        // token, budgetを保存する
+                        Keychain.kakeiToken.set(kakei_token)
+                        Keychain.kakeiBudget.set("\(kakei_budget)")
+                        Keychain.kakeiRest.set("\(kakei_rest)")
+                        
+                        // ホーム画面に遷移(仮)
+                        func segueToHome() {
+                            self.performSegue(withIdentifier: "toHomeSegue", sender: nil)
+                        }
 
-                } catch {
-                    DispatchQueue.main.async(execute: {
-                        self.label.text = "ログインに失敗"
-                    })
-                    return
-                }
-            })
-            task.resume()
+                    } catch {
+                        DispatchQueue.main.async(execute: {
+                            self.label.text = "ログインに失敗"
+                        })
+                        return
+                    }
+                })
+                task.resume()
+            }
         }
     }
     
@@ -117,5 +115,21 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.email.delegate = self
+        self.password.delegate = self
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // キーボードを閉じる
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
 }
