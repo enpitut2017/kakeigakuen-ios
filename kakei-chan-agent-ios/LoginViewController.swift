@@ -170,7 +170,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         
         //sc.frame = self.view.frame;
         sc.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 0)
-        sc.delegate = self;
+        sc.delegate = self
         
         //sc.contentSize = CGSize(width: 250,height: 1000)
         self.view.addSubview(sc);

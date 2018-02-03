@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="94d-YP-fNX">
-                                <rect key="frame" x="106" y="323" width="165" height="21"/>
+                                <rect key="frame" x="273" y="130" width="92" height="54"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -64,7 +64,7 @@
                                     <action selector="enterButtonTapped" destination="BYZ-38-t0r" eventType="touchUpInside" id="xhY-Qw-7ef"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleAspectFit" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wcR-4w-geq">
+                            <view contentMode="scaleAspectFit" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wcR-4w-geq" userLabel="Header">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="104"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
@@ -169,6 +169,10 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GgA-CU-nJV" userLabel="Sc">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -177,11 +181,13 @@
                         <outlet property="RemainingMoenyLabel" destination="pU1-TP-gaI" id="pat-QF-hM2"/>
                         <outlet property="budgetLabel" destination="CWj-t1-wKg" id="HcU-Rv-x6t"/>
                         <outlet property="dateSelecter" destination="MYU-be-tYz" id="NTN-WN-CZx"/>
+                        <outlet property="header" destination="wcR-4w-geq" id="qpL-TZ-BKq"/>
                         <outlet property="itemField" destination="rOK-qn-vDG" id="YdX-Na-yGo"/>
                         <outlet property="moneyField" destination="7Un-1U-rQ5" id="8rL-Je-mHg"/>
                         <outlet property="monthLabel" destination="9sP-Ks-FbN" id="TxE-Hj-4c5"/>
                         <outlet property="progressRing" destination="2Qv-Ds-SSQ" id="hIT-qW-yw6"/>
                         <outlet property="recordButton" destination="bgY-Jb-sew" id="SwO-iA-dJ4"/>
+                        <outlet property="sc" destination="GgA-CU-nJV" id="ekX-mG-ffO"/>
                         <outlet property="textView" destination="94d-YP-fNX" id="w6J-c4-k0l"/>
                     </connections>
                 </viewController>

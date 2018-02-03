@@ -114,8 +114,17 @@ class ViewController: UIViewController,UITextFieldDelegate ,SFSpeechRecognizerDe
     
     @IBOutlet weak var progressRing: UICircularProgressRingView!
     
+    //ヘッダの月
     @IBOutlet weak var monthLabel: UILabel!
     
+    @IBOutlet weak var header: UIView!
+
+    //入力フォーム隠れないためのscrollview
+    @IBOutlet weak var sc: UIScrollView!
+    //UITextFieldの情報を格納するための変数
+    var txtActiveField = UITextField()
+    var scrollFormer:CGFloat! = nil
+    let scrollViewsample = UIScrollView()
     
     //ログアウト関数
     @IBAction func Logout(_ sender: Any) {
@@ -443,13 +452,16 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
             self.progressRing.maxValue = CGFloat(Int(Keychain.kakeiBudget.value()!)!)
             self.progressRing.minValue = 0
             
-            //タップした時のインスタンス生成
-//            let aSelector = Selector(("tapGesture:"))
-//            let tapGesture:UITapGestureRecognizer = UITapGestureRecognizer(
-//                target: self,
-//                action: aSelector)
-//            tapGesture.delegate = self
-//            self.view.addGestureRecognizer(tapGesture)
+            sc.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 0)
+            sc.delegate = self as? UIScrollViewDelegate
+            
+            self.view.addSubview(sc)
+            sc.addSubview(itemField)
+            sc.addSubview(moneyField)
+            sc.addSubview(dateSelecter)
+            sc.addSubview(progressRing)
+            sc.addSubview(header)
+            self.view.sendSubview(toBack: sc)
         }
     }
     
@@ -457,7 +469,13 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    //UITextFieldが編集された直後に呼ばれる.
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         
+        txtActiveField = textField
+        return true
     }
     
     func inputFieldShouldReturn (_ inputField: UITextField) -> Bool {
@@ -521,6 +539,53 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
         } else {
             goLogin()
         }
+    }
+    
+    @objc func handleKeyboardWillShowNotification(_ notification: Notification) {
+        let userInfo = notification.userInfo!
+        let keyboardScreenEndFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        let myBoundSize: CGSize = UIScreen.main.bounds.size
+        
+        var txtLimit = txtActiveField.frame.origin.y + txtActiveField.frame.height + 50.0
+        let kbdLimit = myBoundSize.height - keyboardScreenEndFrame.size.height
+        
+        
+        print("テキストフィールドの下辺：(\(txtLimit))")
+        print("キーボードの上辺：(\(kbdLimit))")
+        
+        
+        if txtLimit >= kbdLimit {
+            sc.contentOffset.y = txtLimit - kbdLimit
+        }
+    }
+    
+    
+/*
+スクロールして入力できるようにするためのもの
+*/
+    @objc func handleKeyboardWillHideNotification(_ notification: Notification) {
+        //スクロールしてある位置に戻す
+        sc.contentOffset.y = 0
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        
+        let nc = NotificationCenter.default
+        nc.addObserver(
+            self, selector:
+            #selector(LoginViewController.handleKeyboardWillShowNotification(_:)),
+            name: Notification.Name.UIKeyboardWillShow,
+            object: nil
+        )
+        nc.addObserver(
+            self,
+            selector: #selector(LoginViewController.handleKeyboardWillHideNotification(_:)),
+            name: Notification.Name.UIKeyboardWillHide,
+            object: nil
+        )
+        
     }
     
     
