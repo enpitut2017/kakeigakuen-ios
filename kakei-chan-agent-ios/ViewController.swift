@@ -57,7 +57,7 @@ extension String {
 
 
 
-class ViewController: UIViewController, SFSpeechRecognizerDelegate {
+class ViewController: UIViewController, SFSpeechRecognizerDelegate, UIGestureRecognizerDelegate {
     //ロケールを指定してSFSpeechRecognizerを初期化(ユーザが指定していなかったらja_JPになる) -> 言語の指定
     let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "ja_JP"))!
     
@@ -83,21 +83,16 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     var newtextlist: Array<String> = ["","","","","","","","","","","","",""]
     
-    var score: Int = 0
-    
     var item: String = ""
     
     var cost: String = ""
-    
-    var budget: Int = 10000
-    
-    var remainMoney: Int! = 10000
     
     var getJson: NSDictionary!
     
     var now: Date? = nil
     
     var loggedin: Bool = false
+    
     
     //音声入力ボタン
     @IBOutlet weak var recordButton : UIButton!
@@ -118,6 +113,8 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     @IBOutlet weak var moneyField: UITextField!
     
     @IBOutlet weak var progressRing: UICircularProgressRingView!
+    
+    @IBOutlet weak var monthLabel: UILabel!
     
     
     //ログアウト関数
@@ -203,7 +200,6 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
             if itemField.text != "" {
                 self.item = itemField.text!
                 self.cost = moneyField.text!
-                self.score = i
                 showStrPost(str: self.item + " " + self.cost)
             } else {
                 showStrAlert(str: "正しく入力してね")
@@ -320,13 +316,12 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
         regulation(s: self.latestText)
         
         //うまく喋れてたら送信確認ポップアップ
-        if (self.item != nil && self.cost != nil && Int(self.cost) != nil){
-            self.score = Int(self.cost)!
+        if (self.item != "" && self.cost != "" && Int(self.cost) != nil){
             //確認のポップアップ表示
             showStrPost(str: self.item + " " + self.cost)
         //喋れてなかったらErrorポップアップ
         } else {
-            showStrAlert(str: "値段を喋ってね")
+            showStrAlert(str: "正しく入力してね")
         }
     }
     
@@ -342,7 +337,7 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     //ユーザが喋り終わったのを認識して強制的に終わらせる
     @objc func recognitionlimit(){
-        for num in 0...animCalledCounter % 3 {
+        for _ in 0...animCalledCounter % 3 {
             newtextlist.append(self.latestText)
             newtextlist.removeFirst()
         }
@@ -351,8 +346,9 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
         }
     }
     
-    
-    //音声入力の正規表現
+/*
+音声入力の正規表現
+*/
     //入力文字列を投げるとself.itemとself.costに代入される
     func regulation(s: String!) {
         var regulatedS: String! = s
@@ -366,14 +362,20 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
         
         let itemArray: [String]! = regulatedS.components(separatedBy: CharacterSet.decimalDigits)
         let costArray: [String]! = regulatedS.components(separatedBy: CharacterSet.decimalDigits.inverted)
-
+        print(itemArray)
+        print(costArray)
         var items :String = ""
         var costs :String = ""
         for i in itemArray{
-            items += i
+            if i != ""{
+                items += i
+            } else {
+                break
+            }
         }
         for i in costArray {
             costs += i
+            
         }
         self.item = items
         self.cost = costs
@@ -391,21 +393,17 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
     var sendDate = Date()
     
     override func viewDidLoad() {
-        print("load is called")
         if (Keychain.kakeiToken.value() == nil || Keychain.kakeiToken.value()! == "error") {
             loggedin = false
         } else {
             loggedin = true
-            //statusCheck()
-            //Keychain.kakeiRest.set("1000")
-//            print ("userToken = " + Keychain.kakeiToken.value()!)
-//            print ("userRest = " + Keychain.kakeiRest.value()!)
-//            print ("userBudget = " + Keychain.kakeiBudget.value()!)
-//
             recordButton.isEnabled = false
             recordButton.layer.cornerRadius = 50.0
             recordButton.layer.masksToBounds = true
             recordButton.frame = CGRect(x:((self.view.bounds.width-100)/2),y:(self.view.bounds.height-100-20),width:100,height:100)
+            
+            dateFormat.dateFormat = "yyyy年MM月"
+            monthLabel.text = dateFormat.string(from: nowDate as Date)
             
             //日付フィールドの設定
             dateFormat.dateFormat = "yyyy/MM/dd"
@@ -442,21 +440,16 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
             itemField.placeholder = "商品"
             moneyField.placeholder = "お金"
             
-           // progressRing.delegate = self as? UICircularProgressRingDelegate
-            //progressRing = UICircularProgressRingView(frame: CGRect(x: 87, y: 102, width: 200, height: 200))
             self.progressRing.maxValue = CGFloat(Int(Keychain.kakeiBudget.value()!)!)
             self.progressRing.minValue = 0
-            self.progressRing.setProgress(value: CGFloat(Int(Keychain.kakeiRest.value()!)!), animationDuration: 1.0)
-    //        progressRing.ringStyle = UICircularProgressRingStyle.ontop
-    //        progressRing.startAngle = CGFloat(140)
-    //        progressRing.endAngle = CGFloat(40)
-    //        progressRing.outerRingWidth = 8
-    //        progressRing.outerRingColor = #colorLiteral(red: 0.709620595, green: 0.7137866616, blue: 0.7136848569, alpha: 1)
-    //        progressRing.outerCapStyle = CGLineCap.round
-    //        progressRing.innerRingWidth = 9
-    //        progressRing.innerRingColor = #colorLiteral(red: 0, green: 0.6134710312, blue: 0.5824463964, alpha: 1)
-    //        progressRing.innerCapStyle = CGLineCap.round
-            //loadImage()
+            
+            //タップした時のインスタンス生成
+            let aSelector = Selector(("tapGesture:"))
+            let tapGesture:UITapGestureRecognizer = UITapGestureRecognizer(
+                target: self,
+                action: aSelector)
+            tapGesture.delegate = self
+            self.view.addGestureRecognizer(tapGesture)
         }
     }
     
@@ -471,6 +464,11 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
         inputField.resignFirstResponder()
         return true
     }
+    func textFieldShouldReturn (textField: UITextField) -> Bool {
+    textField.resignFirstResponder()
+    
+    return true
+    }
 
     //完了を押すとピッカーの値を、テキストフィールドに挿入して、ピッカーを閉じる
     @objc func toolBarBtnPush(sender: UIBarButtonItem){
@@ -479,19 +477,10 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
         self.view.endEditing(true)
     }
     
-//
-//    override func viewWillAppear(_ animated: Bool) {
-//        statusCheck()
-//        if(Keychain.kakeiToken.value() == nil) {
-//
-//        }
-//    }
-    
     //ViewDidLoadで最初だけapi/statusにアクセスしてuserStatusをチェック
     //それ以降はViewDidAppearで差分を計算してnativeで独立して計算させる
     //apiにはbooksで購入情報だけ投げる
     override func viewDidAppear(_ animated: Bool) {
-        print("appear is called")
         if (Keychain.kakeiToken.value() != nil && Keychain.kakeiToken.value()! != "error") {
             loggedin = true
         } else {
@@ -499,23 +488,8 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
         }
         
         if(loggedin) {
-            print("appear")
-            statusCheck()
-            let userRest = "\(Keychain.kakeiRest.value() ?? "")"
-            print(userRest)
-            self.RemainingMoenyLabel.numberOfLines = 2
-            self.RemainingMoenyLabel.text = "残り予算\n\(userRest)"
-            self.budgetLabel.text = String(budget)
-        
-            //let userRest = "\(Keychain.kakeiRest.value() ?? "")"
-            let userBudget = "\(Keychain.kakeiBudget.value() ?? "")"
-            let userToken = "\(Keychain.kakeiToken.value() ?? "")"
-            print ("userRest = " + userRest)
-            print ("userBudget = " + userBudget)
-            print ("userToken = " + userToken)
-            self.remainMoney = Int(userRest)!
-            progressRing.setProgress(value: CGFloat(remainMoney) , animationDuration: 2.0)
-            
+            reload()
+
             speechRecognizer.delegate = self
             
             SFSpeechRecognizer.requestAuthorization { authStatus in
@@ -554,9 +528,6 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
         let myOkAction = UIAlertAction(title: "送信", style: .default) { action in
             self.send_Items_json()
             print("Successfully send json to web server")
-            
-            //残高更新
-            self.progressRing.setProgress(value: CGFloat(self.remainMoney) , animationDuration: 1.0)
         }
         // OKのActionを追加する.
         myAlert.addAction(myOkAction)
@@ -580,6 +551,26 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
         present(myAlert, animated: true, completion: nil)
     }
     
+/*
+ データ更新
+*/
+    func reload() {
+        statusCheck()
+        itemField.text = ""
+        moneyField.text = ""
+        RemainingMoenyLabel.numberOfLines = 2
+        RemainingMoenyLabel.text = "残り予算\n\(Keychain.kakeiRest.value()!)"
+        budgetLabel.text = "\(Keychain.kakeiBudget.value()!)"
+        
+        progressRing.setProgress(value: CGFloat(Int(Keychain.kakeiRest.value()!)!), animationDuration: 1.0)
+    }
+    
+    //画面タップでデータ更新
+    @IBAction func Reload(_ sender: Any) {
+        reload()
+       //print("tappeddddddd")
+    }
+    
     
 /*
 代金送信json投げる
@@ -598,7 +589,7 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
             //商品, 値段, トークン
             let params: [String: Any] = [
                 "item" : String(self.item),
-                "costs" : String(self.score),
+                "costs" : String(self.cost),
                 "token" : Keychain.kakeiToken.value()!
             ]
             
@@ -624,11 +615,8 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
                     DispatchQueue.main.async {
                         let userRest = "\(self.getJson["rest"] ?? "")"
                         Keychain.kakeiRest.set(userRest)
-                        self.remainMoney = Int(userRest)!
-                        self.RemainingMoenyLabel.numberOfLines = 2
-                        self.RemainingMoenyLabel.text = "残り予算\n\(userRest)"
-                        print("this is send_json_items")
-                        print(userRest)
+                        //残高更新
+                        self.reload()
                     }
                 } catch {
                     DispatchQueue.main.async(execute: {
@@ -651,64 +639,48 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
         
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        let token = Keychain.kakeiToken.value()
-//        if (Keychain.kakeiToken.value() != nil || Keychain.kakeiToken.value()! != "error") {
-            let params: [String: Any] = [
-                "token" : token
-            ]
-            do{
-                //json送信
-                request.httpBody = try JSONSerialization.data(withJSONObject: params, options: .prettyPrinted)
-            }catch{
-                print(error.localizedDescription)
-            }
+        let token = Keychain.kakeiToken.value()!
+        let params: [String: Any] = [
+            "token" : token
+        ]
+        do{
+            //json送信
+            request.httpBody = try JSONSerialization.data(withJSONObject: params, options: .prettyPrinted)
+        }catch{
+            print(error.localizedDescription)
+        }
     
-            let task = URLSession.shared.dataTask(with: request) {
-                data, response, error in
-                if error != nil {
-                    print(error!.localizedDescription)
-                    DispatchQueue.main.sync(execute: {
-                        print("error occered")
-                    })
-                    return
-                }
-                
-                // JSONパースしてキーチェーンに新しいbudgetをセット
-                do {
-                    self.getJson = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
-                    DispatchQueue.main.async {
-                        let userRest = "\(self.getJson["rest"] ?? "")"
-                        let userbudget = "\(self.getJson["budget"] ?? "")"
-                        let userToken = "\(self.getJson["token"] ?? "")"
-                
-                        self.remainMoney = Int(userRest)
-                        //トークンセット
-                        Keychain.kakeiRest.set(userRest)
-                        Keychain.kakeiBudget.set(userbudget)
-                        Keychain.kakeiToken.set(userToken)
-                        
-                        self.RemainingMoenyLabel.numberOfLines = 2
-                        self.RemainingMoenyLabel.text = "残り予算\n\(userRest)"
-                        self.budgetLabel.text = userbudget
-                    }
-                } catch {
-                    DispatchQueue.main.async(execute: {
-                        print("failed to parse json")
-                    })
-                    return
-                }
+        let task = URLSession.shared.dataTask(with: request) {
+            data, response, error in
+            if error != nil {
+                print(error!.localizedDescription)
+                DispatchQueue.main.sync(execute: {
+                    print("error occered")
+                })
+                return
             }
-            task.resume()
-//        } else {
-//            print("cant get user token")
-//            resetToken()
-//            goLogin()
-//        }
-    }
-    
-    func resetToken() {
-        Keychain.kakeiToken.set("initToken")
-        Keychain.kakeiBudget.set("initBudget")
-        Keychain.kakeiRest.set("initRest")
+            // JSONパースしてキーチェーンに新しいbudgetをセット
+            do {
+                self.getJson = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
+                DispatchQueue.main.async {
+                    let userRest = "\(self.getJson["rest"] ?? "")"
+                    let userbudget = "\(self.getJson["budget"] ?? "")"
+                    let userToken = "\(self.getJson["token"] ?? "")"
+                    //トークンセット
+                    Keychain.kakeiRest.set(userRest)
+                    Keychain.kakeiBudget.set(userbudget)
+                    Keychain.kakeiToken.set(userToken)
+                    
+
+                    //self.reload()
+                }
+            } catch {
+                DispatchQueue.main.async(execute: {
+                    print("failed to parse json")
+                })
+                return
+            }
+        }
+        task.resume()
     }
 }
