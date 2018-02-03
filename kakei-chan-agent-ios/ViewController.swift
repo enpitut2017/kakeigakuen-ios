@@ -57,7 +57,7 @@ extension String {
 
 
 
-class ViewController: UIViewController, SFSpeechRecognizerDelegate, UIGestureRecognizerDelegate {
+class ViewController: UIViewController,UITextFieldDelegate ,SFSpeechRecognizerDelegate, UIGestureRecognizerDelegate {
     //ロケールを指定してSFSpeechRecognizerを初期化(ユーザが指定していなかったらja_JPになる) -> 言語の指定
     let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "ja_JP"))!
     
@@ -114,8 +114,17 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate, UIGestureRec
     
     @IBOutlet weak var progressRing: UICircularProgressRingView!
     
+    //ヘッダの月
     @IBOutlet weak var monthLabel: UILabel!
     
+    @IBOutlet weak var header: UIView!
+
+    //入力フォーム隠れないためのscrollview
+    @IBOutlet weak var sc: UIScrollView!
+    //UITextFieldの情報を格納するための変数
+    var txtActiveField = UITextField()
+    var scrollFormer:CGFloat! = nil
+    let scrollViewsample = UIScrollView()
     
     //ログアウト関数
     @IBAction func Logout(_ sender: Any) {
@@ -225,7 +234,7 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate, UIGestureRec
             //タイマー設定
             //recordButton.setTitle("認識中", for: [])
             //titletimer = Timer.scheduledTimer(timeInterval: 0.6, target: self, selector: #selector(ViewController.buttonTitle), userInfo: nil, repeats: true)
-            recogtimer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(ViewController.recognitionlimit), userInfo: nil, repeats: true)
+            recogtimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(ViewController.recognitionlimit), userInfo: nil, repeats: true)
 
             //もし動いていたら強制的にfinish
         } else {
@@ -433,9 +442,9 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
             pickerToolBar.items = [spaceBarBtn,toolBarBtn]
             dateSelecter.inputAccessoryView = pickerToolBar
             
-            self.itemField.delegate = self as? UITextFieldDelegate
+            self.itemField.delegate = self
             
-            self.moneyField.delegate = self as? UITextFieldDelegate
+            self.moneyField.delegate = self
             
             itemField.placeholder = "商品"
             moneyField.placeholder = "お金"
@@ -443,13 +452,16 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
             self.progressRing.maxValue = CGFloat(Int(Keychain.kakeiBudget.value()!)!)
             self.progressRing.minValue = 0
             
-            //タップした時のインスタンス生成
-            let aSelector = Selector(("tapGesture:"))
-            let tapGesture:UITapGestureRecognizer = UITapGestureRecognizer(
-                target: self,
-                action: aSelector)
-            tapGesture.delegate = self
-            self.view.addGestureRecognizer(tapGesture)
+            sc.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 0)
+            sc.delegate = self as? UIScrollViewDelegate
+            
+            self.view.addSubview(sc)
+            sc.addSubview(itemField)
+            sc.addSubview(moneyField)
+            sc.addSubview(dateSelecter)
+            sc.addSubview(progressRing)
+            sc.addSubview(header)
+            self.view.sendSubview(toBack: sc)
         }
     }
     
@@ -457,17 +469,28 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    //UITextFieldが編集された直後に呼ばれる.
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         
+        txtActiveField = textField
+        return true
     }
     
     func inputFieldShouldReturn (_ inputField: UITextField) -> Bool {
         inputField.resignFirstResponder()
         return true
     }
-    func textFieldShouldReturn (textField: UITextField) -> Bool {
-    textField.resignFirstResponder()
     
-    return true
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // キーボードを閉じる
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
 
     //完了を押すとピッカーの値を、テキストフィールドに挿入して、ピッカーを閉じる
@@ -516,6 +539,53 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
         } else {
             goLogin()
         }
+    }
+    
+    @objc func handleKeyboardWillShowNotification(_ notification: Notification) {
+        let userInfo = notification.userInfo!
+        let keyboardScreenEndFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        let myBoundSize: CGSize = UIScreen.main.bounds.size
+        
+        var txtLimit = txtActiveField.frame.origin.y + txtActiveField.frame.height + 50.0
+        let kbdLimit = myBoundSize.height - keyboardScreenEndFrame.size.height
+        
+        
+        print("テキストフィールドの下辺：(\(txtLimit))")
+        print("キーボードの上辺：(\(kbdLimit))")
+        
+        
+        if txtLimit >= kbdLimit {
+            sc.contentOffset.y = txtLimit - kbdLimit
+        }
+    }
+    
+    
+/*
+スクロールして入力できるようにするためのもの
+*/
+    @objc func handleKeyboardWillHideNotification(_ notification: Notification) {
+        //スクロールしてある位置に戻す
+        sc.contentOffset.y = 0
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        
+        let nc = NotificationCenter.default
+        nc.addObserver(
+            self, selector:
+            #selector(LoginViewController.handleKeyboardWillShowNotification(_:)),
+            name: Notification.Name.UIKeyboardWillShow,
+            object: nil
+        )
+        nc.addObserver(
+            self,
+            selector: #selector(LoginViewController.handleKeyboardWillHideNotification(_:)),
+            name: Notification.Name.UIKeyboardWillHide,
+            object: nil
+        )
+        
     }
     
     
