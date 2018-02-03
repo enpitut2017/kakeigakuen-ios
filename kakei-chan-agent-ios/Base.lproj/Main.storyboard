@@ -246,6 +246,7 @@
                     <connections>
                         <outlet property="email" destination="ktc-GQ-GKR" id="JPb-8M-pgS"/>
                         <outlet property="label" destination="oIY-Mg-c2d" id="upK-l1-RGp"/>
+                        <outlet property="loginButotn" destination="MHO-zc-vN8" id="sW6-b1-3jG"/>
                         <outlet property="password" destination="4mY-Jg-1Hp" id="cqQ-IG-vCK"/>
                         <outlet property="sc" destination="1X6-El-AaG" id="OEv-NP-5DG"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="toHomeSegue" id="egG-C1-D7b"/>

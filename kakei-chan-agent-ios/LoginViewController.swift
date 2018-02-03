@@ -15,6 +15,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
+    @IBOutlet weak var loginButotn: UIButton!
     
     //UITextFieldの情報を格納するための変数
     var txtActiveField = UITextField()
@@ -178,6 +179,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         sc.addSubview(email)
         sc.addSubview(password)
         //sc.addSubview(self.view)
+        self.view.bringSubview(toFront: loginButotn)
         
     }
     
