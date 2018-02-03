@@ -407,9 +407,9 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
         } else {
             loggedin = true
             recordButton.isEnabled = false
-            recordButton.layer.cornerRadius = 50.0
-            recordButton.layer.masksToBounds = true
-            recordButton.frame = CGRect(x:((self.view.bounds.width-100)/2),y:(self.view.bounds.height-100-20),width:100,height:100)
+            //recordButton.layer.cornerRadius = 30.0
+            //recordButton.layer.masksToBounds = true
+            //recordButton.frame = CGRect(x:((self.view.bounds.width-60)/2),y:(self.view.bounds.height-60-20),width:100,height:100)
             
             dateFormat.dateFormat = "yyyy年MM月"
             monthLabel.text = dateFormat.string(from: nowDate as Date)
@@ -628,8 +628,8 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
         statusCheck()
         itemField.text = ""
         moneyField.text = ""
-        RemainingMoenyLabel.numberOfLines = 2
-        RemainingMoenyLabel.text = "残り予算\n\(Keychain.kakeiRest.value()!)"
+        RemainingMoenyLabel.text = "\(Keychain.kakeiRest.value()!)"
+        
         budgetLabel.text = "\(Keychain.kakeiBudget.value()!)"
         
         progressRing.setProgress(value: CGFloat(Int(Keychain.kakeiRest.value()!)!), animationDuration: 1.0)
