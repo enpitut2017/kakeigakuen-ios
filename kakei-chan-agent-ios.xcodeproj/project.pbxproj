@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C342696202553C400694609 /* UICircularProgressRing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C342697202553C400694609 /* UICircularProgressRing.framework */; };
+		1C342699202553FD00694609 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C342698202553FD00694609 /* AVFoundation.framework */; };
+		1C34269B2025544200694609 /* Speech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C34269A2025544200694609 /* Speech.framework */; };
 		1C4F5670200B4E080050F6FD /* アセット 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C4F566F200B4E080050F6FD /* アセット 1.png */; };
 		C552E5BB737A5C43B94A4610 /* Pods_kakei_chan_agent_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B327532D76B0D104E71855EF /* Pods_kakei_chan_agent_ios.framework */; };
 		CFA016991FD8F1BD00A2C8F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA016981FD8F1BD00A2C8F2 /* AppDelegate.swift */; };
@@ -37,6 +40,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1C342697202553C400694609 /* UICircularProgressRing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UICircularProgressRing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C342698202553FD00694609 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		1C34269A2025544200694609 /* Speech.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Speech.framework; path = System/Library/Frameworks/Speech.framework; sourceTree = SDKROOT; };
 		1C4F566F200B4E080050F6FD /* アセット 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "アセット 1.png"; path = "../../Desktop/アセット 1.png"; sourceTree = "<group>"; };
 		B327532D76B0D104E71855EF /* Pods_kakei_chan_agent_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_kakei_chan_agent_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFA016951FD8F1BD00A2C8F2 /* kakei-chan-agent-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "kakei-chan-agent-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,6 +68,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C34269B2025544200694609 /* Speech.framework in Frameworks */,
+				1C342699202553FD00694609 /* AVFoundation.framework in Frameworks */,
+				1C342696202553C400694609 /* UICircularProgressRing.framework in Frameworks */,
 				C552E5BB737A5C43B94A4610 /* Pods_kakei_chan_agent_ios.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -95,6 +104,9 @@
 		41516C26588C4697C23304BF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1C34269A2025544200694609 /* Speech.framework */,
+				1C342698202553FD00694609 /* AVFoundation.framework */,
+				1C342697202553C400694609 /* UICircularProgressRing.framework */,
 				B327532D76B0D104E71855EF /* Pods_kakei_chan_agent_ios.framework */,
 			);
 			name = Frameworks;
@@ -519,8 +531,9 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L4GKXFJ86Y;
 				INFOPLIST_FILE = "kakei-chan-agent-ios/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				INSTALL_PATH = "@rpath";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/../Frameworks/";
 				PRODUCT_BUNDLE_IDENTIFIER = "yatteiki.kakei-chan-agent-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -536,8 +549,9 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L4GKXFJ86Y;
 				INFOPLIST_FILE = "kakei-chan-agent-ios/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				INSTALL_PATH = "@rpath";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/../Frameworks/";
 				PRODUCT_BUNDLE_IDENTIFIER = "yatteiki.kakei-chan-agent-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
