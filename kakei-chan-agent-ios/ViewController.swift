@@ -114,7 +114,7 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate, UIGestureRec
     
     @IBOutlet weak var progressRing: UICircularProgressRingView!
     
-    @IBOutlet weak var reloadButton : UIButton!
+    @IBOutlet weak var monthLabel: UILabel!
     
     
     //ログアウト関数
@@ -316,12 +316,12 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate, UIGestureRec
         regulation(s: self.latestText)
         
         //うまく喋れてたら送信確認ポップアップ
-        if (self.item != nil && self.cost != nil && Int(self.cost) != nil){
+        if (self.item != "" && self.cost != "" && Int(self.cost) != nil){
             //確認のポップアップ表示
             showStrPost(str: self.item + " " + self.cost)
         //喋れてなかったらErrorポップアップ
         } else {
-            showStrAlert(str: "値段を喋ってね")
+            showStrAlert(str: "正しく入力してね")
         }
     }
     
@@ -402,6 +402,9 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
             recordButton.layer.masksToBounds = true
             recordButton.frame = CGRect(x:((self.view.bounds.width-100)/2),y:(self.view.bounds.height-100-20),width:100,height:100)
             
+            dateFormat.dateFormat = "yyyy年MM月"
+            monthLabel.text = dateFormat.string(from: nowDate as Date)
+            
             //日付フィールドの設定
             dateFormat.dateFormat = "yyyy/MM/dd"
             dateSelecter.text = dateFormat.string(from: nowDate as Date)
@@ -461,6 +464,11 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
         inputField.resignFirstResponder()
         return true
     }
+    func textFieldShouldReturn (textField: UITextField) -> Bool {
+    textField.resignFirstResponder()
+    
+    return true
+    }
 
     //完了を押すとピッカーの値を、テキストフィールドに挿入して、ピッカーを閉じる
     @objc func toolBarBtnPush(sender: UIBarButtonItem){
@@ -480,13 +488,8 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
         }
         
         if(loggedin) {
-            statusCheck()
-            let userRest = "\(Keychain.kakeiRest.value() ?? "")"
-            let userBudget = "\(Keychain.kakeiBudget.value() ?? "")"
-            self.RemainingMoenyLabel.numberOfLines = 2
-            self.RemainingMoenyLabel.text = "残り予算\n\(userRest)"
-            self.budgetLabel.text = String(userBudget)
-//            reload()
+            reload()
+
             speechRecognizer.delegate = self
             
             SFSpeechRecognizer.requestAuthorization { authStatus in
@@ -551,24 +554,21 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
 /*
  データ更新
 */
-    
     func reload() {
+        statusCheck()
         itemField.text = ""
         moneyField.text = ""
         RemainingMoenyLabel.numberOfLines = 2
         RemainingMoenyLabel.text = "残り予算\n\(Keychain.kakeiRest.value()!)"
         budgetLabel.text = "\(Keychain.kakeiBudget.value()!)"
-       // print("val = " + String(describing: self.progressRing.currentValue!))
-        self.progressRing.value = CGFloat(0.0)
-        self.progressRing.setProgress(value: 0.0, animationDuration: 0)
-        Thread.sleep(forTimeInterval: 0.1)
-
-        self.progressRing.setProgress(value: CGFloat(Int(Keychain.kakeiRest.value()!)!), animationDuration: 1.0)
+        
+        progressRing.setProgress(value: CGFloat(Int(Keychain.kakeiRest.value()!)!), animationDuration: 1.0)
     }
     
     //画面タップでデータ更新
     @IBAction func Reload(_ sender: Any) {
         reload()
+       //print("tappeddddddd")
     }
     
     
@@ -672,7 +672,7 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
                     Keychain.kakeiToken.set(userToken)
                     
 
-                    self.reload()
+                    //self.reload()
                 }
             } catch {
                 DispatchQueue.main.async(execute: {
