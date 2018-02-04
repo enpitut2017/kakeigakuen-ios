@@ -183,6 +183,120 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        let userDefaults = UserDefaults.standard
+        userDefaults.register(defaults: ["latestDLImage": 0])
+        let num = userDefaults.integer(forKey: "latestDLImage")
+        
+        let url = "https://kakeigakuen.xyz/api/image/download"
+        var request = URLRequest(url: URL(string: url)! as URL)
+        var dlimage:[String] = []
+        
+        request.httpMethod = "POST"
+        
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        print(String(num))
+        let params: [String: Any] = [
+            "id" : num
+        ]
+        do{
+            //json送信
+            request.httpBody = try JSONSerialization.data(withJSONObject: params, options: .prettyPrinted)
+        }catch{
+            print(error.localizedDescription)
+        }
+        
+        let task = URLSession.shared.dataTask(with: request) {
+            data, response, error in
+            if error != nil {
+                print(error!.localizedDescription)
+                DispatchQueue.main.sync(execute: {
+                    print("error occered")
+                })
+                return
+            }
+            // JSONパースしてキーチェーンに新しいbudgetをセット
+            do {
+                let getJson = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
+                DispatchQueue.main.async {
+                    
+                    print(String(describing: (type(of: getJson["path"]))))
+                    dlimage = getJson["path"]! as! [String]
+                }
+            } catch {
+                DispatchQueue.main.async(execute: {
+                    print("failed to parse json")
+                })
+                return
+            }
+        }
+        task.resume()
+
+        
+        
+        
+        let catPictureURL = URL(string: "http://i.imgur.com/w5rkSIj.jpg")!
+        
+        /*
+         
+         デフォルト設定でセッションオブジェクトを作成する。
+         
+         　　*/
+        
+        let session = URLSession(configuration: .default)
+        /*
+         
+         ダウンロードタスクを定義します。ダウンロードタスクは、
+         URLの内容をデータオブジェクトとしてダウンロードし、
+         そのデータで望むことを実行できます。
+         
+         */
+        let downloadPicTask = session.dataTask(with: catPictureURL) { (data, response, error) in
+            /*
+             ダウンロードが完了しました。
+             */
+            
+            if let e = error {
+                print("cat pictureのダウンロード中にエラーが発生しました: \(e)")
+            } else {
+                /*
+                 エラーは見つかりませんでした。
+                 レスポンスがないと変わってしまいますので、それもチェックしてください。
+                 */
+                if let res = response as? HTTPURLResponse {
+                    print("レスポンスコード付きの猫の画像をダウンロード \(res.statusCode)")
+                    if let imageData = data {
+                        /*
+                         最後に、そのデータをイメージに変換し、
+                         それを使って望むことをします。
+                         */
+                        
+                        let imageimage = UIImage(data: imageData)
+                        print(imageimage!)
+                        
+                        /*
+                         あなたのイメージで何かをしてください。
+                         */
+                        
+                    } else {
+                        print("画像を取得できませんでした：画像はありません")
+                    }
+                } else {
+                    print("何らかの理由で応答コードを取得できませんでした")
+                }
+            }
+        }
+        
+        downloadPicTask.resume()
+        
+        
+        
+        
+        
+        
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }

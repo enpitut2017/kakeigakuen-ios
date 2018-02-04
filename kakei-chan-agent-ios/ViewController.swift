@@ -92,7 +92,7 @@ class ViewController: UIViewController,UITextFieldDelegate ,SFSpeechRecognizerDe
     var now: Date? = nil
     
     var loggedin: Bool = false
-    
+        
     
     //音声入力ボタン
     @IBOutlet weak var recordButton : UIButton!
@@ -452,6 +452,7 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
             self.progressRing.maxValue = CGFloat(Int(Keychain.kakeiBudget.value()!)!)
             self.progressRing.minValue = 0
             
+            //キーボード出現でスクロール
             sc.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 0)
             sc.delegate = self as? UIScrollViewDelegate
             
@@ -462,6 +463,7 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
             sc.addSubview(progressRing)
             sc.addSubview(header)
             self.view.sendSubview(toBack: sc)
+            
         }
     }
     
@@ -540,6 +542,7 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
             goLogin()
         }
     }
+    
     
     @objc func handleKeyboardWillShowNotification(_ notification: Notification) {
         let userInfo = notification.userInfo!
