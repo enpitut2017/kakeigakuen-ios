@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1C2D4A87202703F4003A9976 /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2D4A86202703F4003A9976 /* GraphViewController.swift */; };
 		1C2D4A89202705B5003A9976 /* KakeiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2D4A88202705B5003A9976 /* KakeiViewController.swift */; };
 		1C342696202553C400694609 /* UICircularProgressRing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C342697202553C400694609 /* UICircularProgressRing.framework */; };
 		1C342699202553FD00694609 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C342698202553FD00694609 /* AVFoundation.framework */; };
 		1C34269B2025544200694609 /* Speech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C34269A2025544200694609 /* Speech.framework */; };
 		1C4F5670200B4E080050F6FD /* record.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C4F566F200B4E080050F6FD /* record.png */; };
+		1C784F82202721C200C8F0A8 /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C784F81202721C100C8F0A8 /* GraphViewController.swift */; };
 		1CFF0B04202582B3004F33CC /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CFF0B03202582B3004F33CC /* icon.png */; };
 		1CFF0B082025B45F004F33CC /* TouchesBeganExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFF0B072025B45F004F33CC /* TouchesBeganExtension.swift */; };
 		C552E5BB737A5C43B94A4610 /* Pods_kakei_chan_agent_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B327532D76B0D104E71855EF /* Pods_kakei_chan_agent_ios.framework */; };
@@ -44,12 +44,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1C2D4A86202703F4003A9976 /* GraphViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GraphViewController.swift; path = "/Users/sakas_poke/kakei-chan-agent-ios/kakei-chan-agent-ios/GraphViewController.swift"; sourceTree = "<absolute>"; };
 		1C2D4A88202705B5003A9976 /* KakeiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakeiViewController.swift; sourceTree = "<group>"; };
 		1C342697202553C400694609 /* UICircularProgressRing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UICircularProgressRing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C342698202553FD00694609 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		1C34269A2025544200694609 /* Speech.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Speech.framework; path = System/Library/Frameworks/Speech.framework; sourceTree = SDKROOT; };
 		1C4F566F200B4E080050F6FD /* record.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = record.png; path = ../../Desktop/record.png; sourceTree = "<group>"; };
+		1C784F81202721C100C8F0A8 /* GraphViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GraphViewController.swift; path = "/Users/sakas_poke/kakeigakuen/kakei-chan-agent-ios/GraphViewController.swift"; sourceTree = "<absolute>"; };
 		1CFF0B03202582B3004F33CC /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../../Downloads/icon.png; sourceTree = "<group>"; };
 		1CFF0B072025B45F004F33CC /* TouchesBeganExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchesBeganExtension.swift; sourceTree = "<group>"; };
 		B327532D76B0D104E71855EF /* Pods_kakei_chan_agent_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_kakei_chan_agent_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -145,8 +145,8 @@
 		CFA016971FD8F1BD00A2C8F2 /* kakei-chan-agent-ios */ = {
 			isa = PBXGroup;
 			children = (
+				1C784F81202721C100C8F0A8 /* GraphViewController.swift */,
 				CFA016981FD8F1BD00A2C8F2 /* AppDelegate.swift */,
-				1C2D4A86202703F4003A9976 /* GraphViewController.swift */,
 				1C2D4A88202705B5003A9976 /* KakeiViewController.swift */,
 				CFA0169A1FD8F1BD00A2C8F2 /* ViewController.swift */,
 				1C4F566F200B4E080050F6FD /* record.png */,
@@ -374,8 +374,8 @@
 			files = (
 				1C2D4A89202705B5003A9976 /* KakeiViewController.swift in Sources */,
 				CFA016C71FD8F64200A2C8F2 /* LoginViewController.swift in Sources */,
-				1C2D4A87202703F4003A9976 /* GraphViewController.swift in Sources */,
 				CFA0169B1FD8F1BD00A2C8F2 /* ViewController.swift in Sources */,
+				1C784F82202721C200C8F0A8 /* GraphViewController.swift in Sources */,
 				CFA016991FD8F1BD00A2C8F2 /* AppDelegate.swift in Sources */,
 				1CFF0B082025B45F004F33CC /* TouchesBeganExtension.swift in Sources */,
 			);
