@@ -13,7 +13,7 @@
         <!--Main-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="MainView" title="Main" id="BYZ-38-t0r" customClass="ViewController" customModule="kakei_chan_agent_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Main" id="BYZ-38-t0r" customClass="ViewController" customModule="kakei_chan_agent_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" restorationIdentifier="HomeView" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -211,7 +211,7 @@
         <!--Graph-->
         <scene sceneID="0bw-3k-Kq7">
             <objects>
-                <viewController title="Graph" id="QHn-SD-HYm" customClass="GraphViewController" sceneMemberID="viewController">
+                <viewController title="Graph" id="QHn-SD-HYm" customClass="GraphViewController" customModule="kakei_chan_agent_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xa2-8a-y0R">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -294,7 +294,7 @@
         <!--Kakei-->
         <scene sceneID="MwU-tV-uaG">
             <objects>
-                <viewController title="Kakei" id="lfo-bH-7BD" customClass="KakeiViewController" sceneMemberID="viewController">
+                <viewController title="Kakei" id="lfo-bH-7BD" customClass="KakeiViewController" customModule="kakei_chan_agent_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DWF-fk-VHO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
