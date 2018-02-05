@@ -206,7 +206,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="767" y="32"/>
+            <point key="canvasLocation" x="1636" y="72"/>
         </scene>
         <!--Graph-->
         <scene sceneID="0bw-3k-Kq7">
@@ -252,7 +252,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aec-8l-ZSR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1546" y="477"/>
+            <point key="canvasLocation" x="908" y="587"/>
         </scene>
         <!--Login-->
         <scene sceneID="NY5-Nd-I63">
@@ -265,6 +265,25 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1X6-El-AaG">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="アカウントをお持ちでない方はこちらから" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OBf-dC-uUJ">
+                                        <rect key="frame" x="29" y="586" width="317" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eo8-Op-lRc">
+                                        <rect key="frame" x="160" y="609" width="55" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" red="0.23405927419662476" green="0.73138982057571411" blue="0.68803143501281738" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                        <color key="tintColor" red="0.23405927419662476" green="0.73138982057571411" blue="0.68803143501281738" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Sign up">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                    </button>
+                                </subviews>
                             </scrollView>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ktc-GQ-GKR">
                                 <rect key="frame" x="16" y="400" width="343" height="30"/>
@@ -314,12 +333,13 @@
                         <outlet property="loginButotn" destination="MHO-zc-vN8" id="sW6-b1-3jG"/>
                         <outlet property="password" destination="4mY-Jg-1Hp" id="cqQ-IG-vCK"/>
                         <outlet property="sc" destination="1X6-El-AaG" id="OEv-NP-5DG"/>
+                        <outlet property="signupButton" destination="eo8-Op-lRc" id="DNz-sA-uxX"/>
                         <segue destination="NcQ-s5-f9A" kind="show" identifier="toHomeSegue" id="egG-C1-D7b"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pCk-Lw-WRA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-785" y="32"/>
+            <point key="canvasLocation" x="-786.39999999999998" y="31.934032983508249"/>
         </scene>
         <!--Kakei-->
         <scene sceneID="MwU-tV-uaG">
@@ -376,7 +396,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pcw-uB-bqT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1560.8" y="-222.63868065967017"/>
+            <point key="canvasLocation" x="908" y="-342"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="2gS-bQ-8E2">
@@ -396,7 +416,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KPQ-nV-Pk5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-17" y="32"/>
+            <point key="canvasLocation" x="14" y="32"/>
         </scene>
     </scenes>
     <resources>

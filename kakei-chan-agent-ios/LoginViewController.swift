@@ -16,6 +16,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var loginButotn: UIButton!
+    @IBOutlet weak var signupButton: UIButton!
     
     //UITextFieldの情報を格納するための変数
     var txtActiveField = UITextField()
@@ -180,6 +181,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         sc.addSubview(password)
         //sc.addSubview(self.view)
         self.view.bringSubview(toFront: loginButotn)
+        
+        //ボタンレイアウト
+        signupButton.layer.cornerRadius = 12
+        loginButotn.layer.cornerRadius = 22
+        signupButton.layer.borderWidth = 2
+        signupButton.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         
     }
     
