@@ -16,9 +16,58 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        // Override point for customization after application launch.
+        
+        
+//        let url = "https://kakeigakuen.xyz/api/image/download"
+//        var request = URLRequest(url: URL(string: url)! as URL)
+//        var latestNum:Int = 0
+//        var getJson: NSDictionary!
+//
+//        request.httpMethod = "POST"
+//
+//        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+//
+//        let params: [String: Any] = [
+//            "id" : userDefault.integer(forKey: "latestDLImage")
+//        ]
+//        do{
+//            //json送信
+//            request.httpBody = try JSONSerialization.data(withJSONObject: params, options: .prettyPrinted)
+//        }catch{
+//            print(error.localizedDescription)
+//        }
+//
+//        let task = URLSession.shared.dataTask(with: request) {
+//            data, response, error in
+//            if error != nil {
+//                print(error!.localizedDescription)
+//                DispatchQueue.main.sync(execute: {
+//                    print("error occered")
+//                })
+//                return
+//            }
+//            // JSONパースしてキーチェーンに新しいbudgetをセット
+//            do {
+//                getJson = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
+//                DispatchQueue.main.async {
+//                    latestNum = Int("\(getJson["id"] ?? "")")!
+//                }
+//            } catch {
+//                DispatchQueue.main.async(execute: {
+//                    print("failed to parse json")
+//                })
+//                return
+//            }
+//        }
+//        task.resume()
+//
+        
+  //      print("起動時に呼ばれる")
         return true
-    }
+}
 
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
