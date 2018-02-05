@@ -13,6 +13,8 @@
 		1C34269B2025544200694609 /* Speech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C34269A2025544200694609 /* Speech.framework */; };
 		1C4F5670200B4E080050F6FD /* record.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C4F566F200B4E080050F6FD /* record.png */; };
 		1C784F82202721C200C8F0A8 /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C784F81202721C100C8F0A8 /* GraphViewController.swift */; };
+		1CBB6BB520280AB1008001E6 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBB6BB420280AB1008001E6 /* SignUpViewController.swift */; };
+		1CBB6BB720283057008001E6 /* kakeichan.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CBB6BB620283057008001E6 /* kakeichan.png */; };
 		1CF2C39A2027DF1200BFDBA4 /* reload.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CF2C3992027DF1200BFDBA4 /* reload.png */; };
 		1CFF0B04202582B3004F33CC /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CFF0B03202582B3004F33CC /* icon.png */; };
 		1CFF0B082025B45F004F33CC /* TouchesBeganExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFF0B072025B45F004F33CC /* TouchesBeganExtension.swift */; };
@@ -51,6 +53,8 @@
 		1C34269A2025544200694609 /* Speech.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Speech.framework; path = System/Library/Frameworks/Speech.framework; sourceTree = SDKROOT; };
 		1C4F566F200B4E080050F6FD /* record.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = record.png; path = ../../Desktop/record.png; sourceTree = "<group>"; };
 		1C784F81202721C100C8F0A8 /* GraphViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GraphViewController.swift; path = "/Users/sakas_poke/kakeigakuen/kakei-chan-agent-ios/GraphViewController.swift"; sourceTree = "<absolute>"; };
+		1CBB6BB420280AB1008001E6 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		1CBB6BB620283057008001E6 /* kakeichan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kakeichan.png; sourceTree = "<group>"; };
 		1CF2C3992027DF1200BFDBA4 /* reload.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reload.png; sourceTree = "<group>"; };
 		1CFF0B03202582B3004F33CC /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../../Downloads/icon.png; sourceTree = "<group>"; };
 		1CFF0B072025B45F004F33CC /* TouchesBeganExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchesBeganExtension.swift; sourceTree = "<group>"; };
@@ -152,9 +156,11 @@
 				1C2D4A88202705B5003A9976 /* KakeiViewController.swift */,
 				CFA0169A1FD8F1BD00A2C8F2 /* ViewController.swift */,
 				1CF2C3992027DF1200BFDBA4 /* reload.png */,
+				1CBB6BB620283057008001E6 /* kakeichan.png */,
 				1C4F566F200B4E080050F6FD /* record.png */,
 				1CFF0B03202582B3004F33CC /* icon.png */,
 				CFA016C61FD8F64200A2C8F2 /* LoginViewController.swift */,
+				1CBB6BB420280AB1008001E6 /* SignUpViewController.swift */,
 				1CFF0B072025B45F004F33CC /* TouchesBeganExtension.swift */,
 				CFA0169C1FD8F1BD00A2C8F2 /* Main.storyboard */,
 				CFA0169F1FD8F1BD00A2C8F2 /* Assets.xcassets */,
@@ -292,6 +298,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CBB6BB720283057008001E6 /* kakeichan.png in Resources */,
 				CFA016A31FD8F1BD00A2C8F2 /* LaunchScreen.storyboard in Resources */,
 				1CFF0B04202582B3004F33CC /* icon.png in Resources */,
 				CFA016A01FD8F1BD00A2C8F2 /* Assets.xcassets in Resources */,
@@ -377,6 +384,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C2D4A89202705B5003A9976 /* KakeiViewController.swift in Sources */,
+				1CBB6BB520280AB1008001E6 /* SignUpViewController.swift in Sources */,
 				CFA016C71FD8F64200A2C8F2 /* LoginViewController.swift in Sources */,
 				CFA0169B1FD8F1BD00A2C8F2 /* ViewController.swift in Sources */,
 				1C784F82202721C200C8F0A8 /* GraphViewController.swift in Sources */,
