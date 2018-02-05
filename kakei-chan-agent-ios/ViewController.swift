@@ -576,13 +576,13 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
         let nc = NotificationCenter.default
         nc.addObserver(
             self, selector:
-            #selector(LoginViewController.handleKeyboardWillShowNotification(_:)),
+            #selector(ViewController.handleKeyboardWillShowNotification(_:)),
             name: Notification.Name.UIKeyboardWillShow,
             object: nil
         )
         nc.addObserver(
             self,
-            selector: #selector(LoginViewController.handleKeyboardWillHideNotification(_:)),
+            selector: #selector(ViewController.handleKeyboardWillHideNotification(_:)),
             name: Notification.Name.UIKeyboardWillHide,
             object: nil
         )
@@ -701,6 +701,8 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
             print("cant get user token")
         }
     }
+    
+    
     
     func statusCheck() {
         let url = "https://kakeigakuen.xyz/api/status"

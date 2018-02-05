@@ -146,13 +146,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         let nc = NotificationCenter.default
         nc.addObserver(
             self, selector:
-            #selector(SignUpViewController.handleKeyboardWillShowNotification(_:)),
+            #selector(LoginViewController.handleKeyboardWillShowNotification(_:)),
             name: Notification.Name.UIKeyboardWillShow,
             object: nil
         )
         nc.addObserver(
             self,
-            selector: #selector(SignUpViewController.handleKeyboardWillHideNotification(_:)),
+            selector: #selector(LoginViewController.handleKeyboardWillHideNotification(_:)),
             name: Notification.Name.UIKeyboardWillHide,
             object: nil
         )
@@ -169,7 +169,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         sc.delegate = self
         
         //sc.contentSize = CGSize(width: 250,height: 1000)
-        self.view.addSubview(sc);
+        self.view.addSubview(sc)
         
         // Viewに追加する
         sc.addSubview(email)
