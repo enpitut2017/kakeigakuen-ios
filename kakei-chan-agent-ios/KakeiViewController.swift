@@ -80,9 +80,7 @@ class KakeiViewController: UIViewController {
         Keychain.kakeiRest.del()
         goLogin()
     }
-    
-    var timer :Timer!
-    
+        
     @IBAction func Reload() {
         
         kakeiRemove()

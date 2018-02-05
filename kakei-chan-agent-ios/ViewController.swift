@@ -126,6 +126,8 @@ class ViewController: UIViewController,UITextFieldDelegate ,SFSpeechRecognizerDe
     var scrollFormer:CGFloat! = nil
     let scrollViewsample = UIScrollView()
     
+    @IBAction func backToTop(segue: UIStoryboardSegue) {}
+    
     //ログアウト関数
     @IBAction func Logout(_ sender: Any) {
         Keychain.kakeiToken.del()

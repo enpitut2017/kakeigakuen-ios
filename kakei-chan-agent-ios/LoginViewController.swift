@@ -17,7 +17,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var loginButotn: UIButton!
     @IBOutlet weak var signupButton: UIButton!
-    
+        
     //UITextFieldの情報を格納するための変数
     var txtActiveField = UITextField()
     @IBOutlet weak var sc: UIScrollView!
@@ -181,6 +181,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
         sc.addSubview(password)
         //sc.addSubview(self.view)
         self.view.bringSubview(toFront: loginButotn)
+        self.view.bringSubview(toFront: signupButton)
         
         //ボタンレイアウト
         signupButton.layer.cornerRadius = 12
@@ -271,7 +272,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
                  レスポンスがないと変わってしまいますので、それもチェックしてください。
                  */
                 if let res = response as? HTTPURLResponse {
-                    print("レスポンスコード付きの猫の画像をダウンロード \(res.statusCode)")
                     if let imageData = data {
                         /*
                          最後に、そのデータをイメージに変換し、
