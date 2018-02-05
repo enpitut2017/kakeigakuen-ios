@@ -12,8 +12,11 @@ class KakeiViewController: UIViewController {
     
     @IBOutlet weak var MonthLabel :UILabel!
     
+    @IBOutlet weak var ReloadButton :UIButton!
+    
     var getJson: NSDictionary!
     
+    var kakeiImages :[UIImageView]! = []
     
     
     
@@ -78,23 +81,7 @@ class KakeiViewController: UIViewController {
         goLogin()
     }
     
-    func goLogin(){
-        let storyboard: UIStoryboard = self.storyboard!
-        let nextView = storyboard.instantiateViewController(withIdentifier: "LoginView")
-        self.present(nextView, animated: true, completion: nil)
-    }
-    
-    
-    let nowDate = NSDate()
-    let dateFormat = DateFormatter()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        dateFormat.dateFormat = "yyyy年MM月"
-        MonthLabel.text = dateFormat.string(from: nowDate as Date)
-        
-        // Do any additional setup after loading the view.
+    @IBAction func Reload() {
         let url = "https://kakeigakuen.xyz/api/image/path"
         var request = URLRequest(url: URL(string: url)! as URL)
         
@@ -125,6 +112,7 @@ class KakeiViewController: UIViewController {
             // JSONパースしてキーチェーンに新しいbudgetをセット
             do {
                 self.getJson = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
+                self.kakeiRemove()
                 DispatchQueue.main.async {
                     let urls:[String] = self.getJson["path"]! as! [String]
                     for u in urls{
@@ -132,7 +120,7 @@ class KakeiViewController: UIViewController {
                         print("url = " + renameU)
                         self.getImage(url: URL(string: renameU)! as URL)
                     }
-
+                    
                 }
             } catch {
                 DispatchQueue.main.async(execute: {
@@ -142,6 +130,35 @@ class KakeiViewController: UIViewController {
             }
         }
         task.resume()
+    }
+    
+    func goLogin(){
+        let storyboard: UIStoryboard = self.storyboard!
+        let nextView = storyboard.instantiateViewController(withIdentifier: "LoginView")
+        self.present(nextView, animated: true, completion: nil)
+    }
+    
+    
+    let nowDate = NSDate()
+    let dateFormat = DateFormatter()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        dateFormat.dateFormat = "yyyy年MM月"
+        MonthLabel.text = dateFormat.string(from: nowDate as Date)
+        
+        // Do any additional setup after loading the view.
+        Reload()
+        
+        
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(
+            self,
+            selector: "kakeiRemove",
+            name:NSNotification.Name.UIApplicationWillTerminate,
+            object: nil
+        )
     }
 
     override func didReceiveMemoryWarning() {
@@ -166,6 +183,15 @@ class KakeiViewController: UIViewController {
         }
         let image: UIImage = UIImage(data: imageData! as Data)!  // NSDataからUIImageへの変換
         imageView.image = image
+        kakeiImages!.append(imageView)
         self.view.addSubview(imageView)
+    }
+    
+    func kakeiRemove() {
+        if (kakeiImages != nil) {
+            for i in kakeiImages {
+                i.removeFromSuperview()
+            }
+        }
     }
 }

@@ -325,10 +325,14 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.21475279329999999" green="0.73953050369999995" blue="0.67969316239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="idS-s1-g5Y">
-                                <rect key="frame" x="300" y="112" width="30" height="30"/>
+                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qzD-UU-Oii">
+                                <rect key="frame" x="317" y="123" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                                <state key="normal" title="Button" image="reload.png"/>
+                                <connections>
+                                    <action selector="Reload" destination="lfo-bH-7BD" eventType="touchUpInside" id="qbL-6C-IQD"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="Jwu-0o-7Yt"/>
@@ -336,6 +340,7 @@
                     <tabBarItem key="tabBarItem" title="かけいちゃん" id="54c-4W-uCI"/>
                     <connections>
                         <outlet property="MonthLabel" destination="qcZ-Zl-Lrw" id="vjG-vl-D1s"/>
+                        <outlet property="ReloadButton" destination="qzD-UU-Oii" id="6NP-Yw-dbo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pcw-uB-bqT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -366,5 +371,6 @@
     <resources>
         <image name="icon.png" width="512" height="512"/>
         <image name="record.png" width="269" height="269"/>
+        <image name="reload.png" width="256" height="256"/>
     </resources>
 </document>
