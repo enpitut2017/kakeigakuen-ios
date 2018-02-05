@@ -330,6 +330,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="reload.png"/>
                                 <connections>
+                                    <action selector="BtnAnimation" destination="lfo-bH-7BD" eventType="touchUpInside" id="rgu-wO-ngR"/>
                                     <action selector="Reload" destination="lfo-bH-7BD" eventType="touchUpInside" id="qbL-6C-IQD"/>
                                 </connections>
                             </button>

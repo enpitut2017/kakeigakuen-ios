@@ -81,12 +81,16 @@ class KakeiViewController: UIViewController {
         goLogin()
     }
     
+    var timer :Timer!
+    
     @IBAction func Reload() {
+        
+        kakeiRemove()
+        
         let url = "https://kakeigakuen.xyz/api/image/path"
         var request = URLRequest(url: URL(string: url)! as URL)
         
         request.httpMethod = "POST"
-        print(Keychain.kakeiToken.value()!)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
         let token = Keychain.kakeiToken.value()!
@@ -129,6 +133,7 @@ class KakeiViewController: UIViewController {
                 return
             }
         }
+
         task.resume()
     }
     
@@ -151,7 +156,6 @@ class KakeiViewController: UIViewController {
         // Do any additional setup after loading the view.
         Reload()
         
-        
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(
             self,
@@ -166,9 +170,16 @@ class KakeiViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+
     override func viewDidAppear(_ animated: Bool) {
     }
     
+    @IBAction func BtnAnimation(){
+            let rotationAnimation = CABasicAnimation(keyPath:"transform.rotation.z")
+            rotationAnimation.toValue = CGFloat(Double.pi / 180) * 360
+            rotationAnimation.duration = 0.8
+            ReloadButton.layer.add(rotationAnimation, forKey: "rotationAnimation")
+    }
     
     func getImage(url :URL){
         let imageView:UIImageView = UIImageView()
@@ -190,7 +201,9 @@ class KakeiViewController: UIViewController {
     func kakeiRemove() {
         if (kakeiImages != nil) {
             for i in kakeiImages {
-                i.removeFromSuperview()
+                DispatchQueue.main.async { // Correct
+                    i.removeFromSuperview()
+                }
             }
         }
     }
