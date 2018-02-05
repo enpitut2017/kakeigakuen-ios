@@ -12,8 +12,11 @@ class KakeiViewController: UIViewController {
     
     @IBOutlet weak var MonthLabel :UILabel!
     
+    @IBOutlet weak var ReloadButton :UIButton!
+    
     var getJson: NSDictionary!
     
+    var kakeiImages :[UIImageView]! = []
     
     
     
@@ -78,28 +81,16 @@ class KakeiViewController: UIViewController {
         goLogin()
     }
     
-    func goLogin(){
-        let storyboard: UIStoryboard = self.storyboard!
-        let nextView = storyboard.instantiateViewController(withIdentifier: "LoginView")
-        self.present(nextView, animated: true, completion: nil)
-    }
+    var timer :Timer!
     
-    
-    let nowDate = NSDate()
-    let dateFormat = DateFormatter()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    @IBAction func Reload() {
         
-        dateFormat.dateFormat = "yyyy年MM月"
-        MonthLabel.text = dateFormat.string(from: nowDate as Date)
+        kakeiRemove()
         
-        // Do any additional setup after loading the view.
         let url = "https://kakeigakuen.xyz/api/image/path"
         var request = URLRequest(url: URL(string: url)! as URL)
         
         request.httpMethod = "POST"
-        print(Keychain.kakeiToken.value()!)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
         let token = Keychain.kakeiToken.value()!
@@ -125,6 +116,7 @@ class KakeiViewController: UIViewController {
             // JSONパースしてキーチェーンに新しいbudgetをセット
             do {
                 self.getJson = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
+                self.kakeiRemove()
                 DispatchQueue.main.async {
                     let urls:[String] = self.getJson["path"]! as! [String]
                     for u in urls{
@@ -132,7 +124,7 @@ class KakeiViewController: UIViewController {
                         print("url = " + renameU)
                         self.getImage(url: URL(string: renameU)! as URL)
                     }
-
+                    
                 }
             } catch {
                 DispatchQueue.main.async(execute: {
@@ -141,7 +133,36 @@ class KakeiViewController: UIViewController {
                 return
             }
         }
+
         task.resume()
+    }
+    
+    func goLogin(){
+        let storyboard: UIStoryboard = self.storyboard!
+        let nextView = storyboard.instantiateViewController(withIdentifier: "LoginView")
+        self.present(nextView, animated: true, completion: nil)
+    }
+    
+    
+    let nowDate = NSDate()
+    let dateFormat = DateFormatter()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        dateFormat.dateFormat = "yyyy年MM月"
+        MonthLabel.text = dateFormat.string(from: nowDate as Date)
+        
+        // Do any additional setup after loading the view.
+        Reload()
+        
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(
+            self,
+            selector: "kakeiRemove",
+            name:NSNotification.Name.UIApplicationWillTerminate,
+            object: nil
+        )
     }
 
     override func didReceiveMemoryWarning() {
@@ -149,9 +170,16 @@ class KakeiViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+
     override func viewDidAppear(_ animated: Bool) {
     }
     
+    @IBAction func BtnAnimation(){
+            let rotationAnimation = CABasicAnimation(keyPath:"transform.rotation.z")
+            rotationAnimation.toValue = CGFloat(Double.pi / 180) * 360
+            rotationAnimation.duration = 0.8
+            ReloadButton.layer.add(rotationAnimation, forKey: "rotationAnimation")
+    }
     
     func getImage(url :URL){
         let imageView:UIImageView = UIImageView()
@@ -166,6 +194,17 @@ class KakeiViewController: UIViewController {
         }
         let image: UIImage = UIImage(data: imageData! as Data)!  // NSDataからUIImageへの変換
         imageView.image = image
+        kakeiImages!.append(imageView)
         self.view.addSubview(imageView)
+    }
+    
+    func kakeiRemove() {
+        if (kakeiImages != nil) {
+            for i in kakeiImages {
+                DispatchQueue.main.async { // Correct
+                    i.removeFromSuperview()
+                }
+            }
+        }
     }
 }
