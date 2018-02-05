@@ -128,8 +128,6 @@ class ViewController: UIViewController,UITextFieldDelegate ,SFSpeechRecognizerDe
     
     //ログアウト関数
     @IBAction func Logout(_ sender: Any) {
-        print("logout func is called")
-
         Keychain.kakeiToken.del()
         Keychain.kakeiBudget.del()
         Keychain.kakeiRest.del()
@@ -140,8 +138,6 @@ class ViewController: UIViewController,UITextFieldDelegate ,SFSpeechRecognizerDe
         let storyboard: UIStoryboard = self.storyboard!
         let nextView = storyboard.instantiateViewController(withIdentifier: "LoginView")
         self.present(nextView, animated: true, completion: nil)
-        print("lllllllllllllllllllllllllllllllllll")
-
     }
     
 
