@@ -13,6 +13,8 @@ class GraphViewController: UIViewController , UITableViewDataSource , UITableVie
 
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var ReloadButton :UIButton!
+    
     var getJson :NSDictionary!
     
     var itemList :[String] = []
@@ -93,37 +95,10 @@ class GraphViewController: UIViewController , UITableViewDataSource , UITableVie
         self.present(nextView, animated: true, completion: nil)
     }
     
-    //データ
-    let continent:[String] = ["アジア","北アメリカ","南アメリカ","ヨーロッパ","アフリカ","オセアニア", "南極"]
-    let asia:[String]  = ["日本","中国","韓国","インド","シンガポール"]
-    let northAmerica:[String]  = ["アメリカ合衆国","カナダ","メキシコ","ジャマイカ","トリニダード・トバゴ"]
-    let southAmerica:[String]  = ["アルゼンチン","ブラジル","ウルグアイ","コロンビア","チリ"]
-    let europe:[String]  = ["イギリス","イタリア","ドイツ","フランス","ロシア"]
-    let africa:[String]  = ["エジプト","ガーナ","ケニア","ナイジェリア","南アフリカ共和国"]
-    let oceania:[String]  = ["オーストラリア","ニュージーランド","フィジー","パプアニューギニア","マーシャル諸島"]
-    
-    let array:[String] = ["swift","Ruby","Rails","PHP","HTML.CSS","JS","Java"]
-    
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // 一つのsectionの中に入れるCellの数を決める
         return dateNum[section]
-//        switch section {
-//        case 0:
-//            return asia.count
-//        case 1:
-//            return northAmerica.count
-//        case 2:
-//            return southAmerica.count
-//        case 3:
-//            return europe.count
-//        case 4:
-//            return africa.count
-//        case 5:
-//            return oceania.count
-//        default:
-//            return 0
-//        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -149,7 +124,6 @@ class GraphViewController: UIViewController , UITableViewDataSource , UITableVie
         for i in 0..<indexPath.section {
             until += dateNum[i]
         }
-        print("\(until)")
         cell.textLabel?.text = itemList[indexPath.row + until]
         
         
@@ -213,6 +187,14 @@ class GraphViewController: UIViewController , UITableViewDataSource , UITableVie
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func BtnAnimation(){
+        let rotationAnimation = CABasicAnimation(keyPath:"transform.rotation.z")
+        rotationAnimation.toValue = CGFloat(Double.pi / 180) * 360
+        rotationAnimation.duration = 0.8
+        ReloadButton.layer.add(rotationAnimation, forKey: "rotationAnimation")
+        getList()
+    }
+    
     
     
     func getList() {
@@ -257,9 +239,6 @@ class GraphViewController: UIViewController , UITableViewDataSource , UITableVie
                             self.itemList.append(block["item"] as! String)
                             var date = block["time"] as! String
                             date = [Character](date.characters)[8..<10].map{ String($0) }.joined(separator: "")
-                            //intへのキャスト方法(一応念のため何かに使うかもしれないから)
-//                            let intd :Int! = Int(date)!
-//                            print("\(intd!)")
                             self.boughtList.append(date)
                             self.costList.append("\(block["cost"] ?? "")")
                         }
