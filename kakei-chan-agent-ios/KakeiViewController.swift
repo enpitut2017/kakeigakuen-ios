@@ -9,6 +9,7 @@
 import UIKit
 import TwitterKit
 
+
 class KakeiViewController: UIViewController {
     
     @IBOutlet weak var MonthLabel :UILabel!
@@ -19,7 +20,9 @@ class KakeiViewController: UIViewController {
     
     var kakeiImages :[UIImageView]! = []
     
+    var images :[UIImage]! = []
     
+    var addImages :UIImage!
     
     //トークン設定
     public enum Keychain: String {
@@ -130,7 +133,7 @@ class KakeiViewController: UIViewController {
                 return
             }
         }
-
+        
         task.resume()
     }
     
@@ -172,13 +175,12 @@ class KakeiViewController: UIViewController {
     }
     
     @IBAction func tweet() {
-        
-        let key :String = "Ye0PrcbySrbWlo1HUq35J7QGr"
-        let secret :String = "jspWEnHyS2QKOt2Sc50aBEjvSZd37HOruHY3IqMldkK0Zrx4m5"
         if let session = TWTRTwitter.sharedInstance().sessionStore.session() {
             print(session.userID)
             let composer = TWTRComposer()
+            syncImages()
             composer.setText("私のカケイちゃんです！ | おてがる、カンタン、家計簿アプリ #家計学園 kakeigakuen.xyz")
+            composer.setImage(addImages)
             composer.show(from: self) { result in
                 if (result == .done) {
                     print("OK")
@@ -190,9 +192,7 @@ class KakeiViewController: UIViewController {
         
         } else {
             twtrLogin()
-
             print("アカウントはありません")
-            
         }
     }
     
@@ -208,6 +208,22 @@ class KakeiViewController: UIViewController {
         }
     }
     
+    func syncImages() {
+        var bottomImage :UIImage = images[0]
+        let newSize = CGSize(width:bottomImage.size.width, height:bottomImage.size.height)
+        for i in 1..<images.count {
+            UIGraphicsBeginImageContextWithOptions(newSize, false, bottomImage.scale)
+            bottomImage.draw(in: CGRect(x:0,y:0,width:newSize.width,height:newSize.height))
+            let topImage :UIImage = images[i]
+            topImage.draw(in: CGRect(x:0,y:0,width:newSize.width,height:newSize.height),blendMode:CGBlendMode.normal, alpha:1.0)
+            addImages = UIGraphicsGetImageFromCurrentImageContext()!
+            UIGraphicsEndImageContext()
+            bottomImage = addImages!
+        }
+    }
+    
+    
+    
     func getImage(url :URL){
         let imageView:UIImageView = UIImageView()
         let size:CGFloat = 400
@@ -222,7 +238,9 @@ class KakeiViewController: UIViewController {
         let image: UIImage = UIImage(data: imageData! as Data)!  // NSDataからUIImageへの変換
         imageView.image = image
         kakeiImages!.append(imageView)
+        images!.append(image)
         self.view.addSubview(imageView)
+        
     }
     
     func kakeiRemove() {
@@ -233,5 +251,6 @@ class KakeiViewController: UIViewController {
                 }
             }
         }
+        images = []
     }
 }
