@@ -118,9 +118,7 @@ class KakeiViewController: UIViewController {
                 DispatchQueue.main.async {
                     let urls:[String] = self.getJson["path"]! as! [String]
                     for u in urls{
-                        let renameU = u.substring(from: u.index(u.startIndex, offsetBy: 8))
-                        print("url = " + renameU)
-                        self.getImage(url: URL(string: renameU)! as URL)
+                        self.getImage(url: URL(string: u)! as URL)
                     }
                     
                 }
