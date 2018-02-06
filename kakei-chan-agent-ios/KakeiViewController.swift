@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import TwitterKit
+
 
 class KakeiViewController: UIViewController {
     
@@ -18,7 +20,9 @@ class KakeiViewController: UIViewController {
     
     var kakeiImages :[UIImageView]! = []
     
+    var images :[UIImage]! = []
     
+    var addImages :UIImage!
     
     //トークン設定
     public enum Keychain: String {
@@ -129,7 +133,7 @@ class KakeiViewController: UIViewController {
                 return
             }
         }
-
+        
         task.resume()
     }
     
@@ -152,13 +156,6 @@ class KakeiViewController: UIViewController {
         // Do any additional setup after loading the view.
         Reload()
         
-//        let notificationCenter = NotificationCenter.default
-//        notificationCenter.addObserver(
-//            self,
-//            selector: "kakeiRemove",
-//            name:NSNotification.Name.UIApplicationWillTerminate,
-//            object: nil
-//        )
     }
 
     override func didReceiveMemoryWarning() {
@@ -177,6 +174,56 @@ class KakeiViewController: UIViewController {
             ReloadButton.layer.add(rotationAnimation, forKey: "rotationAnimation")
     }
     
+    @IBAction func tweet() {
+        if let session = TWTRTwitter.sharedInstance().sessionStore.session() {
+            print(session.userID)
+            let composer = TWTRComposer()
+            syncImages()
+            composer.setText("私のカケイちゃんです！ | おてがる、カンタン、家計簿アプリ #家計学園 kakeigakuen.xyz")
+            composer.setImage(addImages)
+            composer.show(from: self) { result in
+                if (result == .done) {
+                    print("OK")
+                } else {
+                    print("NG")
+                }
+            }
+            
+        
+        } else {
+            twtrLogin()
+            print("アカウントはありません")
+        }
+    }
+    
+    func twtrLogin() {
+        TWTRTwitter.sharedInstance().logIn { session, error in
+            guard let session = session else {
+                if let error = error {
+                    print("エラーが起きました => \(error.localizedDescription)")
+                }
+                return
+            }
+            print("@\(session.userName)でログインしました")
+        }
+    }
+    
+    func syncImages() {
+        var bottomImage :UIImage = images[0]
+        let newSize = CGSize(width:bottomImage.size.width, height:bottomImage.size.height)
+        for i in 1..<images.count {
+            UIGraphicsBeginImageContextWithOptions(newSize, false, bottomImage.scale)
+            bottomImage.draw(in: CGRect(x:0,y:0,width:newSize.width,height:newSize.height))
+            let topImage :UIImage = images[i]
+            topImage.draw(in: CGRect(x:0,y:0,width:newSize.width,height:newSize.height),blendMode:CGBlendMode.normal, alpha:1.0)
+            addImages = UIGraphicsGetImageFromCurrentImageContext()!
+            UIGraphicsEndImageContext()
+            bottomImage = addImages!
+        }
+    }
+    
+    
+    
     func getImage(url :URL){
         let imageView:UIImageView = UIImageView()
         let size:CGFloat = 400
@@ -191,7 +238,9 @@ class KakeiViewController: UIViewController {
         let image: UIImage = UIImage(data: imageData! as Data)!  // NSDataからUIImageへの変換
         imageView.image = image
         kakeiImages!.append(imageView)
+        images!.append(image)
         self.view.addSubview(imageView)
+        
     }
     
     func kakeiRemove() {
@@ -202,5 +251,6 @@ class KakeiViewController: UIViewController {
                 }
             }
         }
+        images = []
     }
 }

@@ -13,7 +13,6 @@
 		1C34269B2025544200694609 /* Speech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C34269A2025544200694609 /* Speech.framework */; };
 		1C4F5670200B4E080050F6FD /* record.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C4F566F200B4E080050F6FD /* record.png */; };
 		1C784F82202721C200C8F0A8 /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C784F81202721C100C8F0A8 /* GraphViewController.swift */; };
-		1CAFBC672029C08300D61080 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CAFBC662029C08300D61080 /* Social.framework */; };
 		1CBB6BB520280AB1008001E6 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBB6BB420280AB1008001E6 /* SignUpViewController.swift */; };
 		1CBB6BB720283057008001E6 /* kakeichan.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CBB6BB620283057008001E6 /* kakeichan.png */; };
 		1CF2C39A2027DF1200BFDBA4 /* reload.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CF2C3992027DF1200BFDBA4 /* reload.png */; };
@@ -52,11 +51,13 @@
 		1C342697202553C400694609 /* UICircularProgressRing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UICircularProgressRing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C342698202553FD00694609 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		1C34269A2025544200694609 /* Speech.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Speech.framework; path = System/Library/Frameworks/Speech.framework; sourceTree = SDKROOT; };
+		1C43D1DF2029E2C9002A23AE /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		1C4F566F200B4E080050F6FD /* record.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = record.png; path = ../../Desktop/record.png; sourceTree = "<group>"; };
 		1C784F81202721C100C8F0A8 /* GraphViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GraphViewController.swift; path = "/Users/sakas_poke/kakeigakuen/kakei-chan-agent-ios/GraphViewController.swift"; sourceTree = "<absolute>"; };
 		1CAFBC662029C08300D61080 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		1CBB6BB420280AB1008001E6 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		1CBB6BB620283057008001E6 /* kakeichan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kakeichan.png; sourceTree = "<group>"; };
+		1CECBCE92029E62100CC7907 /* kakei-chan-agent-ios-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "kakei-chan-agent-ios-Bridging-Header.h"; sourceTree = "<group>"; };
 		1CF2C3992027DF1200BFDBA4 /* reload.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reload.png; sourceTree = "<group>"; };
 		1CFF0B03202582B3004F33CC /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../../Downloads/icon.png; sourceTree = "<group>"; };
 		1CFF0B072025B45F004F33CC /* TouchesBeganExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchesBeganExtension.swift; sourceTree = "<group>"; };
@@ -84,7 +85,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1CAFBC672029C08300D61080 /* Social.framework in Frameworks */,
 				1C34269B2025544200694609 /* Speech.framework in Frameworks */,
 				1C342699202553FD00694609 /* AVFoundation.framework in Frameworks */,
 				1C342696202553C400694609 /* UICircularProgressRing.framework in Frameworks */,
@@ -121,6 +121,7 @@
 		41516C26588C4697C23304BF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1C43D1DF2029E2C9002A23AE /* Twitter.framework */,
 				1CAFBC662029C08300D61080 /* Social.framework */,
 				1C34269A2025544200694609 /* Speech.framework */,
 				1C342698202553FD00694609 /* AVFoundation.framework */,
@@ -170,6 +171,7 @@
 				CFA0169F1FD8F1BD00A2C8F2 /* Assets.xcassets */,
 				CFA016A11FD8F1BD00A2C8F2 /* LaunchScreen.storyboard */,
 				CFA016A41FD8F1BD00A2C8F2 /* Info.plist */,
+				1CECBCE92029E62100CC7907 /* kakei-chan-agent-ios-Bridging-Header.h */,
 			);
 			path = "kakei-chan-agent-ios";
 			sourceTree = "<group>";
@@ -263,6 +265,7 @@
 				TargetAttributes = {
 					CFA016941FD8F1BD00A2C8F2 = {
 						CreatedOnToolsVersion = 9.1;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 					CFA016A81FD8F1BD00A2C8F2 = {
@@ -335,9 +338,14 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-kakei-chan-agent-ios/Pods-kakei-chan-agent-ios-resources.sh",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterKitResources.bundle",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterShareExtensionUIResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TwitterKitResources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TwitterShareExtensionUIResources.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -351,10 +359,14 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-kakei-chan-agent-ios/Pods-kakei-chan-agent-ios-frameworks.sh",
+				"${PODS_ROOT}/TwitterCore/iOS/TwitterCore.framework",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework",
 				"${BUILT_PRODUCTS_DIR}/UICircularProgressRing/UICircularProgressRing.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UICircularProgressRing.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -560,6 +572,7 @@
 			baseConfigurationReference = D0F1ECF5F4B57BEB0BF79ADA /* Pods-kakei-chan-agent-ios.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L4GKXFJ86Y;
 				INFOPLIST_FILE = "kakei-chan-agent-ios/Info.plist";
@@ -568,6 +581,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/../Frameworks/";
 				PRODUCT_BUNDLE_IDENTIFIER = "yatteiki.kakei-chan-agent-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "kakei-chan-agent-ios/kakei-chan-agent-ios-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -578,6 +593,7 @@
 			baseConfigurationReference = EAE849F3E5616B84E18D1C88 /* Pods-kakei-chan-agent-ios.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L4GKXFJ86Y;
 				INFOPLIST_FILE = "kakei-chan-agent-ios/Info.plist";
@@ -586,6 +602,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/../Frameworks/";
 				PRODUCT_BUNDLE_IDENTIFIER = "yatteiki.kakei-chan-agent-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "kakei-chan-agent-ios/kakei-chan-agent-ios-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
