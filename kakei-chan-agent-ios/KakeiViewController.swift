@@ -227,7 +227,7 @@ class KakeiViewController: UIViewController {
     func getImage(url :URL){
         let imageView:UIImageView = UIImageView()
         let size:CGFloat = 400
-        imageView.frame = CGRect(x:((self.view.bounds.width-size)/2),y:(self.view.bounds.height-size-100)/2,width:size,height:size+100)
+        imageView.frame = CGRect(x:((self.view.bounds.width-size+40)/2),y:(self.view.bounds.height-size-50)/2,width:size-40,height:size+100)
         
         var imageData:NSData!
         do {

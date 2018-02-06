@@ -548,10 +548,10 @@
                                     <action selector="Reload" destination="lfo-bH-7BD" eventType="touchUpInside" id="qbL-6C-IQD"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nYp-ek-auS">
-                                <rect key="frame" x="39" y="117" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nYp-ek-auS">
+                                <rect key="frame" x="322" y="155" width="40" height="40"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="tweet.png"/>
                                 <connections>
                                     <action selector="tweet" destination="lfo-bH-7BD" eventType="touchUpInside" id="7nP-Ph-qf4"/>
                                 </connections>
@@ -596,6 +596,7 @@
         <image name="kakeichan.png" width="2009" height="2712"/>
         <image name="record.png" width="269" height="269"/>
         <image name="reload.png" width="256" height="256"/>
+        <image name="tweet.png" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="LsK-1E-sFt"/>

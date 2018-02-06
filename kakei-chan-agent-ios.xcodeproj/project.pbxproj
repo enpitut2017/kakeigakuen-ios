@@ -13,6 +13,7 @@
 		1C34269B2025544200694609 /* Speech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C34269A2025544200694609 /* Speech.framework */; };
 		1C4F5670200B4E080050F6FD /* record.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C4F566F200B4E080050F6FD /* record.png */; };
 		1C784F82202721C200C8F0A8 /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C784F81202721C100C8F0A8 /* GraphViewController.swift */; };
+		1C934D8D202A05EF008D7247 /* tweet.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C934D8C202A05EF008D7247 /* tweet.png */; };
 		1CBB6BB520280AB1008001E6 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBB6BB420280AB1008001E6 /* SignUpViewController.swift */; };
 		1CBB6BB720283057008001E6 /* kakeichan.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CBB6BB620283057008001E6 /* kakeichan.png */; };
 		1CF2C39A2027DF1200BFDBA4 /* reload.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CF2C3992027DF1200BFDBA4 /* reload.png */; };
@@ -54,6 +55,7 @@
 		1C43D1DF2029E2C9002A23AE /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		1C4F566F200B4E080050F6FD /* record.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = record.png; path = ../../Desktop/record.png; sourceTree = "<group>"; };
 		1C784F81202721C100C8F0A8 /* GraphViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GraphViewController.swift; path = "/Users/sakas_poke/kakeigakuen/kakei-chan-agent-ios/GraphViewController.swift"; sourceTree = "<absolute>"; };
+		1C934D8C202A05EF008D7247 /* tweet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tweet.png; path = ../../Downloads/tweet.png; sourceTree = "<group>"; };
 		1CAFBC662029C08300D61080 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		1CBB6BB420280AB1008001E6 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		1CBB6BB620283057008001E6 /* kakeichan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kakeichan.png; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				CFA0169A1FD8F1BD00A2C8F2 /* ViewController.swift */,
 				1CF2C3992027DF1200BFDBA4 /* reload.png */,
 				1CBB6BB620283057008001E6 /* kakeichan.png */,
+				1C934D8C202A05EF008D7247 /* tweet.png */,
 				1C4F566F200B4E080050F6FD /* record.png */,
 				1CFF0B03202582B3004F33CC /* icon.png */,
 				CFA016C61FD8F64200A2C8F2 /* LoginViewController.swift */,
@@ -305,6 +308,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C934D8D202A05EF008D7247 /* tweet.png in Resources */,
 				1CBB6BB720283057008001E6 /* kakeichan.png in Resources */,
 				CFA016A31FD8F1BD00A2C8F2 /* LaunchScreen.storyboard in Resources */,
 				1CFF0B04202582B3004F33CC /* icon.png in Resources */,
