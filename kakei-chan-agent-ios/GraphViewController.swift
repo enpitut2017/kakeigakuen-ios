@@ -93,37 +93,10 @@ class GraphViewController: UIViewController , UITableViewDataSource , UITableVie
         self.present(nextView, animated: true, completion: nil)
     }
     
-    //データ
-    let continent:[String] = ["アジア","北アメリカ","南アメリカ","ヨーロッパ","アフリカ","オセアニア", "南極"]
-    let asia:[String]  = ["日本","中国","韓国","インド","シンガポール"]
-    let northAmerica:[String]  = ["アメリカ合衆国","カナダ","メキシコ","ジャマイカ","トリニダード・トバゴ"]
-    let southAmerica:[String]  = ["アルゼンチン","ブラジル","ウルグアイ","コロンビア","チリ"]
-    let europe:[String]  = ["イギリス","イタリア","ドイツ","フランス","ロシア"]
-    let africa:[String]  = ["エジプト","ガーナ","ケニア","ナイジェリア","南アフリカ共和国"]
-    let oceania:[String]  = ["オーストラリア","ニュージーランド","フィジー","パプアニューギニア","マーシャル諸島"]
-    
-    let array:[String] = ["swift","Ruby","Rails","PHP","HTML.CSS","JS","Java"]
-    
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // 一つのsectionの中に入れるCellの数を決める
         return dateNum[section]
-//        switch section {
-//        case 0:
-//            return asia.count
-//        case 1:
-//            return northAmerica.count
-//        case 2:
-//            return southAmerica.count
-//        case 3:
-//            return europe.count
-//        case 4:
-//            return africa.count
-//        case 5:
-//            return oceania.count
-//        default:
-//            return 0
-//        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -149,7 +122,6 @@ class GraphViewController: UIViewController , UITableViewDataSource , UITableVie
         for i in 0..<indexPath.section {
             until += dateNum[i]
         }
-        print("\(until)")
         cell.textLabel?.text = itemList[indexPath.row + until]
         
         
