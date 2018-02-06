@@ -152,13 +152,13 @@ class KakeiViewController: UIViewController {
         // Do any additional setup after loading the view.
         Reload()
         
-        let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(
-            self,
-            selector: "kakeiRemove",
-            name:NSNotification.Name.UIApplicationWillTerminate,
-            object: nil
-        )
+//        let notificationCenter = NotificationCenter.default
+//        notificationCenter.addObserver(
+//            self,
+//            selector: "kakeiRemove",
+//            name:NSNotification.Name.UIApplicationWillTerminate,
+//            object: nil
+//        )
     }
 
     override func didReceiveMemoryWarning() {

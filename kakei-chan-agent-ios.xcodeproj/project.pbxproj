@@ -13,6 +13,7 @@
 		1C34269B2025544200694609 /* Speech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C34269A2025544200694609 /* Speech.framework */; };
 		1C4F5670200B4E080050F6FD /* record.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C4F566F200B4E080050F6FD /* record.png */; };
 		1C784F82202721C200C8F0A8 /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C784F81202721C100C8F0A8 /* GraphViewController.swift */; };
+		1CAFBC672029C08300D61080 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CAFBC662029C08300D61080 /* Social.framework */; };
 		1CBB6BB520280AB1008001E6 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBB6BB420280AB1008001E6 /* SignUpViewController.swift */; };
 		1CBB6BB720283057008001E6 /* kakeichan.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CBB6BB620283057008001E6 /* kakeichan.png */; };
 		1CF2C39A2027DF1200BFDBA4 /* reload.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CF2C3992027DF1200BFDBA4 /* reload.png */; };
@@ -53,6 +54,7 @@
 		1C34269A2025544200694609 /* Speech.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Speech.framework; path = System/Library/Frameworks/Speech.framework; sourceTree = SDKROOT; };
 		1C4F566F200B4E080050F6FD /* record.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = record.png; path = ../../Desktop/record.png; sourceTree = "<group>"; };
 		1C784F81202721C100C8F0A8 /* GraphViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GraphViewController.swift; path = "/Users/sakas_poke/kakeigakuen/kakei-chan-agent-ios/GraphViewController.swift"; sourceTree = "<absolute>"; };
+		1CAFBC662029C08300D61080 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		1CBB6BB420280AB1008001E6 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		1CBB6BB620283057008001E6 /* kakeichan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kakeichan.png; sourceTree = "<group>"; };
 		1CF2C3992027DF1200BFDBA4 /* reload.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reload.png; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CAFBC672029C08300D61080 /* Social.framework in Frameworks */,
 				1C34269B2025544200694609 /* Speech.framework in Frameworks */,
 				1C342699202553FD00694609 /* AVFoundation.framework in Frameworks */,
 				1C342696202553C400694609 /* UICircularProgressRing.framework in Frameworks */,
@@ -118,6 +121,7 @@
 		41516C26588C4697C23304BF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1CAFBC662029C08300D61080 /* Social.framework */,
 				1C34269A2025544200694609 /* Speech.framework */,
 				1C342698202553FD00694609 /* AVFoundation.framework */,
 				1C342697202553C400694609 /* UICircularProgressRing.framework */,

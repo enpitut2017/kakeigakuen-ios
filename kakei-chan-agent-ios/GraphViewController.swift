@@ -169,7 +169,6 @@ class GraphViewController: UIViewController , UITableViewDataSource , UITableVie
     
 
     override func viewDidLoad() {
-        getList()
         super.viewDidLoad()
 
         let nowDate = NSDate()
@@ -180,6 +179,10 @@ class GraphViewController: UIViewController , UITableViewDataSource , UITableVie
         tableView.delegate = self
         tableView.dataSource = self
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        getList()
     }
 
     override func didReceiveMemoryWarning() {
