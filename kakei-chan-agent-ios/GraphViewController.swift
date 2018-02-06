@@ -13,6 +13,8 @@ class GraphViewController: UIViewController , UITableViewDataSource , UITableVie
 
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var ReloadButton :UIButton!
+    
     var getJson :NSDictionary!
     
     var itemList :[String] = []
@@ -185,6 +187,14 @@ class GraphViewController: UIViewController , UITableViewDataSource , UITableVie
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func BtnAnimation(){
+        let rotationAnimation = CABasicAnimation(keyPath:"transform.rotation.z")
+        rotationAnimation.toValue = CGFloat(Double.pi / 180) * 360
+        rotationAnimation.duration = 0.8
+        ReloadButton.layer.add(rotationAnimation, forKey: "rotationAnimation")
+        getList()
+    }
+    
     
     
     func getList() {
@@ -229,9 +239,6 @@ class GraphViewController: UIViewController , UITableViewDataSource , UITableVie
                             self.itemList.append(block["item"] as! String)
                             var date = block["time"] as! String
                             date = [Character](date.characters)[8..<10].map{ String($0) }.joined(separator: "")
-                            //intへのキャスト方法(一応念のため何かに使うかもしれないから)
-//                            let intd :Int! = Int(date)!
-//                            print("\(intd!)")
                             self.boughtList.append(date)
                             self.costList.append("\(block["cost"] ?? "")")
                         }

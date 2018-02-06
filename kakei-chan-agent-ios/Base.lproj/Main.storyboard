@@ -242,7 +242,7 @@
                                 <color key="backgroundColor" red="0.21475279329999999" green="0.73953050369999995" blue="0.67969316239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YWu-dq-6Mu">
-                                <rect key="frame" x="0.0" y="322" width="375" height="296"/>
+                                <rect key="frame" x="0.0" y="376" width="375" height="242"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -272,6 +272,14 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="48B-aq-lWK">
+                                <rect key="frame" x="329" y="112" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="reload.png"/>
+                                <connections>
+                                    <action selector="BtnAnimation" destination="QHn-SD-HYm" eventType="touchUpInside" id="aP7-BA-nFX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="wpc-vl-7RP"/>
@@ -279,6 +287,7 @@
                     <tabBarItem key="tabBarItem" title="グラフ" id="VqH-Mw-J5A"/>
                     <connections>
                         <outlet property="MonthLabel" destination="UAk-H6-OLk" id="zLg-Q5-jAW"/>
+                        <outlet property="ReloadButton" destination="48B-aq-lWK" id="eAw-B4-wgQ"/>
                         <outlet property="tableView" destination="YWu-dq-6Mu" id="Xtf-sr-6Od"/>
                     </connections>
                 </viewController>
