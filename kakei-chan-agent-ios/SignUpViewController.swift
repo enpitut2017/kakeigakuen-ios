@@ -100,7 +100,7 @@ class SignUpViewController: UIViewController {
         let keyboardScreenEndFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         let myBoundSize: CGSize = UIScreen.main.bounds.size
         
-        var txtLimit = txtActiveField.frame.origin.y + txtActiveField.frame.height + 50.0
+        let txtLimit = txtActiveField.frame.origin.y + txtActiveField.frame.height + 50.0
         let kbdLimit = myBoundSize.height - keyboardScreenEndFrame.size.height
 
         print("テキストフィールドの下辺：(\(txtLimit))")

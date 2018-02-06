@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TwitterKit
 
 class KakeiViewController: UIViewController {
     
@@ -152,13 +153,6 @@ class KakeiViewController: UIViewController {
         // Do any additional setup after loading the view.
         Reload()
         
-//        let notificationCenter = NotificationCenter.default
-//        notificationCenter.addObserver(
-//            self,
-//            selector: "kakeiRemove",
-//            name:NSNotification.Name.UIApplicationWillTerminate,
-//            object: nil
-//        )
     }
 
     override func didReceiveMemoryWarning() {
@@ -175,6 +169,43 @@ class KakeiViewController: UIViewController {
             rotationAnimation.toValue = CGFloat(Double.pi / 180) * 360
             rotationAnimation.duration = 0.8
             ReloadButton.layer.add(rotationAnimation, forKey: "rotationAnimation")
+    }
+    
+    @IBAction func tweet() {
+        
+        let key :String = "Ye0PrcbySrbWlo1HUq35J7QGr"
+        let secret :String = "jspWEnHyS2QKOt2Sc50aBEjvSZd37HOruHY3IqMldkK0Zrx4m5"
+        if let session = TWTRTwitter.sharedInstance().sessionStore.session() {
+            print(session.userID)
+            let composer = TWTRComposer()
+            composer.setText("私のカケイちゃんです！ | おてがる、カンタン、家計簿アプリ #家計学園 kakeigakuen.xyz")
+            composer.show(from: self) { result in
+                if (result == .done) {
+                    print("OK")
+                } else {
+                    print("NG")
+                }
+            }
+            
+        
+        } else {
+            twtrLogin()
+
+            print("アカウントはありません")
+            
+        }
+    }
+    
+    func twtrLogin() {
+        TWTRTwitter.sharedInstance().logIn { session, error in
+            guard let session = session else {
+                if let error = error {
+                    print("エラーが起きました => \(error.localizedDescription)")
+                }
+                return
+            }
+            print("@\(session.userName)でログインしました")
+        }
     }
     
     func getImage(url :URL){
