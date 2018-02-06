@@ -400,6 +400,7 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
     var sendDate = Date()
     
     override func viewDidLoad() {
+        print(Keychain.kakeiToken.value()!)
         if (Keychain.kakeiToken.value() == nil || Keychain.kakeiToken.value()! == "error") {
             loggedin = false
         } else {
@@ -639,7 +640,6 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
     //画面タップでデータ更新
     @IBAction func Reload(_ sender: Any) {
         reload()
-       //print("tappeddddddd")
     }
     
     
@@ -659,7 +659,7 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
            //送信するparams
             //商品, 値段, トークン
             let params: [String: Any] = [
-                "item" : String(self.item),
+                "items" : String(self.item),
                 "costs" : String(self.cost),
                 "token" : Keychain.kakeiToken.value()!
             ]
@@ -684,10 +684,14 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
                     }
                     self.getJson = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
                     DispatchQueue.main.async {
-                        let userRest = "\(self.getJson["rest"] ?? "")"
-                        Keychain.kakeiRest.set(userRest)
-                        //残高更新
-                        self.reload()
+                        if(!self.err()) {
+                            let userRest = "\(self.getJson["rest"] ?? "")"
+                            Keychain.kakeiRest.set(userRest)
+                            //残高更新
+                            self.reload()
+                        } else {
+                             print("failed to parse json")
+                        }
                     }
                 } catch {
                     DispatchQueue.main.async(execute: {
@@ -736,15 +740,17 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
             do {
                 self.getJson = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
                 DispatchQueue.main.async {
-                    let userRest = "\(self.getJson["rest"] ?? "")"
-                    let userbudget = "\(self.getJson["budget"] ?? "")"
-                    let userToken = "\(self.getJson["token"] ?? "")"
-                    //トークンセット
-                    Keychain.kakeiRest.set(userRest)
-                    Keychain.kakeiBudget.set(userbudget)
-                    Keychain.kakeiToken.set(userToken)
-                    
-
+                    if(!self.err()) {
+                        let userRest = "\(self.getJson["rest"] ?? "")"
+                        let userbudget = "\(self.getJson["budget"] ?? "")"
+                        let userToken = "\(self.getJson["token"] ?? "")"
+                        //トークンセット
+                        Keychain.kakeiRest.set(userRest)
+                        Keychain.kakeiBudget.set(userbudget)
+                        Keychain.kakeiToken.set(userToken)
+                    } else {
+                        print("failed to parse json")
+                    }
                     //self.reload()
                 }
             } catch {
@@ -755,5 +761,13 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
             }
         }
         task.resume()
+    }
+    
+    func err() -> Bool{
+        if("\(self.getJson["error"] ?? "")" == "true") {
+            return true
+        } else {
+            return false
+        }
     }
 }
