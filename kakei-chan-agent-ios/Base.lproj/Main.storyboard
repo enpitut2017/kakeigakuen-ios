@@ -273,7 +273,7 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="48B-aq-lWK">
-                                <rect key="frame" x="329" y="112" width="30" height="30"/>
+                                <rect key="frame" x="327" y="117" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="reload.png"/>
                                 <connections>
@@ -540,7 +540,7 @@
                                 <color key="backgroundColor" red="0.21475279329999999" green="0.73953050369999995" blue="0.67969316239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qzD-UU-Oii">
-                                <rect key="frame" x="317" y="123" width="30" height="30"/>
+                                <rect key="frame" x="327" y="117" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="reload.png"/>
                                 <connections>
