@@ -19,6 +19,13 @@ class GraphViewController: UIViewController , UITableViewDataSource , UITableVie
     
     var boughtList :[String] = []
     
+    var  costList :[String] = []
+    
+    
+    var dates :[String] = []
+    
+    var dateNum :[Int] = []
+    
     //トークン設定
     public enum Keychain: String {
         // キー名
@@ -99,32 +106,34 @@ class GraphViewController: UIViewController , UITableViewDataSource , UITableVie
     
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // 一つのsectionの中に入れるCellの数を決める。
-        switch section {
-        case 0:
-            return asia.count
-        case 1:
-            return northAmerica.count
-        case 2:
-            return southAmerica.count
-        case 3:
-            return europe.count
-        case 4:
-            return africa.count
-        case 5:
-            return oceania.count
-        default:
-            return 0
-        }
+        // 一つのsectionの中に入れるCellの数を決める
+        return dateNum[section]
+//        switch section {
+//        case 0:
+//            return asia.count
+//        case 1:
+//            return northAmerica.count
+//        case 2:
+//            return southAmerica.count
+//        case 3:
+//            return europe.count
+//        case 4:
+//            return africa.count
+//        case 5:
+//            return oceania.count
+//        default:
+//            return 0
+//        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         // sectionの数を決める
-        return continent.count
+        return returnSec()
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return continent[section]
+        //section番目ののヘッダを決める
+        return dates[section]
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -136,34 +145,57 @@ class GraphViewController: UIViewController , UITableViewDataSource , UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "booksList", for: indexPath)
         //cell.accessoryType = .disclosureIndicator
-
-        switch indexPath.section {
-        case 0:
-            cell.textLabel?.text = asia[indexPath.row]
-        case 1:
-            cell.textLabel?.text = northAmerica[indexPath.row]
-        case 2:
-            cell.textLabel?.text = southAmerica[indexPath.row]
-        case 3:
-            cell.textLabel?.text = europe[indexPath.row]
-        case 4:
-            cell.textLabel?.text = africa[indexPath.row]
-        case 5:
-            cell.textLabel?.text = oceania[indexPath.row]
-        default:
-            break
+        var until :Int = 0
+        for i in 0..<indexPath.section {
+            until += dateNum[i]
         }
+        print("\(until)")
+        cell.textLabel?.text = itemList[indexPath.row + until]
+        
+        
         
         cell.detailTextLabel?.textColor = #colorLiteral(red: 0.8199555838, green: 0.8199555838, blue: 0.8199555838, alpha: 1)
-        cell.detailTextLabel?.text = continent[indexPath.row]
+        cell.detailTextLabel?.text = costList[indexPath.row + until]
         
         
         return cell
         
     }
     
+    func returnSec () -> Int{
+       return dates.count
+    }
+    
+    func datesMaker() {
+        var latestd :String = ""
+        dates = []
+        dateNum = []
+        let nowDate = NSDate()
+        let dateFormat = DateFormatter()
+        dateFormat.dateFormat = "MM月"
+        let nowMonth :String = dateFormat.string(from: nowDate as Date)
+        var count :Int = 0
+        
+        if(boughtList.count != 0){
+            latestd = boughtList[0]
+            for d in boughtList {
+                if (latestd != d) {
+                    dateNum.append(count)
+                    dates.append(nowMonth + latestd + "日")
+                    latestd = d
+                    count = 1
+                } else {
+                    count += 1
+                }
+            }
+            dateNum.append(count)
+            dates.append(nowMonth + latestd + "日")
+        }
+    }
+    
 
     override func viewDidLoad() {
+        getList()
         super.viewDidLoad()
 
         let nowDate = NSDate()
@@ -174,8 +206,6 @@ class GraphViewController: UIViewController , UITableViewDataSource , UITableVie
         tableView.delegate = self
         tableView.dataSource = self
         // Do any additional setup after loading the view.
-        
-        getList()
     }
 
     override func didReceiveMemoryWarning() {
@@ -218,19 +248,23 @@ class GraphViewController: UIViewController , UITableViewDataSource , UITableVie
                 self.getJson = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
                 DispatchQueue.main.async {
                     if(self.noerr()) {
+                        self.boughtList = []
+                        self.itemList = []
+                        self.costList = []
                         let booklist = self.getJson["list"] as! NSArray
                         for l in booklist {
                             let block = l as! NSDictionary
                             self.itemList.append(block["item"] as! String)
                             var date = block["time"] as! String
                             date = [Character](date.characters)[8..<10].map{ String($0) }.joined(separator: "")
-
                             //intへのキャスト方法(一応念のため何かに使うかもしれないから)
 //                            let intd :Int! = Int(date)!
 //                            print("\(intd!)")
                             self.boughtList.append(date)
+                            self.costList.append("\(block["cost"] ?? "")")
                         }
-                        print (String(describing: type(of: booklist)))
+                        self.datesMaker()
+                        self.tableView.reloadData()
                     } else {
                         print("failed to parse json")
                     }
