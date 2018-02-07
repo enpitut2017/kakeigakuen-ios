@@ -400,7 +400,6 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
     var sendDate = Date()
     
     override func viewDidLoad() {
-        print(Keychain.kakeiToken.value()!)
         if (Keychain.kakeiToken.value() == nil || Keychain.kakeiToken.value()! == "error") {
             loggedin = false
         } else {
@@ -510,7 +509,6 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
         } else {
             loggedin = false
         }
-        
         if(loggedin) {
             reload()
 
