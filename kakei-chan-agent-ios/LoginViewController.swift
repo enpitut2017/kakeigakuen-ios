@@ -24,6 +24,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
     var scrollFormer:CGFloat! = nil
     let scrollViewsample = UIScrollView()
     
+    @IBAction func unwind(_ segue:UIStoryboardSegue){}
+    
+    
     @IBAction func kakei_login() {
         // textfieldの値を取得
         let user_email = email.text

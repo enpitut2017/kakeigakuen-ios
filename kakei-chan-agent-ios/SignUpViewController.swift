@@ -24,6 +24,8 @@ class SignUpViewController: UIViewController {
     
     @IBOutlet weak var errorLabel :UILabel!
     
+    @IBOutlet weak var passErrorLabel :UILabel!
+    
     //UITextFieldの情報を格納するための変数
     var txtActiveField = UITextField()
     @IBOutlet weak var sc: UIScrollView!
@@ -37,6 +39,7 @@ class SignUpViewController: UIViewController {
     var passb :Bool = false
     var passconb :Bool = false
     var budb :Bool = false
+    var samepass :Bool = true
     
     var getJson :NSDictionary!
     
@@ -102,10 +105,6 @@ class SignUpViewController: UIViewController {
         
         let txtLimit = txtActiveField.frame.origin.y + txtActiveField.frame.height + 50.0
         let kbdLimit = myBoundSize.height - keyboardScreenEndFrame.size.height
-
-        print("テキストフィールドの下辺：(\(txtLimit))")
-        print("キーボードの上辺：(\(kbdLimit))")
-        
         
         if txtLimit >= kbdLimit {
             sc.contentOffset.y = txtLimit - kbdLimit
@@ -215,6 +214,16 @@ class SignUpViewController: UIViewController {
             budb = false
         }
         
+        if(password.text != password_conf.text && password.text != "" && password_conf.text != "" && samepass) {
+            samepass = false
+            passErrorLabel.text = "同じパスワードを設定してください"
+        }
+        
+        if(password.text != "" && password_conf.text != "" && password.text == password_conf.text) {
+            samepass = true
+            passErrorLabel.text = ""
+        }
+        
         if((filled == 5) && (password.text! == password_conf.text!) && isOnlyNumber(budget.text!)) {
             register.backgroundColor = #colorLiteral(red: 0.2047508657, green: 0.7041116357, blue: 0.6483085752, alpha: 1)
             register.isEnabled = true
@@ -227,10 +236,9 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func signup () {
-        if (ok) {
-            self.goMain()
+
             sendSignUp()
-        }
+        
     }
     
     func isOnlyNumber(_ str:String) -> Bool {
@@ -275,19 +283,25 @@ class SignUpViewController: UIViewController {
                 }
                 self.getJson = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
                 DispatchQueue.main.async {
+                    let error :String = "\(self.getJson["error"] ?? "")"
                     let token :String = self.getJson["token"] as! String
-                    print(token)
                     let budget :String = "\(self.getJson["budget"] ?? "")"
-                    print(budget)
-                    if (token != "error") {
+                    print(error)
+                    if (error == "0") {
                         Keychain.kakeiToken.set(token)
                         Keychain.kakeiBudget.set(budget)
                         Keychain.kakeiRest.set(budget)
-                        
-                       // self.goMain()
+                        self.goMain()
                         
                     } else {
-                        self.errorLabel.text = "正しく作成されませんでした"
+                        let msgList = self.getJson["message"] as! NSDictionary
+                        self.errorLabel.numberOfLines = msgList.count + 1
+                        self.errorLabel.text = ""
+                        for e in msgList {
+                            let k :String = e.key as! String
+                            let v :[String] = e.value as! [String]
+                            self.errorLabel.text! += "・" + k + v[0] + "\n"
+                        }
                     }
                 }
             } catch {
