@@ -580,7 +580,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L4GKXFJ86Y;
 				INFOPLIST_FILE = "kakei-chan-agent-ios/Info.plist";
-				INSTALL_PATH = "@rpath";
+				INSTALL_PATH = "${BUILT_PRODUCTS_DIR}";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/../Frameworks/";
 				PRODUCT_BUNDLE_IDENTIFIER = "yatteiki.kakei-chan-agent-ios";
@@ -601,7 +601,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L4GKXFJ86Y;
 				INFOPLIST_FILE = "kakei-chan-agent-ios/Info.plist";
-				INSTALL_PATH = "@rpath";
+				INSTALL_PATH = "${BUILT_PRODUCTS_DIR}";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/../Frameworks/";
 				PRODUCT_BUNDLE_IDENTIFIER = "yatteiki.kakei-chan-agent-ios";
