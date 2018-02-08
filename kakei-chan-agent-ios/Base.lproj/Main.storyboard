@@ -558,7 +558,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nYp-ek-auS">
                                 <rect key="frame" x="322" y="155" width="40" height="40"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="tweet.png"/>
                                 <connections>
                                     <action selector="tweet" destination="lfo-bH-7BD" eventType="touchUpInside" id="7nP-Ph-qf4"/>
