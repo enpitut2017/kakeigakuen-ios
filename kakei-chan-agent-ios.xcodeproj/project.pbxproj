@@ -53,7 +53,7 @@
 		1C342698202553FD00694609 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		1C34269A2025544200694609 /* Speech.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Speech.framework; path = System/Library/Frameworks/Speech.framework; sourceTree = SDKROOT; };
 		1C43D1DF2029E2C9002A23AE /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
-		1C4F566F200B4E080050F6FD /* record.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = record.png; path = ../../Desktop/record.png; sourceTree = "<group>"; };
+		1C4F566F200B4E080050F6FD /* record.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = record.png; sourceTree = "<group>"; };
 		1C784F81202721C100C8F0A8 /* GraphViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewController.swift; sourceTree = "<group>"; };
 		1C934D8C202A05EF008D7247 /* tweet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tweet.png; path = "kakei-chan-agent-ios/tweet.png"; sourceTree = SOURCE_ROOT; };
 		1CAFBC662029C08300D61080 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
@@ -61,7 +61,7 @@
 		1CBB6BB620283057008001E6 /* kakeichan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kakeichan.png; sourceTree = "<group>"; };
 		1CECBCE92029E62100CC7907 /* kakei-chan-agent-ios-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "kakei-chan-agent-ios-Bridging-Header.h"; sourceTree = "<group>"; };
 		1CF2C3992027DF1200BFDBA4 /* reload.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reload.png; sourceTree = "<group>"; };
-		1CFF0B03202582B3004F33CC /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../../Downloads/icon.png; sourceTree = "<group>"; };
+		1CFF0B03202582B3004F33CC /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		1CFF0B072025B45F004F33CC /* TouchesBeganExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchesBeganExtension.swift; sourceTree = "<group>"; };
 		B327532D76B0D104E71855EF /* Pods_kakei_chan_agent_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_kakei_chan_agent_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFA016951FD8F1BD00A2C8F2 /* kakei-chan-agent-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "kakei-chan-agent-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
