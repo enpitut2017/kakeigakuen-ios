@@ -54,8 +54,8 @@
 		1C34269A2025544200694609 /* Speech.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Speech.framework; path = System/Library/Frameworks/Speech.framework; sourceTree = SDKROOT; };
 		1C43D1DF2029E2C9002A23AE /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		1C4F566F200B4E080050F6FD /* record.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = record.png; path = ../../Desktop/record.png; sourceTree = "<group>"; };
-		1C784F81202721C100C8F0A8 /* GraphViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GraphViewController.swift; path = "/Users/sakas_poke/kakeigakuen/kakei-chan-agent-ios/GraphViewController.swift"; sourceTree = "<absolute>"; };
-		1C934D8C202A05EF008D7247 /* tweet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tweet.png; path = ../../Downloads/tweet.png; sourceTree = "<group>"; };
+		1C784F81202721C100C8F0A8 /* GraphViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewController.swift; sourceTree = "<group>"; };
+		1C934D8C202A05EF008D7247 /* tweet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tweet.png; path = "kakei-chan-agent-ios/tweet.png"; sourceTree = SOURCE_ROOT; };
 		1CAFBC662029C08300D61080 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		1CBB6BB420280AB1008001E6 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		1CBB6BB620283057008001E6 /* kakeichan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kakeichan.png; sourceTree = "<group>"; };
