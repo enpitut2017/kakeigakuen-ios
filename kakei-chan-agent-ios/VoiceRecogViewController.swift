@@ -42,9 +42,7 @@ class VoiceRecogViewController: UIViewController {
     
     @IBAction func buttonpushed(_ sender: Any) {
         //recognitionを強制終了
-        finishRecording()
-        print("error occered")
-        self.dismiss(animated: true, completion: nil)
+        finishRecognizer()
     }
 
     
@@ -52,16 +50,8 @@ class VoiceRecogViewController: UIViewController {
         super.viewDidLoad()
         if (!audioEngine.isRunning) {
             try! startRecording()
-            self.latestText = ""
-            for i in 0..<newtextlist.count {
-                newtextlist[i] = ""
-            }
-            //タイマー設定
-            //recordButton.setTitle("認識中", for: [])
-            //titletimer = Timer.scheduledTimer(timeInterval: 0.6, target: self, selector: #selector(ViewController.buttonTitle), userInfo: nil, repeats: true)
-            recogtimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(VoiceRecogViewController.recognitionlimit), userInfo: nil, repeats: true)
-
         }
+        
         // Do any additional setup after loading the view.
     }
 
@@ -109,8 +99,6 @@ class VoiceRecogViewController: UIViewController {
                 
                 self.recognitionRequest = nil
                 self.recognitionTask = nil
-                
-                //self.recordButton.setTitle("入力開始", for: [])
             }
         }
         
@@ -121,6 +109,12 @@ class VoiceRecogViewController: UIViewController {
         audioEngine.prepare()
         try audioEngine.start()
         label.text = "何にいくら使いましたか？"
+        
+        self.latestText = ""
+        for i in 0..<newtextlist.count {
+            newtextlist[i] = ""
+        }
+        recogtimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(VoiceRecogViewController.recognitionlimit), userInfo: nil, repeats: true)
     }
     
     public func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
@@ -133,16 +127,10 @@ class VoiceRecogViewController: UIViewController {
     
     //レコーディングをこちら側で強制的に終わらせた時
     func finishRecording(){
-        audioEngine.stop()
-        recognitionRequest?.endAudio()
-        //recordButton.setTitle("Stopping", for: .disabled)
-        if recogtimer.isValid == true {
-            //recogtimerを破棄して入力終了
-            recogtimer.invalidate()
-        }
         
         regulation(s: self.latestText)
-        
+        finishRecognizer()
+
         //うまく喋れてたら送信確認ポップアップ
         if (self.item != "" && self.cost != "" && Int(self.cost) != nil){
             //確認のポップアップ表示
@@ -150,24 +138,27 @@ class VoiceRecogViewController: UIViewController {
             //showStrAlert(str: "正しく入力できてるよ")
             
             //self.dismiss(animated: true, completion: nil)
+            
             segueToMainViewController()
             //喋れてなかったらErrorポップアップ
         } else {
             //self.dismiss(animated: true, completion: nil)
-            segueToMainViewController()
-            //showStrAlert(str: "正しく入力してね")
+            //segueToMainViewController()
+            showStrAlert(str: "もう一度お願いします。")
+            item = ""
+            cost = ""
         }
     }
     
-    //ボタンのタイトルのアニメーション制御
-    //    @objc func buttonTitle(){
-    //        var title:String = "認識中"
-    //        animCalledCounter = animCalledCounter + 1
-    //        for num in 0...animCalledCounter % 3 {
-    //            title = title + "."
-    //        }
-    //        recordButton.setTitle(title, for: [])
-    //    }
+    func finishRecognizer() {
+        audioEngine.stop()
+        recognitionRequest?.endAudio()
+        if recogtimer.isValid == true {
+            //recogtimerを破棄して入力終了
+            recogtimer.invalidate()
+        }
+    }
+    
     
     //ユーザが喋り終わったのを認識して強制的に終わらせる
     @objc func recognitionlimit(){
@@ -219,6 +210,12 @@ class VoiceRecogViewController: UIViewController {
         // OKのアクションを作成する.
         let myOkAction = UIAlertAction(title: "戻る", style: .default) { action in
             //self.go_to_rails()
+            self.label.text = "何にいくら使いましたか？"
+            try! self.startRecording()
+            self.latestText = ""
+            for i in 0..<self.newtextlist.count {
+                self.newtextlist[i] = ""
+            }
         }
         
         // OKのActionを追加する.
