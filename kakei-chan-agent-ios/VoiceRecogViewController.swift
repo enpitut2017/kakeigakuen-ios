@@ -37,32 +37,31 @@ class VoiceRecogViewController: UIViewController {
     
     var params: [String:String] = [:]
     
-    @IBOutlet var textView : UITextView!
+    @IBOutlet var label : UILabel!
     
-    @IBOutlet weak var recordButton : UIButton!
     
     @IBAction func buttonpushed(_ sender: Any) {
+        //recognitionを強制終了
+        finishRecording()
+        print("error occered")
         self.dismiss(animated: true, completion: nil)
     }
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        if (!audioEngine.isRunning) {
-//            try! startRecording()
-//            self.latestText = ""
-//            for i in 0..<newtextlist.count {
-//                newtextlist[i] = ""
-//            }
-//            //タイマー設定
-//            //recordButton.setTitle("認識中", for: [])
-//            //titletimer = Timer.scheduledTimer(timeInterval: 0.6, target: self, selector: #selector(ViewController.buttonTitle), userInfo: nil, repeats: true)
-//            recogtimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(ViewController.recognitionlimit), userInfo: nil, repeats: true)
-//
-//            //もし動いていたら強制的にfinish
-//        } else {
-//            finishRecording()
-//        }
+        if (!audioEngine.isRunning) {
+            try! startRecording()
+            self.latestText = ""
+            for i in 0..<newtextlist.count {
+                newtextlist[i] = ""
+            }
+            //タイマー設定
+            //recordButton.setTitle("認識中", for: [])
+            //titletimer = Timer.scheduledTimer(timeInterval: 0.6, target: self, selector: #selector(ViewController.buttonTitle), userInfo: nil, repeats: true)
+            recogtimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(VoiceRecogViewController.recognitionlimit), userInfo: nil, repeats: true)
+
+        }
         // Do any additional setup after loading the view.
     }
 
@@ -99,9 +98,8 @@ class VoiceRecogViewController: UIViewController {
             var isFinal = false
             
             if let result = result {
-                self.textView.text = result.bestTranscription.formattedString
-                self.latestText = self.textView.text
-                //print(self.latestText)
+                self.label.text = result.bestTranscription.formattedString
+                self.latestText = self.label.text
                 isFinal = result.isFinal
             }
             
@@ -112,8 +110,7 @@ class VoiceRecogViewController: UIViewController {
                 self.recognitionRequest = nil
                 self.recognitionTask = nil
                 
-                self.recordButton.isEnabled = true
-                self.recordButton.setTitle("入力開始", for: [])
+                //self.recordButton.setTitle("入力開始", for: [])
             }
         }
         
@@ -123,16 +120,14 @@ class VoiceRecogViewController: UIViewController {
         }
         audioEngine.prepare()
         try audioEngine.start()
-        textView.text = "音声を入力してください..."
+        label.text = "何にいくら使いましたか？"
     }
     
     public func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
         if available {
-            recordButton.isEnabled = true
-            recordButton.setTitle("スタート", for: [])
+            //recordButton.setTitle("スタート", for: [])
         } else {
-            recordButton.isEnabled = false
-            recordButton.setTitle("マイクを許可してください", for: .disabled)
+            //recordButton.setTitle("マイクを許可してください", for: .disabled)
         }
     }
     
@@ -140,8 +135,7 @@ class VoiceRecogViewController: UIViewController {
     func finishRecording(){
         audioEngine.stop()
         recognitionRequest?.endAudio()
-        recordButton.isEnabled = false
-        recordButton.setTitle("Stopping", for: .disabled)
+        //recordButton.setTitle("Stopping", for: .disabled)
         if recogtimer.isValid == true {
             //recogtimerを破棄して入力終了
             recogtimer.invalidate()
@@ -153,11 +147,15 @@ class VoiceRecogViewController: UIViewController {
         if (self.item != "" && self.cost != "" && Int(self.cost) != nil){
             //確認のポップアップ表示
             //showStrPost(str: self.item + " " + self.cost)
-            showStrAlert(str: "正しく入力できてるよ")
+            //showStrAlert(str: "正しく入力できてるよ")
             
+            //self.dismiss(animated: true, completion: nil)
+            segueToMainViewController()
             //喋れてなかったらErrorポップアップ
         } else {
-            showStrAlert(str: "正しく入力してね")
+            //self.dismiss(animated: true, completion: nil)
+            segueToMainViewController()
+            //showStrAlert(str: "正しく入力してね")
         }
     }
     
@@ -196,8 +194,6 @@ class VoiceRecogViewController: UIViewController {
         
         let itemArray: [String]! = regulatedS.components(separatedBy: CharacterSet.decimalDigits)
         let costArray: [String]! = regulatedS.components(separatedBy: CharacterSet.decimalDigits.inverted)
-        print(itemArray)
-        print(costArray)
         var items :String = ""
         var costs :String = ""
         for i in itemArray{
@@ -233,7 +229,15 @@ class VoiceRecogViewController: UIViewController {
     
     func segueToMainViewController(){
         //指定したIDのSegueを初期化する。同時にパラメータを渡すことができる
-        self.performSegue(withIdentifier: "backToMain", sender:params)
+        params = ["item": item, "cost": cost]
+        let tab = self.presentingViewController as? UITabBarController
+        let vc = tab?.viewControllers![0] as? ViewController
+        vc?.params = params
+        
+        
+        self.dismiss(animated: true, completion: nil)
+
+        //self.performSegue(withIdentifier: "backToMain", sender:params)
     }
     
     //Segueの初期化を通知するメソッドをオーバーライドする。senderにはperformSegue()で渡した値が入る。

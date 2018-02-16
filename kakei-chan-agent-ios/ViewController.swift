@@ -512,6 +512,8 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
     //それ以降はViewDidAppearで差分を計算してnativeで独立して計算させる
     //apiにはbooksで購入情報だけ投げる
     override func viewDidAppear(_ animated: Bool) {
+        
+        print(params)
         if (Keychain.kakeiToken.value() != nil && Keychain.kakeiToken.value()! != "error") {
             loggedin = true
         } else {
