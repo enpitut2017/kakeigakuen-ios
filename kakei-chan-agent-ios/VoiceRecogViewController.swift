@@ -205,7 +205,7 @@ class VoiceRecogViewController: UIViewController {
     //認識できないAlertを表示するだけ
     func showStrAlert(str: String){
         // UIAlertControllerを作成する.
-        let myAlert: UIAlertController = UIAlertController(title: "Error", message: str, preferredStyle: .alert)
+        let myAlert: UIAlertController = UIAlertController(title: "聞き取れませんでした", message: str, preferredStyle: .alert)
         
         // OKのアクションを作成する.
         let myOkAction = UIAlertAction(title: "戻る", style: .default) { action in

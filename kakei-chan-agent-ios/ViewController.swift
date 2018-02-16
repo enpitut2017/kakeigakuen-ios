@@ -365,36 +365,36 @@ class ViewController: UIViewController,UITextFieldDelegate ,SFSpeechRecognizerDe
 音声入力の正規表現
 */
     //入力文字列を投げるとself.itemとself.costに代入される
-    func regulation(s: String!) {
-        var regulatedS: String! = s
-    
-        regulatedS = regulatedS.pregReplace(pattern: "円", with: "")
-        regulatedS = regulatedS.pregReplace(pattern: "マイナス", with: "-")
-        regulatedS = regulatedS.pregReplace(pattern: "ー", with: "-")
-        regulatedS = regulatedS.pregReplace(pattern: "−", with: "-")
-        regulatedS = regulatedS.pregReplace(pattern: " ", with: "")
-        regulatedS = regulatedS.pregReplace(pattern: ",", with: "")
-        
-        let itemArray: [String]! = regulatedS.components(separatedBy: CharacterSet.decimalDigits)
-        let costArray: [String]! = regulatedS.components(separatedBy: CharacterSet.decimalDigits.inverted)
-        print(itemArray)
-        print(costArray)
-        var items :String = ""
-        var costs :String = ""
-        for i in itemArray{
-            if i != ""{
-                items += i
-            } else {
-                break
-            }
-        }
-        for i in costArray {
-            costs += i
-            
-        }
-        self.item = items
-        self.cost = costs
-    }
+//    func regulation(s: String!) {
+//        var regulatedS: String! = s
+//
+//        regulatedS = regulatedS.pregReplace(pattern: "円", with: "")
+//        regulatedS = regulatedS.pregReplace(pattern: "マイナス", with: "-")
+//        regulatedS = regulatedS.pregReplace(pattern: "ー", with: "-")
+//        regulatedS = regulatedS.pregReplace(pattern: "−", with: "-")
+//        regulatedS = regulatedS.pregReplace(pattern: " ", with: "")
+//        regulatedS = regulatedS.pregReplace(pattern: ",", with: "")
+//
+//        let itemArray: [String]! = regulatedS.components(separatedBy: CharacterSet.decimalDigits)
+//        let costArray: [String]! = regulatedS.components(separatedBy: CharacterSet.decimalDigits.inverted)
+//        print(itemArray)
+//        print(costArray)
+//        var items :String = ""
+//        var costs :String = ""
+//        for i in itemArray{
+//            if i != ""{
+//                items += i
+//            } else {
+//                break
+//            }
+//        }
+//        for i in costArray {
+//            costs += i
+//
+//        }
+//        self.item = items
+//        self.cost = costs
+//    }
     
 /*
 日付の入力フォーム
@@ -521,7 +521,9 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
         }
         if(loggedin) {
             reload()
-
+            if(params != [:]){
+                showStrPost(str: params["item"]! + " " + params["cost"]! + "\nを送信します。\nよろしいですか？")
+            }
             speechRecognizer.delegate = self
             
             SFSpeechRecognizer.requestAuthorization { authStatus in
@@ -603,14 +605,19 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
     func showStrPost(str: String){
         // UIAlertControllerを作成する.
         let myAlert: UIAlertController = UIAlertController(title: "確認", message: str, preferredStyle: .alert)
-        
         // OKのアクションを作成する.
         let myOkAction = UIAlertAction(title: "送信", style: .default) { action in
+            self.item = self.params["item"]!
+            self.cost = self.params["cost"]!
+            self.params = [:]
             self.send_Items_json()
             print("Successfully send json to web server")
         }
+        let myNGAction = UIAlertAction(title: "取り消す", style: .default) { action in
+        }
         // OKのActionを追加する.
         myAlert.addAction(myOkAction)
+        myAlert.addAction(myNGAction)
         // UIAlertを発動する.
         present(myAlert, animated: true, completion: nil)
     }
