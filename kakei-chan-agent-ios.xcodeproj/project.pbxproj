@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1C185CA92036A2790067C54B /* BubbleTransition.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C185CAA2036A2790067C54B /* BubbleTransition.framework */; };
+		1C185CAC2036B5BA0067C54B /* VoiceRecogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C185CAB2036B5BA0067C54B /* VoiceRecogViewController.swift */; };
 		1C2D4A89202705B5003A9976 /* KakeiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2D4A88202705B5003A9976 /* KakeiViewController.swift */; };
 		1C342696202553C400694609 /* UICircularProgressRing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C342697202553C400694609 /* UICircularProgressRing.framework */; };
 		1C342699202553FD00694609 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C342698202553FD00694609 /* AVFoundation.framework */; };
@@ -50,6 +51,7 @@
 
 /* Begin PBXFileReference section */
 		1C185CAA2036A2790067C54B /* BubbleTransition.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BubbleTransition.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C185CAB2036B5BA0067C54B /* VoiceRecogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceRecogViewController.swift; sourceTree = "<group>"; };
 		1C2D4A88202705B5003A9976 /* KakeiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakeiViewController.swift; sourceTree = "<group>"; };
 		1C342697202553C400694609 /* UICircularProgressRing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UICircularProgressRing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C342698202553FD00694609 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -166,6 +168,7 @@
 				CFA016981FD8F1BD00A2C8F2 /* AppDelegate.swift */,
 				1C2D4A88202705B5003A9976 /* KakeiViewController.swift */,
 				CFA0169A1FD8F1BD00A2C8F2 /* ViewController.swift */,
+				1C185CAB2036B5BA0067C54B /* VoiceRecogViewController.swift */,
 				1CF2C3992027DF1200BFDBA4 /* reload.png */,
 				1CBB6BB620283057008001E6 /* kakeichan.png */,
 				1C934D8C202A05EF008D7247 /* tweet.png */,
@@ -415,6 +418,7 @@
 				CFA0169B1FD8F1BD00A2C8F2 /* ViewController.swift in Sources */,
 				1C784F82202721C200C8F0A8 /* GraphViewController.swift in Sources */,
 				CFA016991FD8F1BD00A2C8F2 /* AppDelegate.swift in Sources */,
+				1C185CAC2036B5BA0067C54B /* VoiceRecogViewController.swift in Sources */,
 				1CFF0B082025B45F004F33CC /* TouchesBeganExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

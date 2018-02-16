@@ -33,8 +33,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="recordButtonTapped" destination="BYZ-38-t0r" eventType="touchDown" id="Qka-L0-SME"/>
-                                    <segue destination="RkK-i6-IuM" kind="show" id="wc4-cy-n2M"/>
+                                    <segue destination="RkK-i6-IuM" kind="presentation" id="42T-Mf-3GR"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rOK-qn-vDG">
@@ -209,10 +208,10 @@
             </objects>
             <point key="canvasLocation" x="1636" y="79"/>
         </scene>
-        <!--Voice Recog-->
+        <!--Voice Recog View Controller-->
         <scene sceneID="gFm-Qr-8Pi">
             <objects>
-                <viewController storyboardIdentifier="VoiceRecogViewController" id="RkK-i6-IuM" customClass="VoiceRecog" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VoiceRecogViewController" id="RkK-i6-IuM" customClass="VoiceRecogViewController" customModule="kakei_chan_agent_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ldX-If-J0t">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -220,16 +219,34 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eNO-bd-o0t">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IHB-Aw-WIe">
+                                        <rect key="frame" x="160" y="554" width="60" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" red="0.2340592742" green="0.73138982060000002" blue="0.68803143499999997" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" image="record.png">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="buttonpushed:" destination="RkK-i6-IuM" eventType="touchUpInside" id="I0a-mk-6rs"/>
+                                            <action selector="recordButtonTapped" destination="BYZ-38-t0r" eventType="touchDown" id="ciZ-BW-QmR"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" red="0.23405927419662476" green="0.73138982057571411" blue="0.68803143501281738" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="q5p-dT-kzu"/>
                     </view>
+                    <connections>
+                        <outlet property="recordButton" destination="IHB-Aw-WIe" id="GoD-T2-KEd"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="backToMain" id="12L-gR-Imd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dxp-LN-odF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2612" y="78.710644677661179"/>
+            <point key="canvasLocation" x="2687" y="79"/>
         </scene>
         <!--Graph-->
         <scene sceneID="0bw-3k-Kq7">
@@ -630,6 +647,8 @@
         <image name="tweet.png" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="42T-Mf-3GR"/>
         <segue reference="egG-C1-D7b"/>
+        <segue reference="12L-gR-Imd"/>
     </inferredMetricsTieBreakers>
 </document>
