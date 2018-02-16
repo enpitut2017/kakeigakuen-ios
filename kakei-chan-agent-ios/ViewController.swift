@@ -74,9 +74,7 @@ class ViewController: UIViewController,UITextFieldDelegate ,SFSpeechRecognizerDe
     var titletimer: Timer!
     
     var recogtimer: Timer!
-    
-    @IBOutlet var textView : UITextView!
-    
+        
     var latestText: String! = ""
     
     var voicefinished: Bool = false
