@@ -11,7 +11,7 @@ import Security
 import UIKit
 import Speech
 import UICircularProgressRing
-
+import BubbleTransition
 
 
 extension String {
@@ -92,6 +92,8 @@ class ViewController: UIViewController,UITextFieldDelegate ,SFSpeechRecognizerDe
     var now: Date? = nil
     
     var loggedin: Bool = false
+    
+    let transition = BubbleTransition()
         
     
     //音声入力ボタン
@@ -196,6 +198,11 @@ class ViewController: UIViewController,UITextFieldDelegate ,SFSpeechRecognizerDe
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let controller = segue.destination
+        controller.transitioningDelegate = self as! UIViewControllerTransitioningDelegate
+        controller.modalPresentationStyle = .custom
+    }
     
 /*
 手入力時の決定ボタン
@@ -768,4 +775,20 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
             return false
         }
     }
+}
+
+extension ViewController : UIViewControllerTransitioningDelegate{
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.transitionMode = .present
+        transition.startingPoint = recordButton.center    //outletしたボタンの名前を使用
+        transition.bubbleColor = #colorLiteral(red: 0.2340592742, green: 0.7313898206, blue: 0.688031435, alpha: 1)         //円マークの色
+        return transition
+    }
+//    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+//        transition.transitionMode = .dismiss
+//        transition.startingPoint = recordButton.center //outletしたボタンの名前を使用
+//        //transition.bubbleColor = UIColor.magenta     //円マークの色
+//        return transition
+//    }
 }

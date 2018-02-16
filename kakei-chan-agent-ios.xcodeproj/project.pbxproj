@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C185CA92036A2790067C54B /* BubbleTransition.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C185CAA2036A2790067C54B /* BubbleTransition.framework */; };
 		1C2D4A89202705B5003A9976 /* KakeiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2D4A88202705B5003A9976 /* KakeiViewController.swift */; };
 		1C342696202553C400694609 /* UICircularProgressRing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C342697202553C400694609 /* UICircularProgressRing.framework */; };
 		1C342699202553FD00694609 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C342698202553FD00694609 /* AVFoundation.framework */; };
@@ -48,6 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1C185CAA2036A2790067C54B /* BubbleTransition.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BubbleTransition.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C2D4A88202705B5003A9976 /* KakeiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakeiViewController.swift; sourceTree = "<group>"; };
 		1C342697202553C400694609 /* UICircularProgressRing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UICircularProgressRing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C342698202553FD00694609 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -87,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C185CA92036A2790067C54B /* BubbleTransition.framework in Frameworks */,
 				1C34269B2025544200694609 /* Speech.framework in Frameworks */,
 				1C342699202553FD00694609 /* AVFoundation.framework in Frameworks */,
 				1C342696202553C400694609 /* UICircularProgressRing.framework in Frameworks */,
@@ -123,6 +126,7 @@
 		41516C26588C4697C23304BF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1C185CAA2036A2790067C54B /* BubbleTransition.framework */,
 				1C43D1DF2029E2C9002A23AE /* Twitter.framework */,
 				1CAFBC662029C08300D61080 /* Social.framework */,
 				1C34269A2025544200694609 /* Speech.framework */,
@@ -363,12 +367,14 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-kakei-chan-agent-ios/Pods-kakei-chan-agent-ios-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BubbleTransition/BubbleTransition.framework",
 				"${PODS_ROOT}/TwitterCore/iOS/TwitterCore.framework",
 				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework",
 				"${BUILT_PRODUCTS_DIR}/UICircularProgressRing/UICircularProgressRing.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BubbleTransition.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterCore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UICircularProgressRing.framework",

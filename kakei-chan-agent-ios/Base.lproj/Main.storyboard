@@ -34,6 +34,7 @@
                                 </state>
                                 <connections>
                                     <action selector="recordButtonTapped" destination="BYZ-38-t0r" eventType="touchDown" id="Qka-L0-SME"/>
+                                    <segue destination="RkK-i6-IuM" kind="show" id="wc4-cy-n2M"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rOK-qn-vDG">
@@ -206,7 +207,29 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1636" y="72"/>
+            <point key="canvasLocation" x="1636" y="79"/>
+        </scene>
+        <!--Voice Recog-->
+        <scene sceneID="gFm-Qr-8Pi">
+            <objects>
+                <viewController storyboardIdentifier="VoiceRecogViewController" id="RkK-i6-IuM" customClass="VoiceRecog" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ldX-If-J0t">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eNO-bd-o0t">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="0.23405927419662476" green="0.73138982057571411" blue="0.68803143501281738" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="q5p-dT-kzu"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dxp-LN-odF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2612" y="78.710644677661179"/>
         </scene>
         <!--Graph-->
         <scene sceneID="0bw-3k-Kq7">

@@ -7,4 +7,7 @@ target 'kakei-chan-agent-ios' do
 	pod 'TwitterKit'	
 
 	pod 'UICircularProgressRing'
+
+
+	pod 'BubbleTransition'
 end
