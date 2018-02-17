@@ -124,12 +124,14 @@ class GraphViewController: UIViewController , UITableViewDataSource , UITableVie
         for i in 0..<indexPath.section {
             until += dateNum[i]
         }
-        cell.textLabel?.text = itemList[indexPath.row + until]
+        let thisSecNum :Int = dateNum[indexPath.section]
+        let num :Int = until + thisSecNum - indexPath.row-1
+        cell.textLabel?.text = itemList[num]
         
         
         
         cell.detailTextLabel?.textColor = #colorLiteral(red: 0.8199555838, green: 0.8199555838, blue: 0.8199555838, alpha: 1)
-        cell.detailTextLabel?.text = costList[indexPath.row + until]
+        cell.detailTextLabel?.text = costList[num]
         
         
         return cell
