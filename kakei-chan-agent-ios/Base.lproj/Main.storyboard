@@ -99,8 +99,8 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CWj-t1-wKg">
-                                        <rect key="frame" x="187.5" y="165" width="106.5" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <rect key="frame" x="203.5" y="173" width="106.5" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                         <color key="textColor" red="0.23405927419662476" green="0.73138982057571411" blue="0.68803143501281738" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -198,7 +198,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1636" y="79"/>
+            <point key="canvasLocation" x="1636" y="-695"/>
         </scene>
         <!--Voice Recog View Controller-->
         <scene sceneID="gFm-Qr-8Pi">
@@ -228,7 +228,7 @@
                                         </state>
                                         <connections>
                                             <action selector="buttonpushed:" destination="RkK-i6-IuM" eventType="touchUpInside" id="csV-nN-cc1"/>
-                                            <segue destination="BYZ-38-t0r" kind="presentation" modalTransitionStyle="coverVertical" id="fjo-rl-hFf"/>
+                                            <segue destination="NcQ-s5-f9A" kind="presentation" identifier="backToMain" id="knc-n4-Sw4"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -240,12 +240,11 @@
                     </view>
                     <connections>
                         <outlet property="label" destination="LmU-is-YbV" id="Irj-Cw-8Dj"/>
-                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="backToMain" id="12L-gR-Imd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dxp-LN-odF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2544.8000000000002" y="78.710644677661179"/>
+            <point key="canvasLocation" x="1636" y="-1505"/>
         </scene>
         <!--Graph-->
         <scene sceneID="0bw-3k-Kq7">
@@ -615,7 +614,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pcw-uB-bqT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1636" y="-666"/>
+            <point key="canvasLocation" x="1636" y="32"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="2gS-bQ-8E2">
@@ -646,8 +645,6 @@
         <image name="tweet.png" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="42T-Mf-3GR"/>
-        <segue reference="egG-C1-D7b"/>
-        <segue reference="fjo-rl-hFf"/>
+        <segue reference="knc-n4-Sw4"/>
     </inferredMetricsTieBreakers>
 </document>

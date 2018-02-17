@@ -238,12 +238,13 @@ class VoiceRecogViewController: UIViewController {
     }
     
     //Segueの初期化を通知するメソッドをオーバーライドする。senderにはperformSegue()で渡した値が入る。
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "backToMain" {
-            let mainViewController = segue.destination as! ViewController
-            mainViewController.params = sender as! [String:String]
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "backToMain" {
+//            let tab = segue.destination as! UITabBarController
+//            let mainViewController = tab.viewControllers![0] as! ViewController
+//            mainViewController.params = sender as! [String:String]
+//        }
+//    }
 }
 
 

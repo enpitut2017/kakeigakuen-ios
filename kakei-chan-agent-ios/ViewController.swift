@@ -74,7 +74,7 @@ class ViewController: UIViewController,UITextFieldDelegate ,SFSpeechRecognizerDe
     var titletimer: Timer!
     
     var recogtimer: Timer!
-        
+    
     var latestText: String! = ""
     
     var voicefinished: Bool = false
@@ -214,7 +214,8 @@ class ViewController: UIViewController,UITextFieldDelegate ,SFSpeechRecognizerDe
             if itemField.text != "" {
                 self.item = itemField.text!
                 self.cost = moneyField.text!
-                showStrPost(str: self.item + " " + self.cost)
+                self.send_Items_json()
+                //showStrPost(str: self.item + " " + self.cost)
             } else {
                 showStrAlert(str: "正しく入力してね")
             }
@@ -511,7 +512,6 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
     //apiにはbooksで購入情報だけ投げる
     override func viewDidAppear(_ animated: Bool) {
         
-        print(params)
         if (Keychain.kakeiToken.value() != nil && Keychain.kakeiToken.value()! != "error") {
             loggedin = true
         } else {
@@ -520,7 +520,9 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
         if(loggedin) {
             reload()
             if(params != [:]){
-                showStrPost(str: params["item"]! + " " + params["cost"]! + "\nを送信します。\nよろしいですか？")
+                self.itemField.text = params["item"]!
+                self.moneyField.text = params["cost"]!
+                //showStrPost(str: params["item"]! + " " + params["cost"]! + "円\nを送信します。\nよろしいですか？")
             }
             speechRecognizer.delegate = self
             
@@ -558,11 +560,6 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
         
         let txtLimit = txtActiveField.frame.origin.y + txtActiveField.frame.height + 50.0
         let kbdLimit = myBoundSize.height - keyboardScreenEndFrame.size.height
-        
-        
-        print("テキストフィールドの下辺：(\(txtLimit))")
-        print("キーボードの上辺：(\(kbdLimit))")
-        
         
         if txtLimit >= kbdLimit {
             sc.contentOffset.y = txtLimit - kbdLimit
@@ -643,6 +640,7 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
         statusCheck()
         itemField.text = ""
         moneyField.text = ""
+
         RemainingMoenyLabel.text = "\(Keychain.kakeiRest.value()!)"
         
         budgetLabel.text = "\(Keychain.kakeiBudget.value()!)"
@@ -700,6 +698,9 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
                         if(!self.err()) {
                             let userRest = "\(self.getJson["rest"] ?? "")"
                             Keychain.kakeiRest.set(userRest)
+                            self.params = [:]
+                            self.item = ""
+                            self.cost = ""
                             //残高更新
                             self.reload()
                         } else {
