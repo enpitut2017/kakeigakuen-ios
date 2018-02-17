@@ -43,6 +43,7 @@ class VoiceRecogViewController: UIViewController {
     @IBAction func buttonpushed(_ sender: Any) {
         //recognitionを強制終了
         finishRecognizer()
+        segueToMainViewController()
     }
 
     

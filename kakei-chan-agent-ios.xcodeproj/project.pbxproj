@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1C185CA92036A2790067C54B /* BubbleTransition.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C185CAA2036A2790067C54B /* BubbleTransition.framework */; };
 		1C185CAC2036B5BA0067C54B /* VoiceRecogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C185CAB2036B5BA0067C54B /* VoiceRecogViewController.swift */; };
+		1C185CAE2037E7C20067C54B /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C185CAD2037E7C10067C54B /* back.png */; };
 		1C2D4A89202705B5003A9976 /* KakeiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2D4A88202705B5003A9976 /* KakeiViewController.swift */; };
 		1C342696202553C400694609 /* UICircularProgressRing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C342697202553C400694609 /* UICircularProgressRing.framework */; };
 		1C342699202553FD00694609 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C342698202553FD00694609 /* AVFoundation.framework */; };
@@ -52,6 +53,7 @@
 /* Begin PBXFileReference section */
 		1C185CAA2036A2790067C54B /* BubbleTransition.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BubbleTransition.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C185CAB2036B5BA0067C54B /* VoiceRecogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceRecogViewController.swift; sourceTree = "<group>"; };
+		1C185CAD2037E7C10067C54B /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
 		1C2D4A88202705B5003A9976 /* KakeiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakeiViewController.swift; sourceTree = "<group>"; };
 		1C342697202553C400694609 /* UICircularProgressRing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UICircularProgressRing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C342698202553FD00694609 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -173,6 +175,7 @@
 				1CBB6BB620283057008001E6 /* kakeichan.png */,
 				1C934D8C202A05EF008D7247 /* tweet.png */,
 				1C4F566F200B4E080050F6FD /* record.png */,
+				1C185CAD2037E7C10067C54B /* back.png */,
 				1CFF0B03202582B3004F33CC /* icon.png */,
 				CFA016C61FD8F64200A2C8F2 /* LoginViewController.swift */,
 				1CBB6BB420280AB1008001E6 /* SignUpViewController.swift */,
@@ -317,6 +320,7 @@
 			files = (
 				1C934D8D202A05EF008D7247 /* tweet.png in Resources */,
 				1CBB6BB720283057008001E6 /* kakeichan.png in Resources */,
+				1C185CAE2037E7C20067C54B /* back.png in Resources */,
 				CFA016A31FD8F1BD00A2C8F2 /* LaunchScreen.storyboard in Resources */,
 				1CFF0B04202582B3004F33CC /* icon.png in Resources */,
 				CFA016A01FD8F1BD00A2C8F2 /* Assets.xcassets in Resources */,
