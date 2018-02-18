@@ -188,7 +188,6 @@ class ViewController: UIViewController,UITextFieldDelegate ,SFSpeechRecognizerDe
 手入力時の決定ボタン
 */
     @IBAction func enterButtonTapped(){
-        
         let s: String! = moneyField.text!.pregReplace(pattern: "円", with: "")
         if let i = Int(s) {
             if itemField.text != "" {

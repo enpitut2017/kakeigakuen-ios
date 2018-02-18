@@ -243,7 +243,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dxp-LN-odF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2316" y="-696"/>
+            <point key="canvasLocation" x="2442" y="-280"/>
         </scene>
         <!--Graph-->
         <scene sceneID="0bw-3k-Kq7">
@@ -654,10 +654,10 @@
             </objects>
             <point key="canvasLocation" x="1636" y="32"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Bigcenter Tab Bar Controller-->
         <scene sceneID="2gS-bQ-8E2">
             <objects>
-                <tabBarController storyboardIdentifier="TabBar" automaticallyAdjustsScrollViewInsets="NO" id="NcQ-s5-f9A" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBar" automaticallyAdjustsScrollViewInsets="NO" id="NcQ-s5-f9A" customClass="BigcenterTabBarController" customModule="kakei_chan_agent_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Cd9-rQ-rMa">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -684,6 +684,6 @@
         <image name="tweet.png" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="f7t-7g-uMF"/>
+        <segue reference="knc-n4-Sw4"/>
     </inferredMetricsTieBreakers>
 </document>
