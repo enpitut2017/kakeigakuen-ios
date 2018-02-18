@@ -243,7 +243,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dxp-LN-odF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1636" y="-1505"/>
+            <point key="canvasLocation" x="2316" y="-696"/>
         </scene>
         <!--Graph-->
         <scene sceneID="0bw-3k-Kq7">
@@ -331,6 +331,27 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aec-8l-ZSR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1636" y="830.73463268365822"/>
+        </scene>
+        <!--Title View Controller-->
+        <scene sceneID="7Yb-rY-b60">
+            <objects>
+                <viewController id="F4g-i7-Cho" customClass="TitleViewController" customModule="kakei_chan_agent_ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="epe-fg-67t">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="kEl-RN-aB6">
+                                <rect key="frame" x="117" y="262" width="140" height="143"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.21475279331207275" green="0.73953050374984741" blue="0.67969316244125366" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="18c-Rs-CBe"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ErD-CF-eXf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1572" y="31.934032983508249"/>
         </scene>
         <!--Login-->
         <scene sceneID="NY5-Nd-I63">
@@ -645,6 +666,6 @@
         <image name="tweet.png" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="knc-n4-Sw4"/>
+        <segue reference="egG-C1-D7b"/>
     </inferredMetricsTieBreakers>
 </document>
