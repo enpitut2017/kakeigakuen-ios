@@ -18,6 +18,7 @@
 		1C784F82202721C200C8F0A8 /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C784F81202721C100C8F0A8 /* GraphViewController.swift */; };
 		1C8508952039613D00618F0A /* TitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8508942039613D00618F0A /* TitleViewController.swift */; };
 		1C85089720396E1200618F0A /* BigcenterTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C85089620396E1200618F0A /* BigcenterTabBarController.swift */; };
+		1C8508992039CB1900618F0A /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8508982039CB1900618F0A /* TestViewController.swift */; };
 		1C934D8D202A05EF008D7247 /* tweet.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C934D8C202A05EF008D7247 /* tweet.png */; };
 		1CBB6BB520280AB1008001E6 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBB6BB420280AB1008001E6 /* SignUpViewController.swift */; };
 		1CBB6BB720283057008001E6 /* kakeichan.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CBB6BB620283057008001E6 /* kakeichan.png */; };
@@ -65,6 +66,7 @@
 		1C784F81202721C100C8F0A8 /* GraphViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewController.swift; sourceTree = "<group>"; };
 		1C8508942039613D00618F0A /* TitleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleViewController.swift; sourceTree = "<group>"; };
 		1C85089620396E1200618F0A /* BigcenterTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigcenterTabBarController.swift; sourceTree = "<group>"; };
+		1C8508982039CB1900618F0A /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		1C934D8C202A05EF008D7247 /* tweet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tweet.png; path = "kakei-chan-agent-ios/tweet.png"; sourceTree = SOURCE_ROOT; };
 		1CAFBC662029C08300D61080 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		1CBB6BB420280AB1008001E6 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				CFA016981FD8F1BD00A2C8F2 /* AppDelegate.swift */,
 				1C2D4A88202705B5003A9976 /* KakeiViewController.swift */,
 				CFA0169A1FD8F1BD00A2C8F2 /* ViewController.swift */,
+				1C8508982039CB1900618F0A /* TestViewController.swift */,
 				1C185CAB2036B5BA0067C54B /* VoiceRecogViewController.swift */,
 				1CF2C3992027DF1200BFDBA4 /* reload.png */,
 				1CBB6BB620283057008001E6 /* kakeichan.png */,
@@ -424,6 +427,7 @@
 			files = (
 				1C2D4A89202705B5003A9976 /* KakeiViewController.swift in Sources */,
 				1C85089720396E1200618F0A /* BigcenterTabBarController.swift in Sources */,
+				1C8508992039CB1900618F0A /* TestViewController.swift in Sources */,
 				1CBB6BB520280AB1008001E6 /* SignUpViewController.swift in Sources */,
 				CFA016C71FD8F64200A2C8F2 /* LoginViewController.swift in Sources */,
 				CFA0169B1FD8F1BD00A2C8F2 /* ViewController.swift in Sources */,

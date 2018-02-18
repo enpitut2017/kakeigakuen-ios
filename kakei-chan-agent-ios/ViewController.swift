@@ -77,7 +77,7 @@ class ViewController: UIViewController,UITextFieldDelegate ,SFSpeechRecognizerDe
         
     
     //音声入力ボタン
-    @IBOutlet weak var recordButton : UIButton!
+    //@IBOutlet weak var recordButton : UIButton!
     
     //今月の予算出力文字
     @IBOutlet weak var budgetLabel: UILabel!
@@ -179,8 +179,8 @@ class ViewController: UIViewController,UITextFieldDelegate ,SFSpeechRecognizerDe
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let controller = segue.destination
-        controller.transitioningDelegate = self as UIViewControllerTransitioningDelegate
+        let controller = segue.destination as! VoiceRecogViewController
+        controller.transitioningDelegate = self as! UIViewControllerTransitioningDelegate
         controller.modalPresentationStyle = .custom
     }
     
@@ -329,27 +329,27 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
             }
             speechRecognizer.delegate = self
             
-            SFSpeechRecognizer.requestAuthorization { authStatus in
-                //マイクのアクセス許可を求める
-                OperationQueue.main.addOperation {
-                    switch authStatus {
-                    case .authorized:
-                        self.recordButton.isEnabled = true
-                        
-                    case .denied:
-                        self.recordButton.isEnabled = false
-                        self.recordButton.setTitle("User denied access to speech recognition", for: .disabled)
-                        
-                    case .restricted:
-                        self.recordButton.isEnabled = false
-                        self.recordButton.setTitle("Speech recognition restricted on this device", for: .disabled)
-                        
-                    case .notDetermined:
-                        self.recordButton.isEnabled = false
-                        self.recordButton.setTitle("Speech recognition not yet authorized", for: .disabled)
-                    }
-                }
-            }
+//            SFSpeechRecognizer.requestAuthorization { authStatus in
+//                //マイクのアクセス許可を求める
+//                OperationQueue.main.addOperation {
+//                    switch authStatus {
+//                    case .authorized:
+//                        self.recordButton.isEnabled = true
+//
+//                    case .denied:
+//                        self.recordButton.isEnabled = false
+//                        self.recordButton.setTitle("User denied access to speech recognition", for: .disabled)
+//
+//                    case .restricted:
+//                        self.recordButton.isEnabled = false
+//                        self.recordButton.setTitle("Speech recognition restricted on this device", for: .disabled)
+//
+//                    case .notDetermined:
+//                        self.recordButton.isEnabled = false
+//                        self.recordButton.setTitle("Speech recognition not yet authorized", for: .disabled)
+//                    }
+//                }
+//            }
         } else {
             goLogin()
         }
@@ -589,18 +589,20 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
     }
 }
 
-extension ViewController : UIViewControllerTransitioningDelegate{
-    
-    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        transition.transitionMode = .present
-        transition.startingPoint = recordButton.center    //outletしたボタンの名前を使用
-        transition.bubbleColor = #colorLiteral(red: 0.2340592742, green: 0.7313898206, blue: 0.688031435, alpha: 1)         //円マークの色
-        return transition
-    }
-    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        transition.transitionMode = .dismiss
-        transition.startingPoint = recordButton.center //outletしたボタンの名前を使用
-        return transition
-    }
-}
+//extension ViewController : UIViewControllerTransitioningDelegate{
+//
+//    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+//        print("dl;kfjasdl;nva;elinvaO+we,,,,,,,,,,,,,,,,,,,")
+//        transition.transitionMode = .present
+//        transition.startingPoint = recordButton.center    //outletしたボタンの名前を使用
+//        transition.bubbleColor = #colorLiteral(red: 0.2340592742, green: 0.7313898206, blue: 0.688031435, alpha: 1)         //円マークの色
+//        return transition
+//    }
+//    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+//        transition.transitionMode = .dismiss
+//        transition.startingPoint = recordButton.center //outletしたボタンの名前を使用
+//        return transition
+//    }
+//}
+//
 
