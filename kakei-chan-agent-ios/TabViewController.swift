@@ -9,7 +9,7 @@
 import UIKit
 import BubbleTransition
 
-class TestViewController: UIViewController, UITabBarDelegate {
+class TabViewController: UIViewController, UITabBarDelegate {
     @IBOutlet weak var tabBar: UITabBar!
     
     @IBOutlet weak var main: UIView!
@@ -67,7 +67,7 @@ class TestViewController: UIViewController, UITabBarDelegate {
         //if (segue.identifier == "toVoiceRecog"){
             print("yes")
             let controller = segue.destination
-            controller.transitioningDelegate = self as UIViewControllerTransitioningDelegate
+        controller.transitioningDelegate = self as UIViewControllerTransitioningDelegate
             controller.modalPresentationStyle = .custom
         //}
     }
@@ -87,7 +87,7 @@ class TestViewController: UIViewController, UITabBarDelegate {
 
 
 
-extension TestViewController : UIViewControllerTransitioningDelegate{
+extension TabViewController : UIViewControllerTransitioningDelegate{
     
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         print("dl;kfjasdl;nva;elinvaO+we,,,,,,,,,,,,,,,,,,,")

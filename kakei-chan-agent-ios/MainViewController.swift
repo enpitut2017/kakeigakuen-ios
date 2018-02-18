@@ -57,7 +57,7 @@ extension String {
 
 
 
-class ViewController: UIViewController,UITextFieldDelegate ,SFSpeechRecognizerDelegate, UIGestureRecognizerDelegate {
+class MainViewController: UIViewController,UITextFieldDelegate ,SFSpeechRecognizerDelegate, UIGestureRecognizerDelegate {
     //ロケールを指定してSFSpeechRecognizerを初期化(ユーザが指定していなかったらja_JPになる) -> 言語の指定
     let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "ja_JP"))!
     
@@ -245,7 +245,7 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
             let spaceBarBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace,target: self,action: Selector(""))
             
             //完了ボタンを設定
-            let toolBarBtn = UIBarButtonItem(title: "完了", style: .done, target: self, action: #selector(ViewController.toolBarBtnPush(sender:)))
+            let toolBarBtn = UIBarButtonItem(title: "完了", style: .done, target: self, action: #selector(MainViewController.toolBarBtnPush(sender:)))
             
             //ツールバーにボタンを表示
             pickerToolBar.items = [spaceBarBtn,toolBarBtn]
@@ -385,13 +385,13 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
         let nc = NotificationCenter.default
         nc.addObserver(
             self, selector:
-            #selector(ViewController.handleKeyboardWillShowNotification(_:)),
+            #selector(MainViewController.handleKeyboardWillShowNotification(_:)),
             name: Notification.Name.UIKeyboardWillShow,
             object: nil
         )
         nc.addObserver(
             self,
-            selector: #selector(ViewController.handleKeyboardWillHideNotification(_:)),
+            selector: #selector(MainViewController.handleKeyboardWillHideNotification(_:)),
             name: Notification.Name.UIKeyboardWillHide,
             object: nil
         )

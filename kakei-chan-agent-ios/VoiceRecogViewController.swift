@@ -228,9 +228,10 @@ class VoiceRecogViewController: UIViewController {
     func segueToMainViewController(){
         //指定したIDのSegueを初期化する。同時にパラメータを渡すことができる
         params = ["item": item, "cost": cost]
-        let tab = self.presentingViewController as? UITabBarController
-        let vc = tab?.viewControllers![0] as? ViewController
-        vc?.params = params
+        //let tab = self.presentingViewController as? UITabBarController
+        let vc = MainViewController()
+        //let vc = tab?.viewControllers![0] as? ViewController
+        vc.params = params
         
         
         self.dismiss(animated: true, completion: nil)
