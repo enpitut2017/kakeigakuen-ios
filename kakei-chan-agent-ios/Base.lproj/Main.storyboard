@@ -135,7 +135,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pCk-Lw-WRA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2430" y="-80"/>
+            <point key="canvasLocation" x="-2431" y="-92"/>
         </scene>
         <!--SignUp-->
         <scene sceneID="NMB-t2-B57">
@@ -242,8 +242,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="signup" destination="edM-mZ-ICQ" eventType="touchUpInside" id="KFS-tW-nwM"/>
-                                    <segue destination="REv-O3-aor" kind="show" identifier="toMainSegue" id="NHC-7W-kcW"/>
+                                    <action selector="signup" destination="edM-mZ-ICQ" eventType="touchUpInside" id="8Wx-QL-jMq"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -260,6 +259,7 @@
                         <outlet property="password_conf" destination="ZXp-2Z-iJF" id="uDE-V3-7wa"/>
                         <outlet property="register" destination="aJP-NO-oek" id="al4-gq-YE5"/>
                         <outlet property="sc" destination="uaN-Hh-Jwh" id="MQ1-Xa-C7B"/>
+                        <segue destination="REv-O3-aor" kind="show" identifier="toMainSegue" id="Wqq-o0-aCF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zGz-fA-dSX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -520,7 +520,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D3B-lC-Wys" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2260" y="1396"/>
+            <point key="canvasLocation" x="1961" y="-567"/>
         </scene>
         <!--Kakeichan-->
         <scene sceneID="Vte-hs-fXt">
@@ -574,6 +574,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="Eag-CH-0QR"/>
                     </view>
                     <connections>
                         <outlet property="MonthLabel" destination="qcZ-Zl-Lrw" id="6Zd-aQ-u6L"/>
@@ -582,12 +583,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mQH-f3-Xst" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1617" y="1396"/>
+            <point key="canvasLocation" x="977" y="-92"/>
         </scene>
         <!--VoiceRecog-->
         <scene sceneID="qvo-nE-SPf">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tUc-2e-goC" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController title="VoiceRecog" id="SH4-qG-a6x" customClass="VoiceRecogViewController" customModule="kakei_chan_agent_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BL8-9n-Sww">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -613,13 +613,15 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.21475279331207275" green="0.73953050374984741" blue="0.67969316244125366" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="ezk-EZ-H6M"/>
                     </view>
                     <connections>
                         <outlet property="label" destination="LmU-is-YbV" id="TcR-pJ-z6L"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tUc-2e-goC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-994" y="2112"/>
+            <point key="canvasLocation" x="1961" y="266"/>
         </scene>
         <!--Setting-->
         <scene sceneID="Aqj-nW-fJ2">
@@ -629,11 +631,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="Fis-JK-552"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cga-vm-T5U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="401" y="1396"/>
+            <point key="canvasLocation" x="977" y="672"/>
         </scene>
         <!--Graph-->
         <scene sceneID="Ghc-wP-vXT">
@@ -709,6 +712,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="MQ5-Vr-wBB"/>
                     </view>
                     <connections>
                         <outlet property="MonthLabel" destination="UAk-H6-OLk" id="xtO-e9-HQt"/>
@@ -718,7 +722,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4rs-bS-AsH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-337" y="1396"/>
+            <point key="canvasLocation" x="1961" y="1073"/>
         </scene>
     </scenes>
     <resources>
@@ -731,6 +735,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Rrt-sJ-Com"/>
-        <segue reference="Mis-qd-PhN"/>
+        <segue reference="Wqq-o0-aCF"/>
     </inferredMetricsTieBreakers>
 </document>

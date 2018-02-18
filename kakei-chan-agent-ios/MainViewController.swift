@@ -180,7 +180,7 @@ class MainViewController: UIViewController,UITextFieldDelegate ,SFSpeechRecogniz
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let controller = segue.destination as! VoiceRecogViewController
-        controller.transitioningDelegate = self as! UIViewControllerTransitioningDelegate
+        controller.transitioningDelegate = self as? UIViewControllerTransitioningDelegate
         controller.modalPresentationStyle = .custom
     }
     

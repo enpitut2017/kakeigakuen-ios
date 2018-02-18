@@ -78,10 +78,8 @@ class TitleViewController: UIViewController {
     @objc func gosegue() {
         let token = Keychain.kakeiToken.value()
         if(token != nil) {
-            print("gotomain")
             self.performSegue(withIdentifier: "mainsegue", sender: nil)
         } else {
-            print("gotologin")
             self.performSegue(withIdentifier: "loginsegue", sender: nil)
         }
     }
