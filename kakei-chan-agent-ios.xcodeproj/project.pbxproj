@@ -146,7 +146,6 @@
 		CFA0168C1FD8F1BD00A2C8F2 = {
 			isa = PBXGroup;
 			children = (
-				1C8508942039613D00618F0A /* TitleViewController.swift */,
 				CFA016971FD8F1BD00A2C8F2 /* kakei-chan-agent-ios */,
 				CFA016AC1FD8F1BD00A2C8F2 /* kakei-chan-agent-iosTests */,
 				CFA016B71FD8F1BD00A2C8F2 /* kakei-chan-agent-iosUITests */,
@@ -170,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				1C784F81202721C100C8F0A8 /* GraphViewController.swift */,
+				1C8508942039613D00618F0A /* TitleViewController.swift */,
 				CFA016981FD8F1BD00A2C8F2 /* AppDelegate.swift */,
 				1C2D4A88202705B5003A9976 /* KakeiViewController.swift */,
 				CFA0169A1FD8F1BD00A2C8F2 /* ViewController.swift */,
