@@ -17,6 +17,8 @@
 		1C4F5670200B4E080050F6FD /* record.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C4F566F200B4E080050F6FD /* record.png */; };
 		1C784F82202721C200C8F0A8 /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C784F81202721C100C8F0A8 /* GraphViewController.swift */; };
 		1C8508952039613D00618F0A /* TitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8508942039613D00618F0A /* TitleViewController.swift */; };
+		1C85089720396E1200618F0A /* BigcenterTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C85089620396E1200618F0A /* BigcenterTabBarController.swift */; };
+		1C8508992039CB1900618F0A /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8508982039CB1900618F0A /* TabViewController.swift */; };
 		1C934D8D202A05EF008D7247 /* tweet.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C934D8C202A05EF008D7247 /* tweet.png */; };
 		1CBB6BB520280AB1008001E6 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBB6BB420280AB1008001E6 /* SignUpViewController.swift */; };
 		1CBB6BB720283057008001E6 /* kakeichan.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CBB6BB620283057008001E6 /* kakeichan.png */; };
@@ -25,7 +27,7 @@
 		1CFF0B082025B45F004F33CC /* TouchesBeganExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFF0B072025B45F004F33CC /* TouchesBeganExtension.swift */; };
 		C552E5BB737A5C43B94A4610 /* Pods_kakei_chan_agent_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B327532D76B0D104E71855EF /* Pods_kakei_chan_agent_ios.framework */; };
 		CFA016991FD8F1BD00A2C8F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA016981FD8F1BD00A2C8F2 /* AppDelegate.swift */; };
-		CFA0169B1FD8F1BD00A2C8F2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0169A1FD8F1BD00A2C8F2 /* ViewController.swift */; };
+		CFA0169B1FD8F1BD00A2C8F2 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0169A1FD8F1BD00A2C8F2 /* MainViewController.swift */; };
 		CFA0169E1FD8F1BD00A2C8F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFA0169C1FD8F1BD00A2C8F2 /* Main.storyboard */; };
 		CFA016A01FD8F1BD00A2C8F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFA0169F1FD8F1BD00A2C8F2 /* Assets.xcassets */; };
 		CFA016A31FD8F1BD00A2C8F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFA016A11FD8F1BD00A2C8F2 /* LaunchScreen.storyboard */; };
@@ -63,6 +65,8 @@
 		1C4F566F200B4E080050F6FD /* record.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = record.png; sourceTree = "<group>"; };
 		1C784F81202721C100C8F0A8 /* GraphViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewController.swift; sourceTree = "<group>"; };
 		1C8508942039613D00618F0A /* TitleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleViewController.swift; sourceTree = "<group>"; };
+		1C85089620396E1200618F0A /* BigcenterTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigcenterTabBarController.swift; sourceTree = "<group>"; };
+		1C8508982039CB1900618F0A /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		1C934D8C202A05EF008D7247 /* tweet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tweet.png; path = "kakei-chan-agent-ios/tweet.png"; sourceTree = SOURCE_ROOT; };
 		1CAFBC662029C08300D61080 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		1CBB6BB420280AB1008001E6 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -74,7 +78,7 @@
 		B327532D76B0D104E71855EF /* Pods_kakei_chan_agent_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_kakei_chan_agent_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFA016951FD8F1BD00A2C8F2 /* kakei-chan-agent-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "kakei-chan-agent-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFA016981FD8F1BD00A2C8F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CFA0169A1FD8F1BD00A2C8F2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CFA0169A1FD8F1BD00A2C8F2 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		CFA0169D1FD8F1BD00A2C8F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CFA0169F1FD8F1BD00A2C8F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CFA016A21FD8F1BD00A2C8F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -172,7 +176,8 @@
 				1C8508942039613D00618F0A /* TitleViewController.swift */,
 				CFA016981FD8F1BD00A2C8F2 /* AppDelegate.swift */,
 				1C2D4A88202705B5003A9976 /* KakeiViewController.swift */,
-				CFA0169A1FD8F1BD00A2C8F2 /* ViewController.swift */,
+				CFA0169A1FD8F1BD00A2C8F2 /* MainViewController.swift */,
+				1C8508982039CB1900618F0A /* TabViewController.swift */,
 				1C185CAB2036B5BA0067C54B /* VoiceRecogViewController.swift */,
 				1CF2C3992027DF1200BFDBA4 /* reload.png */,
 				1CBB6BB620283057008001E6 /* kakeichan.png */,
@@ -184,6 +189,7 @@
 				1CBB6BB420280AB1008001E6 /* SignUpViewController.swift */,
 				1CFF0B072025B45F004F33CC /* TouchesBeganExtension.swift */,
 				CFA0169C1FD8F1BD00A2C8F2 /* Main.storyboard */,
+				1C85089620396E1200618F0A /* BigcenterTabBarController.swift */,
 				CFA0169F1FD8F1BD00A2C8F2 /* Assets.xcassets */,
 				CFA016A11FD8F1BD00A2C8F2 /* LaunchScreen.storyboard */,
 				CFA016A41FD8F1BD00A2C8F2 /* Info.plist */,
@@ -420,9 +426,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C2D4A89202705B5003A9976 /* KakeiViewController.swift in Sources */,
+				1C85089720396E1200618F0A /* BigcenterTabBarController.swift in Sources */,
+				1C8508992039CB1900618F0A /* TabViewController.swift in Sources */,
 				1CBB6BB520280AB1008001E6 /* SignUpViewController.swift in Sources */,
 				CFA016C71FD8F64200A2C8F2 /* LoginViewController.swift in Sources */,
-				CFA0169B1FD8F1BD00A2C8F2 /* ViewController.swift in Sources */,
+				CFA0169B1FD8F1BD00A2C8F2 /* MainViewController.swift in Sources */,
 				1C784F82202721C200C8F0A8 /* GraphViewController.swift in Sources */,
 				1C8508952039613D00618F0A /* TitleViewController.swift in Sources */,
 				CFA016991FD8F1BD00A2C8F2 /* AppDelegate.swift in Sources */,

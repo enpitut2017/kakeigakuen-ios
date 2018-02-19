@@ -39,7 +39,6 @@ class VoiceRecogViewController: UIViewController {
     
     @IBOutlet var label : UILabel!
     
-    
     @IBAction func buttonpushed(_ sender: Any) {
         //recognitionを強制終了
         finishRecognizer()
@@ -143,8 +142,6 @@ class VoiceRecogViewController: UIViewController {
             segueToMainViewController()
             //喋れてなかったらErrorポップアップ
         } else {
-            //self.dismiss(animated: true, completion: nil)
-            //segueToMainViewController()
             showStrAlert(str: "もう一度お願いします。")
             item = ""
             cost = ""
@@ -225,27 +222,18 @@ class VoiceRecogViewController: UIViewController {
         present(myAlert, animated: true, completion: nil)
     }
     
-    func segueToMainViewController(){
-        //指定したIDのSegueを初期化する。同時にパラメータを渡すことができる
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         params = ["item": item, "cost": cost]
-        let tab = self.presentingViewController as? UITabBarController
-        let vc = tab?.viewControllers![0] as? ViewController
-        vc?.params = params
-        
-        
-        self.dismiss(animated: true, completion: nil)
-
-        //self.performSegue(withIdentifier: "backToMain", sender:params)
+        let tvc = segue.destination as! TabViewController
+        tvc.params = sender as! [String:String]
+        tvc.params = self.params
+        print(tvc.params)
     }
     
-    //Segueの初期化を通知するメソッドをオーバーライドする。senderにはperformSegue()で渡した値が入る。
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "backToMain" {
-//            let tab = segue.destination as! UITabBarController
-//            let mainViewController = tab.viewControllers![0] as! ViewController
-//            mainViewController.params = sender as! [String:String]
-//        }
-//    }
+    func segueToMainViewController(){
+        //指定したIDのSegueを初期化する。同時にパラメータを渡すことができる
+        self.performSegue(withIdentifier: "backToMain", sender:params)
+    }
 }
 
 

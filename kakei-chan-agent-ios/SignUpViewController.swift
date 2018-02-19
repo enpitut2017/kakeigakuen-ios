@@ -236,9 +236,9 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func signup () {
+        print(";;;;;;;;;;;;;;;;;;")
 
             sendSignUp()
-        
     }
     
     func isOnlyNumber(_ str:String) -> Bool {
@@ -286,7 +286,6 @@ class SignUpViewController: UIViewController {
                     let error :String = "\(self.getJson["error"] ?? "")"
                     let token :String = self.getJson["token"] as! String
                     let budget :String = "\(self.getJson["budget"] ?? "")"
-                    print(error)
                     if (error == "0") {
                         Keychain.kakeiToken.set(token)
                         Keychain.kakeiBudget.set(budget)
@@ -317,7 +316,6 @@ class SignUpViewController: UIViewController {
     func goMain() {
         // ホーム画面に遷移(仮)
             self.performSegue(withIdentifier: "toMainSegue", sender: nil)
-        
     }
 
     override func didReceiveMemoryWarning() {
