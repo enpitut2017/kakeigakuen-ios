@@ -71,7 +71,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIScrollViewDe
                         kakei_rest = (getJson["rest"] as? Int)!
                         DispatchQueue.main.async{
                             self.label.numberOfLines = 1
-                            if (kakei_token == "error") {
+                            if (kakei_token == "") {
                                 self.label.text = "ログインに失敗"
                             } else {
                                 segueToHome()

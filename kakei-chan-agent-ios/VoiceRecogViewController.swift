@@ -224,32 +224,14 @@ class VoiceRecogViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         params = ["item": item, "cost": cost]
-        //let tvc = TabViewController()
-        //tvc.params = params
         let tvc = segue.destination as! TabViewController
-        //let vc = MainViewController()
-        //let vc = segue.destination as! MainViewController
         tvc.params = sender as! [String:String]
-        //tvc.params = params
-
-        //print(tvc.params)
-        //vc?.params = params
-        //print(params)
-        //self.dismiss(animated: true, completion: nil)
+        tvc.params = self.params
+        print(tvc.params)
     }
     
     func segueToMainViewController(){
         //指定したIDのSegueを初期化する。同時にパラメータを渡すことができる
-        params = ["item": item, "cost": cost]
-        //let tab = self.presentingViewController as? UITabBarController
-        //let tab = self.presentingViewController as? UIViewController
-        //let vc = MainViewController()
-        //let vc = tab?.viewControllers![0] as? MainViewController
-        //vc?.params = params
-        //let vc = storyboard?.instantiateViewController(withIdentifier: "Main")
-        //vc.params = params
-        //print(vc.params)
-        //self.dismiss(animated: true, completion: nil)
         self.performSegue(withIdentifier: "backToMain", sender:params)
     }
 }

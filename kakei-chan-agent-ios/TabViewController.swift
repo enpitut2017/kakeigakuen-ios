@@ -40,9 +40,6 @@ class TabViewController: UIViewController, UITabBarDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    override func viewDidAppear(_ animated: Bool) {
-        print(params)
-    }
     
     //ボタン押下時の呼び出しメソッド
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){
@@ -75,9 +72,6 @@ class TabViewController: UIViewController, UITabBarDelegate {
         if(segue.identifier == "gomain"){
             let vc = segue.destination as! MainViewController
             vc.params = params
-            //let vc = MainViewController()
-            //let vc = segue.destination as! MainViewController
-            //vc.params = sender as! [String:String]
         }
     }
     

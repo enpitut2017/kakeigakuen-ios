@@ -215,11 +215,11 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
     var sendDate = Date()
     
     override func viewDidLoad() {
-        if (Keychain.kakeiToken.value() == nil || Keychain.kakeiToken.value()! == "error") {
+        if (Keychain.kakeiToken.value() == nil || Keychain.kakeiToken.value()! == "" || Keychain.kakeiBudget.value() == nil || Keychain.kakeiRest.value() == nil) {
             loggedin = false
+            //goLogin()
         } else {
             loggedin = true
-            
             dateFormat.dateFormat = "yyyy年MM月"
             monthLabel.text = dateFormat.string(from: nowDate as Date)
             
@@ -316,7 +316,7 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
     //apiにはbooksで購入情報だけ投げる
     override func viewDidAppear(_ animated: Bool) {
         
-        if (Keychain.kakeiToken.value() != nil && Keychain.kakeiToken.value()! != "error") {
+        if (Keychain.kakeiToken.value() != nil && Keychain.kakeiToken.value()! != "error" && Keychain.kakeiBudget.value() != nil && Keychain.kakeiRest.value() != nil) {
             loggedin = true
         } else {
             loggedin = false
@@ -326,7 +326,6 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
             if(tvc.params != [:]){
                 params = tvc.params
             }
-            print(params)
             reload()
             if(params != [:]){
                 self.itemField.text = params["item"]!
@@ -573,7 +572,6 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
                     } else {
                         print("failed to parse json")
                     }
-                    //self.reload()
                 }
             } catch {
                 DispatchQueue.main.async(execute: {
