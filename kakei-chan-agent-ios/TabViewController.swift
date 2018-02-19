@@ -22,6 +22,8 @@ class TabViewController: UIViewController, UITabBarDelegate {
     @IBOutlet weak var recordButton :UIButton!
     
     let transition = BubbleTransition()
+    var params :[String:String]! = [:]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         main.isHidden = false
@@ -37,6 +39,9 @@ class TabViewController: UIViewController, UITabBarDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        print(params)
     }
     
     //ボタン押下時の呼び出しメソッド
@@ -64,12 +69,16 @@ class TabViewController: UIViewController, UITabBarDelegate {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        //if (segue.identifier == "toVoiceRecog"){
-            print("yes")
-            let controller = segue.destination
+        let controller = segue.destination
         controller.transitioningDelegate = self as UIViewControllerTransitioningDelegate
-            controller.modalPresentationStyle = .custom
-        //}
+        controller.modalPresentationStyle = .custom
+        if(segue.identifier == "gomain"){
+            let vc = segue.destination as! MainViewController
+            vc.params = params
+            //let vc = MainViewController()
+            //let vc = segue.destination as! MainViewController
+            //vc.params = sender as! [String:String]
+        }
     }
     
 
@@ -90,7 +99,6 @@ class TabViewController: UIViewController, UITabBarDelegate {
 extension TabViewController : UIViewControllerTransitioningDelegate{
     
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        print("dl;kfjasdl;nva;elinvaO+we,,,,,,,,,,,,,,,,,,,")
         transition.transitionMode = .present
         transition.startingPoint = recordButton.center  //outletしたボタンの名前を使用
         transition.bubbleColor = #colorLiteral(red: 0.2340592742, green: 0.7313898206, blue: 0.688031435, alpha: 1)         //円マークの色

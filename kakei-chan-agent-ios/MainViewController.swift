@@ -322,6 +322,11 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
             loggedin = false
         }
         if(loggedin) {
+            let tvc = TabViewController()
+            if(tvc.params != [:]){
+                params = tvc.params
+            }
+            print(params)
             reload()
             if(params != [:]){
                 self.itemField.text = params["item"]!

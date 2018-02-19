@@ -279,7 +279,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
-                                    <segue destination="jEx-Jj-Pk1" kind="embed" id="MM8-lc-B4A"/>
+                                    <segue destination="jEx-Jj-Pk1" kind="embed" identifier="gomain" id="MM8-lc-B4A"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wek-Oc-6im">
@@ -608,7 +608,6 @@
                                 </state>
                                 <connections>
                                     <action selector="buttonpushed:" destination="SH4-qG-a6x" eventType="touchUpInside" id="wf1-Vf-fnS"/>
-                                    <segue destination="jEx-Jj-Pk1" kind="presentation" id="Rrt-sJ-Com"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -617,6 +616,7 @@
                     </view>
                     <connections>
                         <outlet property="label" destination="LmU-is-YbV" id="TcR-pJ-z6L"/>
+                        <segue destination="REv-O3-aor" kind="presentation" identifier="backToMain" id="Bbg-UE-PSH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tUc-2e-goC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -734,7 +734,6 @@
         <image name="tweet.png" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Rrt-sJ-Com"/>
-        <segue reference="Wqq-o0-aCF"/>
+        <segue reference="Bbg-UE-PSH"/>
     </inferredMetricsTieBreakers>
 </document>
