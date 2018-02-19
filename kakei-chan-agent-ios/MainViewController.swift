@@ -203,6 +203,13 @@ class MainViewController: UIViewController,UITextFieldDelegate ,SFSpeechRecogniz
         }
     }
     
+    public func keychainCheck() -> Bool {
+        if(Keychain.kakeiToken.value() != nil && Keychain.kakeiBudget.value() != nil && Keychain.kakeiRest.value() != nil) {
+            return true
+        }
+        return false
+    }
+    
 /*
 日付の入力フォーム
 ViewDidLoad : あらゆるコンポーネントの配置決定
@@ -215,11 +222,7 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
     var sendDate = Date()
     
     override func viewDidLoad() {
-        if (Keychain.kakeiToken.value() == nil || Keychain.kakeiToken.value()! == "" || Keychain.kakeiBudget.value() == nil || Keychain.kakeiRest.value() == nil) {
-            loggedin = false
-            //goLogin()
-        } else {
-            loggedin = true
+        if (keychainCheck()) {
             dateFormat.dateFormat = "yyyy年MM月"
             monthLabel.text = dateFormat.string(from: nowDate as Date)
             
@@ -261,6 +264,14 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
             self.progressRing.maxValue = CGFloat(Int(Keychain.kakeiBudget.value()!)!)
             self.progressRing.minValue = 0
             
+            statusCheck()
+            itemField.text = ""
+            moneyField.text = ""
+            
+            RemainingMoenyLabel.text = "\(Keychain.kakeiRest.value()!)"
+            
+            budgetLabel.text = "\(Keychain.kakeiBudget.value()!)"
+            
             //キーボード出現でスクロール
             sc.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 0)
             sc.delegate = self as? UIScrollViewDelegate
@@ -272,7 +283,6 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
             sc.addSubview(progressRing)
             sc.addSubview(header)
             self.view.sendSubview(toBack: sc)
-            
         }
     }
     
@@ -316,12 +326,8 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
     //apiにはbooksで購入情報だけ投げる
     override func viewDidAppear(_ animated: Bool) {
         
-        if (Keychain.kakeiToken.value() != nil && Keychain.kakeiToken.value()! != "error" && Keychain.kakeiBudget.value() != nil && Keychain.kakeiRest.value() != nil) {
+        if (keychainCheck()) {
             loggedin = true
-        } else {
-            loggedin = false
-        }
-        if(loggedin) {
             let tvc = TabViewController()
             if(tvc.params != [:]){
                 params = tvc.params
@@ -333,28 +339,29 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
             }
             speechRecognizer.delegate = self
             
-//            SFSpeechRecognizer.requestAuthorization { authStatus in
-//                //マイクのアクセス許可を求める
-//                OperationQueue.main.addOperation {
-//                    switch authStatus {
-//                    case .authorized:
-//                        self.recordButton.isEnabled = true
-//
-//                    case .denied:
-//                        self.recordButton.isEnabled = false
-//                        self.recordButton.setTitle("User denied access to speech recognition", for: .disabled)
-//
-//                    case .restricted:
-//                        self.recordButton.isEnabled = false
-//                        self.recordButton.setTitle("Speech recognition restricted on this device", for: .disabled)
-//
-//                    case .notDetermined:
-//                        self.recordButton.isEnabled = false
-//                        self.recordButton.setTitle("Speech recognition not yet authorized", for: .disabled)
-//                    }
-//                }
-//            }
+            //            SFSpeechRecognizer.requestAuthorization { authStatus in
+            //                //マイクのアクセス許可を求める
+            //                OperationQueue.main.addOperation {
+            //                    switch authStatus {
+            //                    case .authorized:
+            //                        self.recordButton.isEnabled = true
+            //
+            //                    case .denied:
+            //                        self.recordButton.isEnabled = false
+            //                        self.recordButton.setTitle("User denied access to speech recognition", for: .disabled)
+            //
+            //                    case .restricted:
+            //                        self.recordButton.isEnabled = false
+            //                        self.recordButton.setTitle("Speech recognition restricted on this device", for: .disabled)
+            //
+            //                    case .notDetermined:
+            //                        self.recordButton.isEnabled = false
+            //                        self.recordButton.setTitle("Speech recognition not yet authorized", for: .disabled)
+            //                    }
+            //                }
+            //            }
         } else {
+            loggedin = false
             goLogin()
         }
     }

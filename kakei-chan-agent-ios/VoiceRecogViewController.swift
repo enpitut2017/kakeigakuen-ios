@@ -225,9 +225,7 @@ class VoiceRecogViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         params = ["item": item, "cost": cost]
         let tvc = segue.destination as! TabViewController
-        tvc.params = sender as! [String:String]
         tvc.params = self.params
-        print(tvc.params)
     }
     
     func segueToMainViewController(){

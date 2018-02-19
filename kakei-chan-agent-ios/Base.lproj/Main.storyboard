@@ -47,7 +47,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ErD-CF-eXf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-994" y="-513"/>
+            <point key="canvasLocation" x="-994" y="-567"/>
         </scene>
         <!--Login-->
         <scene sceneID="NY5-Nd-I63">
@@ -734,6 +734,6 @@
         <image name="tweet.png" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Bbg-UE-PSH"/>
+        <segue reference="TQY-j5-Cxs"/>
     </inferredMetricsTieBreakers>
 </document>
