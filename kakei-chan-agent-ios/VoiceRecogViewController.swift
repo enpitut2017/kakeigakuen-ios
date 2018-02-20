@@ -108,7 +108,28 @@ class VoiceRecogViewController: UIViewController {
         }
         audioEngine.prepare()
         try audioEngine.start()
-        label.text = "何にいくら使いましたか？"
+        var txt :String = "チャージ代1000円"
+        let random = arc4random() % 5
+        switch random {
+        case 0:
+            txt = "とろろうどん450円"
+            break
+        case 1:
+            txt = "お菓子324円"
+            break
+        case 2:
+            txt = "本1980円"
+            break
+        case 3:
+            txt = "ネックレス40000円"
+            break
+        case 4:
+            txt = "水道代2000円"
+            break
+        default:
+            txt = "ガム10円"
+        }
+        label.text = "何にいくら使いましたか？\n(例: " + txt +  ")"
         
         self.latestText = ""
         for i in 0..<newtextlist.count {
@@ -208,7 +229,7 @@ class VoiceRecogViewController: UIViewController {
         // OKのアクションを作成する.
         let myOkAction = UIAlertAction(title: "戻る", style: .default) { action in
             //self.go_to_rails()
-            self.label.text = "何にいくら使いましたか？"
+            self.label.text = "何にいくら使いましたか？\n(例:うどん400円)"
             try! self.startRecording()
             self.latestText = ""
             for i in 0..<self.newtextlist.count {
