@@ -4,7 +4,7 @@
 <div align = "center"> 
 <img width="247" alt="2018-02-20 11 25 36" src="https://user-images.githubusercontent.com/25478176/36404950-24e07b08-1631-11e8-890b-5105b617eae5.png">
 <img width="247" alt="2018-02-20 11 09 45" src="https://user-images.githubusercontent.com/25478176/36404952-260b39fa-1631-11e8-9e0b-43bac40362fb.png">
-<img width="309" alt="2018-02-20 11 27 47" src="https://user-images.githubusercontent.com/25478176/36404955-274fc902-1631-11e8-8512-b13f0054b841.png">
+<img width="247" alt="2018-02-20 11 27 47" src="https://user-images.githubusercontent.com/25478176/36404955-274fc902-1631-11e8-8512-b13f0054b841.png">
 
 </div>
 
