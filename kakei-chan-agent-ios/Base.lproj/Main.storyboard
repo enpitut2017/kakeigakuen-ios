@@ -315,8 +315,8 @@
                                     <tabBarItem tag="1" systemItem="favorites" id="Sbj-Kf-at9" userLabel="Main"/>
                                     <tabBarItem tag="2" title="Item" id="WVn-8f-cLx" userLabel="Kakei"/>
                                     <tabBarItem tag="3" enabled="NO" title="" id="5Bq-CV-UBq"/>
-                                    <tabBarItem tag="4" title="Item" id="fut-7z-o8Y" userLabel="Graph"/>
-                                    <tabBarItem tag="5" systemItem="more" id="oPz-V2-g8q" userLabel="Setting"/>
+                                    <tabBarItem tag="5" title="Item" id="fut-7z-o8Y" userLabel="Graph"/>
+                                    <tabBarItem tag="4" systemItem="more" id="oPz-V2-g8q" userLabel="Setting"/>
                                 </items>
                             </tabBar>
                             <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7yp-3e-wK5">
@@ -636,7 +636,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cga-vm-T5U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="977" y="672"/>
+            <point key="canvasLocation" x="1961" y="1075"/>
         </scene>
         <!--Graph-->
         <scene sceneID="Ghc-wP-vXT">
@@ -722,7 +722,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4rs-bS-AsH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1961" y="1073"/>
+            <point key="canvasLocation" x="977" y="684"/>
         </scene>
     </scenes>
     <resources>
