@@ -10,4 +10,7 @@ target 'kakei-chan-agent-ios' do
 
 
 	pod 'BubbleTransition'
+
+	pod 'Eureka'
 end
+
