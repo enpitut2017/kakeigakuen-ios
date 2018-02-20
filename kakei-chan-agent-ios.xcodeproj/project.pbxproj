@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C03CD71203BA20D00645264 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C03CD70203BA20C00645264 /* home.png */; };
+		1C03CD73203BAE9C00645264 /* kakeilogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C03CD72203BAE9B00645264 /* kakeilogo.png */; };
+		1C03CD75203BAF4C00645264 /* setting.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C03CD74203BAF4B00645264 /* setting.png */; };
+		1C03CD77203BAF5400645264 /* list.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C03CD76203BAF5300645264 /* list.png */; };
 		1C185CA92036A2790067C54B /* BubbleTransition.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C185CAA2036A2790067C54B /* BubbleTransition.framework */; };
 		1C185CAC2036B5BA0067C54B /* VoiceRecogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C185CAB2036B5BA0067C54B /* VoiceRecogViewController.swift */; };
 		1C185CAE2037E7C20067C54B /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C185CAD2037E7C10067C54B /* back.png */; };
@@ -54,6 +58,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1C03CD70203BA20C00645264 /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = home.png; path = ../../Downloads/home.png; sourceTree = "<group>"; };
+		1C03CD72203BAE9B00645264 /* kakeilogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kakeilogo.png; sourceTree = "<group>"; };
+		1C03CD74203BAF4B00645264 /* setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting.png; sourceTree = "<group>"; };
+		1C03CD76203BAF5300645264 /* list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list.png; sourceTree = "<group>"; };
 		1C185CAA2036A2790067C54B /* BubbleTransition.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BubbleTransition.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C185CAB2036B5BA0067C54B /* VoiceRecogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceRecogViewController.swift; sourceTree = "<group>"; };
 		1C185CAD2037E7C10067C54B /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
@@ -180,8 +188,12 @@
 				1C8508982039CB1900618F0A /* TabViewController.swift */,
 				1C185CAB2036B5BA0067C54B /* VoiceRecogViewController.swift */,
 				1CF2C3992027DF1200BFDBA4 /* reload.png */,
+				1C03CD72203BAE9B00645264 /* kakeilogo.png */,
 				1CBB6BB620283057008001E6 /* kakeichan.png */,
+				1C03CD70203BA20C00645264 /* home.png */,
 				1C934D8C202A05EF008D7247 /* tweet.png */,
+				1C03CD74203BAF4B00645264 /* setting.png */,
+				1C03CD76203BAF5300645264 /* list.png */,
 				1C4F566F200B4E080050F6FD /* record.png */,
 				1C185CAD2037E7C10067C54B /* back.png */,
 				1CFF0B03202582B3004F33CC /* icon.png */,
@@ -327,12 +339,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C03CD71203BA20D00645264 /* home.png in Resources */,
 				1C934D8D202A05EF008D7247 /* tweet.png in Resources */,
 				1CBB6BB720283057008001E6 /* kakeichan.png in Resources */,
 				1C185CAE2037E7C20067C54B /* back.png in Resources */,
+				1C03CD77203BAF5400645264 /* list.png in Resources */,
+				1C03CD73203BAE9C00645264 /* kakeilogo.png in Resources */,
 				CFA016A31FD8F1BD00A2C8F2 /* LaunchScreen.storyboard in Resources */,
 				1CFF0B04202582B3004F33CC /* icon.png in Resources */,
 				CFA016A01FD8F1BD00A2C8F2 /* Assets.xcassets in Resources */,
+				1C03CD75203BAF4C00645264 /* setting.png in Resources */,
 				1C4F5670200B4E080050F6FD /* record.png in Resources */,
 				1CF2C39A2027DF1200BFDBA4 /* reload.png in Resources */,
 				CFA0169E1FD8F1BD00A2C8F2 /* Main.storyboard in Resources */,

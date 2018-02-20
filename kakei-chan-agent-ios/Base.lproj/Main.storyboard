@@ -312,11 +312,13 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <items>
-                                    <tabBarItem tag="1" systemItem="favorites" id="Sbj-Kf-at9" userLabel="Main"/>
-                                    <tabBarItem tag="2" title="Item" id="WVn-8f-cLx" userLabel="Kakei"/>
+                                    <tabBarItem tag="1" title="ホーム" image="home.png" id="Sbj-Kf-at9" userLabel="Main">
+                                        <color key="badgeColor" red="0.075664646923542023" green="0.64485973119735718" blue="0.61384880542755127" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </tabBarItem>
+                                    <tabBarItem tag="2" title="かけいちゃん" image="kakeilogo.png" id="WVn-8f-cLx" userLabel="Kakei"/>
                                     <tabBarItem tag="3" enabled="NO" title="" id="5Bq-CV-UBq"/>
-                                    <tabBarItem tag="5" title="Item" id="fut-7z-o8Y" userLabel="Graph"/>
-                                    <tabBarItem tag="4" systemItem="more" id="oPz-V2-g8q" userLabel="Setting"/>
+                                    <tabBarItem tag="5" title="購入リスト" image="list.png" id="fut-7z-o8Y" userLabel="Graph"/>
+                                    <tabBarItem tag="4" title="設定" image="setting.png" id="oPz-V2-g8q" userLabel="Setting"/>
                                 </items>
                             </tabBar>
                             <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7yp-3e-wK5">
@@ -630,13 +632,22 @@
                     <view key="view" contentMode="scaleToFill" id="h0D-TB-7Dp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="現在製作中です！次のアップデートをお楽しみに！" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rzb-bA-xpU">
+                                <rect key="frame" x="78" y="227" width="220" height="212"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="Fis-JK-552"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cga-vm-T5U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1961" y="1075"/>
+            <point key="canvasLocation" x="1960.8" y="1074.5127436281859"/>
         </scene>
         <!--Graph-->
         <scene sceneID="Ghc-wP-vXT">
@@ -727,10 +738,14 @@
     </scenes>
     <resources>
         <image name="back.png" width="256" height="256"/>
+        <image name="home.png" width="33" height="33"/>
         <image name="icon.png" width="512" height="512"/>
         <image name="kakeichan.png" width="2009" height="2712"/>
+        <image name="kakeilogo.png" width="32" height="32"/>
+        <image name="list.png" width="32" height="32"/>
         <image name="record.png" width="269" height="269"/>
         <image name="reload.png" width="256" height="256"/>
+        <image name="setting.png" width="32" height="32"/>
         <image name="tweet.png" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
