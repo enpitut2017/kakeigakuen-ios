@@ -65,6 +65,8 @@ class MainViewController: UIViewController,UITextFieldDelegate ,SFSpeechRecogniz
     
     var cost: String = ""
     
+    var date: String = ""
+    
     var getJson: NSDictionary!
     
     var now: Date? = nil
@@ -188,11 +190,14 @@ class MainViewController: UIViewController,UITextFieldDelegate ,SFSpeechRecogniz
 手入力時の決定ボタン
 */
     @IBAction func enterButtonTapped(){
-        let s: String! = moneyField.text!.pregReplace(pattern: "円", with: "")
+        let s: String! = regulation(s: moneyField.text!)
         if let i = Int(s) {
             if itemField.text != "" {
                 self.item = itemField.text!
                 self.cost = moneyField.text!
+                let tmpdate :String = dateSelecter.text!
+                self.date = tmpdate.pregReplace(pattern: "/", with: "-")
+                print(self.date)
                 self.send_Items_json()
                 //showStrPost(str: self.item + " " + self.cost)
             } else {
@@ -210,6 +215,17 @@ class MainViewController: UIViewController,UITextFieldDelegate ,SFSpeechRecogniz
         return false
     }
     
+    func regulation(s: String!) -> String{
+        var regulatedS: String! = s
+        
+        regulatedS = regulatedS.pregReplace(pattern: "円", with: "")
+        regulatedS = regulatedS.pregReplace(pattern: "マイナス", with: "-")
+        regulatedS = regulatedS.pregReplace(pattern: "ー", with: "-")
+        regulatedS = regulatedS.pregReplace(pattern: "−", with: "-")
+        regulatedS = regulatedS.pregReplace(pattern: " ", with: "")
+        regulatedS = regulatedS.pregReplace(pattern: ",", with: "")
+        return regulatedS
+    }
 /*
 日付の入力フォーム
 ViewDidLoad : あらゆるコンポーネントの配置決定
@@ -486,6 +502,7 @@ ViewDidLoad : あらゆるコンポーネントの配置決定
             let params: [String: Any] = [
                 "items" : String(self.item),
                 "costs" : String(self.cost),
+                "dates" : String(self.date),
                 "token" : Keychain.kakeiToken.value()!
             ]
             
