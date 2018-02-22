@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>kakei-chan-agent-ios.ipa</key>
+	<array>
+		<dict>
+			<key>architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
+			<key>certificate</key>
+			<dict>
+				<key>SHA1</key>
+				<string>5240CB7CF0916399B029174657BB0D4A1FFB0BBF</string>
+				<key>dateExpires</key>
+				<string>2019/02/21</string>
+				<key>type</key>
+				<string>iOS Distribution</string>
+			</dict>
+			<key>embeddedBinaries</key>
+			<array>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>arm64</string>
+					</array>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>5240CB7CF0916399B029174657BB0D4A1FFB0BBF</string>
+						<key>dateExpires</key>
+						<string>2019/02/21</string>
+						<key>type</key>
+						<string>iOS Distribution</string>
+					</dict>
+					<key>name</key>
+					<string>BubbleTransition.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>L4GKXFJ86Y</string>
+						<key>name</key>
+						<string>勝哉 赤坂</string>
+					</dict>
+				</dict>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>arm64</string>
+					</array>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>5240CB7CF0916399B029174657BB0D4A1FFB0BBF</string>
+						<key>dateExpires</key>
+						<string>2019/02/21</string>
+						<key>type</key>
+						<string>iOS Distribution</string>
+					</dict>
+					<key>name</key>
+					<string>Eureka.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>L4GKXFJ86Y</string>
+						<key>name</key>
+						<string>勝哉 赤坂</string>
+					</dict>
+				</dict>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>arm64</string>
+					</array>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>5240CB7CF0916399B029174657BB0D4A1FFB0BBF</string>
+						<key>dateExpires</key>
+						<string>2019/02/21</string>
+						<key>type</key>
+						<string>iOS Distribution</string>
+					</dict>
+					<key>name</key>
+					<string>TwitterCore.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>L4GKXFJ86Y</string>
+						<key>name</key>
+						<string>勝哉 赤坂</string>
+					</dict>
+				</dict>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>arm64</string>
+					</array>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>5240CB7CF0916399B029174657BB0D4A1FFB0BBF</string>
+						<key>dateExpires</key>
+						<string>2019/02/21</string>
+						<key>type</key>
+						<string>iOS Distribution</string>
+					</dict>
+					<key>name</key>
+					<string>TwitterKit.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>L4GKXFJ86Y</string>
+						<key>name</key>
+						<string>勝哉 赤坂</string>
+					</dict>
+				</dict>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>arm64</string>
+					</array>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>5240CB7CF0916399B029174657BB0D4A1FFB0BBF</string>
+						<key>dateExpires</key>
+						<string>2019/02/21</string>
+						<key>type</key>
+						<string>iOS Distribution</string>
+					</dict>
+					<key>name</key>
+					<string>UICircularProgressRing.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>L4GKXFJ86Y</string>
+						<key>name</key>
+						<string>勝哉 赤坂</string>
+					</dict>
+				</dict>
+			</array>
+			<key>entitlements</key>
+			<dict>
+				<key>application-identifier</key>
+				<string>L4GKXFJ86Y.yatteiki.enpit.kakeigakuen</string>
+				<key>com.apple.developer.team-identifier</key>
+				<string>L4GKXFJ86Y</string>
+				<key>get-task-allow</key>
+				<false/>
+				<key>keychain-access-groups</key>
+				<array>
+					<string>L4GKXFJ86Y.yatteiki.enpit.kakeigakuen</string>
+				</array>
+			</dict>
+			<key>name</key>
+			<string>kakei-chan-agent-ios.app</string>
+			<key>profile</key>
+			<dict>
+				<key>UUID</key>
+				<string>a7e40145-acc2-4af3-9ed3-05013a342bd6</string>
+				<key>name</key>
+				<string>iOS Team Ad Hoc Provisioning Profile: yatteiki.enpit.kakeigakuen</string>
+			</dict>
+			<key>team</key>
+			<dict>
+				<key>id</key>
+				<string>L4GKXFJ86Y</string>
+				<key>name</key>
+				<string>勝哉 赤坂</string>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>
